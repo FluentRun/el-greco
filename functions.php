@@ -834,11 +834,15 @@ function cstm_template_action() {
 
     if ( function_exists( 'adstm_create_pages' ) ) {
         adstm_create_pages();
-    } else {
-        wp_send_json_error( [
-            'message' => __( 'Unable to apply demo content. Please try again later.', 'elgreco' ),
+
+        wp_send_json_success( [
+            'message' => __( 'Demo content applied successfully.', 'elgreco' ),
         ] );
     }
+
+    wp_send_json_error( [
+        'message' => __( 'Unable to apply demo content. Please try again later.', 'elgreco' ),
+    ] );
 }
 add_action( 'wp_ajax_cstm_template_action', 'cstm_template_action' );
 
