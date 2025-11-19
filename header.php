@@ -70,6 +70,7 @@
 
 <body <?php body_class($body_classes); ?>>
 <?php wp_body_open(); ?>
+<div class="site-wrapper">
 <?php
     $cta_text = trim( cz('tp_header_cta_text') );
     $cta_link = trim( cz('tp_header_cta_link') );
@@ -181,3 +182,4 @@
 </header>
 
 <?php get_template_part( 'template/str_data_common' ); ?>
+<main id="site-content" class="site-content">

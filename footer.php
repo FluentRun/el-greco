@@ -1,4 +1,4 @@
-</div><!--wrap-->
+</main><!-- #site-content -->
 <?php $confidence = cz('tp_confidence_img_1') || cz('tp_confidence_img_2') || cz('tp_confidence_img_3');
 $locations = get_nav_menu_locations();
 $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
@@ -184,9 +184,10 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                 <div class="col-12 footer-copyright"><?php echo str_replace( '{{YEAR}}', date( 'Y' ), cz( 'tp_copyright' ) ); ?></div>
             </div>
 
-        </div>
-    </div>
+</div>
+</div>
 </footer><!-- .body-footer -->
+</div><!-- .site-wrapper -->
 
 <?php if ( cz('add_fix') && is_singular( 'product' ) ) : ?>
     <div class="fix-btn single-active-btn">
