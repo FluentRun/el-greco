@@ -108,13 +108,22 @@ if( is_admin() ) {
         include( __DIR__ . '/setup/create_page_template.php' );
 }
 
+if ( ! function_exists( 'adstm_load_textdomain' ) ) {
+    /**
+     * Load translations for the theme at the recommended time.
+     */
+    function adstm_load_textdomain() {
+        load_theme_textdomain( ADSTM_T_DOMAIN, get_template_directory() . '/languages' );
+    }
+}
+
+add_action( 'init', 'adstm_load_textdomain' );
+
 if ( ! function_exists( 'adstm_theme_setup' ) ) {
     /**
-     * Set up core theme defaults and translation loading.
+     * Set up core theme defaults.
      */
     function adstm_theme_setup() {
-        load_theme_textdomain( ADSTM_T_DOMAIN, get_template_directory() . '/languages' );
-
         add_theme_support( 'title-tag' );
         add_theme_support( 'post-thumbnails' );
         add_theme_support(
