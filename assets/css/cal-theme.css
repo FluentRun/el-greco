@@ -772,6 +772,38 @@ hr {
   padding: var(--space-4) 0;
 }
 
+.cal-header__spacer {
+  flex: 1;
+}
+
+.cal-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cal-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  background: linear-gradient(120deg, var(--accent-strong), var(--accent-soft));
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cal-header__cta:hover,
+.cal-header__cta:focus {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  color: #fff;
+}
+
 .cal-header__toggle {
   border: 1px solid var(--border-strong);
   background: var(--surface-muted);
@@ -784,16 +816,6 @@ hr {
   background: var(--text-color);
 }
 
-.cal-header__search {
-  flex: 1;
-  max-width: 520px;
-}
-
-.cal-header__search .box-search {
-  width: 100%;
-}
-
-.cal-header__shipping,
 .cal-header__cart {
   display: flex;
   align-items: center;
@@ -804,12 +826,15 @@ hr {
 .cal-header__cart a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background: var(--surface-muted);
   color: var(--text-color);
   font-weight: 600;
+  border: 1px solid var(--border-subtle);
 }
 
 .cal-header__cart a:hover {
@@ -850,14 +875,17 @@ hr {
     gap: var(--space-3);
   }
 
-  .cal-header__search {
-    order: 3;
-    width: 100%;
-    max-width: none;
+  .cal-header__spacer {
+    display: none;
   }
 
-  .cal-header__shipping,
-  .cal-header__cart {
-    order: 4;
+  .cal-header__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cal-header__cta {
+    flex: 1;
+    text-align: center;
   }
 }

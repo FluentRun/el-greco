@@ -133,19 +133,20 @@
                 <div class="box-logo">
                     <?php do_action('adstm_logo_header') ?>
                 </div>
-                <div class="cal-header__search">
-                    <div class="box box-search">
-                        <?php do_action('adstm_search') ?>
-                    </div>
-                </div>
-                <div class="cal-header__shipping hidden-xs">
-                    <?php if(cz('tp_text_top_header')){
-                        do_action('adstm_shipping_icon');
-                        echo cz('tp_text_top_header'); }
+
+                <div class="cal-header__spacer"></div>
+
+                <div class="cal-header__actions">
+                    <?php
+                    $cta_label = cz('tp_header_cta_text') ? cz('tp_header_cta_text') : __('Start Shopping', 'rap');
+                    $cta_url   = cz('tp_header_cta_url') ? cz('tp_header_cta_url') : '#';
                     ?>
-                </div>
-                <div class="cal-header__cart">
-                    <?php do_action('adstm_cart_quantity_link') ?>
+                    <a href="<?php echo esc_url($cta_url); ?>" class="cal-header__cta">
+                        <?php echo esc_html($cta_label); ?>
+                    </a>
+                    <div class="cal-header__cart">
+                        <?php do_action('adstm_cart_quantity_link') ?>
+                    </div>
                 </div>
 
             </div>
