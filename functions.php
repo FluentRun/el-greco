@@ -33,6 +33,40 @@ include( __DIR__ . '/inc/review.php' );
 include( __DIR__ . '/inc/instagram.php' );
 
 
+function raphael_enqueue_hero_animation_assets() {
+        if ( ! is_front_page() ) {
+                return;
+        }
+
+        wp_enqueue_script(
+                'raphael-lottie-web',
+                'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js',
+                [],
+                '5.12.2',
+                true
+        );
+
+        $hero_animation_path = get_template_directory_uri() . '/assets/animations/hero-explainer.json';
+
+        wp_enqueue_script(
+                'raphael-hero-lottie',
+                get_template_directory_uri() . '/js/hero-animation.js',
+                [ 'raphael-lottie-web' ],
+                file_exists( get_template_directory() . '/js/hero-animation.js' ) ? filemtime( get_template_directory() . '/js/hero-animation.js' ) : null,
+                true
+        );
+
+        wp_localize_script(
+                'raphael-hero-lottie',
+                'RaphaelHeroAnimation',
+                [
+                        'animationPath' => esc_url_raw( $hero_animation_path ),
+                ]
+        );
+}
+add_action( 'wp_enqueue_scripts', 'raphael_enqueue_hero_animation_assets' );
+
+
 if ( ! function_exists( 'raphael_is_item_permalink' ) ) {
         /**
          * Check whether the current singular permalink begins with /item/.
