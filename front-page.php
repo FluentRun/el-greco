@@ -57,6 +57,25 @@ get_header();
         stroke-linejoin: round;
         fill: none;
     }
+    .hero-icon-box {
+        background: #f8fafc;
+        border-radius: 4px;
+        padding: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+    .rotate-slow {
+        animation: rotateIcon 7s linear infinite;
+    }
+    .rotate-delay-1 { animation-delay: 0.15s; }
+    .rotate-delay-2 { animation-delay: 0.3s; }
+    .rotate-delay-3 { animation-delay: 0.45s; }
+    @keyframes rotateIcon {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
     .hero-feature-card span {
         display: block;
         margin-top: 12px;
@@ -139,42 +158,50 @@ get_header();
                         <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell">
                             <div class="hero-feature-grid" role="list">
                                 <div class="hero-feature-card" role="listitem">
-                                    <svg viewBox="0 0 64 64" aria-hidden="true">
-                                        <rect x="10" y="14" width="44" height="38" rx="6"></rect>
-                                        <path d="M20 8v12"></path>
-                                        <path d="M44 8v12"></path>
-                                        <path d="M10 26h44"></path>
-                                        <path d="M22 38h8"></path>
-                                        <path d="M34 38h8"></path>
-                                        <path d="M22 46h20"></path>
-                                    </svg>
+                                    <div class="hero-icon-box">
+                                        <svg class="rotate-slow" viewBox="0 0 64 64" aria-hidden="true">
+                                            <rect x="10" y="14" width="44" height="38" rx="6"></rect>
+                                            <path d="M20 8v12"></path>
+                                            <path d="M44 8v12"></path>
+                                            <path d="M10 26h44"></path>
+                                            <path d="M22 38h8"></path>
+                                            <path d="M34 38h8"></path>
+                                            <path d="M22 46h20"></path>
+                                        </svg>
+                                    </div>
                                     <span>Booking</span>
                                 </div>
                                 <div class="hero-feature-card" role="listitem">
-                                    <svg viewBox="0 0 64 64" aria-hidden="true">
-                                        <path d="M12 16h8l6 28h24l6-20H20"></path>
-                                        <circle cx="28" cy="50" r="4"></circle>
-                                        <circle cx="44" cy="50" r="4"></circle>
-                                        <path d="M24 28h28"></path>
-                                    </svg>
+                                    <div class="hero-icon-box">
+                                        <svg class="rotate-slow rotate-delay-1" viewBox="0 0 64 64" aria-hidden="true">
+                                            <path d="M12 16h8l6 28h24l6-20H20"></path>
+                                            <circle cx="28" cy="50" r="4"></circle>
+                                            <circle cx="44" cy="50" r="4"></circle>
+                                            <path d="M24 28h28"></path>
+                                        </svg>
+                                    </div>
                                     <span>E-commerce</span>
                                 </div>
                                 <div class="hero-feature-card" role="listitem">
-                                    <svg viewBox="0 0 64 64" aria-hidden="true">
-                                        <path d="M12 50h40"></path>
-                                        <path d="M20 42l8-12 10 8 12-18 6 6"></path>
-                                        <path d="M20 22v28"></path>
-                                        <path d="M34 30v20"></path>
-                                        <path d="M48 18v32"></path>
-                                    </svg>
+                                    <div class="hero-icon-box">
+                                        <svg class="rotate-slow rotate-delay-2" viewBox="0 0 64 64" aria-hidden="true">
+                                            <path d="M12 50h40"></path>
+                                            <path d="M20 42l8-12 10 8 12-18 6 6"></path>
+                                            <path d="M20 22v28"></path>
+                                            <path d="M34 30v20"></path>
+                                            <path d="M48 18v32"></path>
+                                        </svg>
+                                    </div>
                                     <span>Tracking</span>
                                 </div>
                                 <div class="hero-feature-card" role="listitem">
-                                    <svg viewBox="0 0 64 64" aria-hidden="true">
-                                        <path d="M26 20l-12 12 12 12"></path>
-                                        <path d="M38 44l4-24"></path>
-                                        <path d="M38 20l12 12-12 12"></path>
-                                    </svg>
+                                    <div class="hero-icon-box">
+                                        <svg class="rotate-slow rotate-delay-3" viewBox="0 0 64 64" aria-hidden="true">
+                                            <path d="M26 20l-12 12 12 12"></path>
+                                            <path d="M38 44l4-24"></path>
+                                            <path d="M38 20l12 12-12 12"></path>
+                                        </svg>
+                                    </div>
                                     <span>Programming / Customization</span>
                                 </div>
                             </div>
