@@ -262,8 +262,11 @@ function custom_comment_form( $args = array(), $post_id = null ) {
 }
 
 
-if (post_password_required()) {
-	return;
+if (
+        post_password_required() ||
+        ( function_exists( 'raphael_is_item_permalink' ) && raphael_is_item_permalink() )
+) {
+        return;
 }
 
 ?>

@@ -1,15 +1,20 @@
 <?php
 
-$cats = get_the_category();
+$cats            = get_the_category();
+$primary_term    = null;
 $primary_term_id = null;
 
 if ( ! empty( $cats ) && is_array( $cats ) ) {
     foreach ( $cats as $term ) {
-        if ( $term instanceof WP_Term && ! empty( $term->term_id ) ) {
-            $primary_term_id = (int) $term->term_id;
+        if ( $term instanceof WP_Term ) {
+            $primary_term = $term;
             break;
         }
     }
+}
+
+if ( $primary_term instanceof WP_Term && ! empty( $primary_term->term_id ) ) {
+    $primary_term_id = (int) $primary_term->term_id;
 }
 
 if ( empty( $primary_term_id ) ) {

@@ -33,6 +33,55 @@ include( __DIR__ . '/inc/review.php' );
 include( __DIR__ . '/inc/instagram.php' );
 
 
+if ( ! function_exists( 'raphael_is_item_permalink' ) ) {
+        /**
+         * Check whether the current singular permalink begins with /item/.
+         *
+         * @return bool
+         */
+        function raphael_is_item_permalink() {
+                if ( ! is_singular() ) {
+                        return false;
+                }
+
+                $permalink = get_permalink();
+
+                if ( empty( $permalink ) ) {
+                        return false;
+                }
+
+                $path = wp_parse_url( $permalink, PHP_URL_PATH );
+
+                if ( ! is_string( $path ) ) {
+                        return false;
+                }
+
+                return strpos( $path, '/item/' ) === 0;
+        }
+}
+
+add_action( 'wp_head', function () {
+        if ( ! raphael_is_item_permalink() ) {
+                return;
+        }
+
+        ?>
+        <style>
+                .blog-single-data__local-info-author,
+                .blog-single-data__local-info-date-and-comments,
+                .blog-breadcrumbs,
+                .blog-top-full-screen-block__inner,
+                [class*="breadcrumb"],
+                #comments,
+                .comment-respond,
+                #respond {
+                        display: none !important;
+                }
+        </style>
+        <?php
+}, 99 );
+
+
 add_action('cz_change_options', function (){
     //adstm_instagram::clearCache();
 });
