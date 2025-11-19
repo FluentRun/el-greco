@@ -127,13 +127,15 @@ class adsTmpl {
 	/**
 	 *
 	 */
-	static public function adstm_current_currency() {
+    static public function adstm_current_currency() {
 
-		$list_currency = ads_get_list_currency();
+                $list_currency = ads_get_list_currency();
 
-		echo '<img src="' . pachFlag( $list_currency[ ADS_CUR ][ 'flag' ] ) . '">' .
-		     '<span>(' . trim( $list_currency[ ADS_CUR ][ 'symbol' ] ) . ')</span> ';
-	}
+                if ( defined( 'ADS_CUR' ) && isset( $list_currency[ ADS_CUR ] ) ) {
+                        echo '<img src="' . pachFlag( $list_currency[ ADS_CUR ][ 'flag' ] ) . '">' .
+                             '<span>(' . trim( $list_currency[ ADS_CUR ][ 'symbol' ] ) . ')</span> ';
+                }
+        }
 	
 	/**
 	 * @return array
