@@ -109,11 +109,16 @@ if( is_admin() ) {
 }
 
 function adstm_lang_init() {
-    load_theme_textdomain( 'elgreco' );
+    /*
+     * Load translations as soon as themes are set up so any calls to __()
+     * during early bootstrap don't trigger just-in-time loading warnings
+     * introduced in WordPress 6.7.
+     */
+    load_theme_textdomain( 'elgreco', get_template_directory() . '/languages' );
 }
-// Load the theme textdomain on "init" to avoid triggering just-in-time
-// translation loading notices introduced in WordPress 6.7.
-add_action( 'init', 'adstm_lang_init' );
+
+// Load the theme textdomain once WordPress finishes setting up the theme.
+add_action( 'after_setup_theme', 'adstm_lang_init' );
 
 /**
  * Add theme support for Featured Images
