@@ -71,9 +71,10 @@ get_header();
     .feature-icon-box {
         width: 56px;
         height: 56px;
-        border-radius: 14px;
-        background: #f5f5f5;
-        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+        background: linear-gradient(135deg, #f9fafb, #eef2f7);
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
     .more-feature-card {
         transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
@@ -375,10 +376,6 @@ get_header();
                 <div class="col-6 col-md-3 d-flex justify-content-center">
                     <div class="feature-card more-feature-card bg-white border rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-3">
                         <div class="feature-icon-box d-flex align-items-center justify-content-center position-relative mb-3">
-                            <span class="position-absolute top-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
-                            <span class="position-absolute top-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
-                            <span class="position-absolute bottom-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
-                            <span class="position-absolute bottom-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
                             <?php echo $icons[$index]; ?>
                         </div>
                         <p class="fw-medium text-dark small mb-0"><?php echo $label; ?></p>
