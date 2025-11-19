@@ -2,7 +2,7 @@
 
 <div class="feedback-static">
     <div class="row">
-        <div class="col-xs-60 col-sm-30">
+        <div class="col-12 col-sm-6">
             <div class="aggregateRating">
                 <div class="star-rating">
                     <div property="aggregateRating" typeof="AggregateRating">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="col-xs-60 col-sm-30">
+        <div class="col-12 col-sm-6">
                 <div class="feedback-rating">
 			<?php
 			$stars = $reviews->getStat();

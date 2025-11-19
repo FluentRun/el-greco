@@ -325,7 +325,7 @@ class adsProductTM extends \ads\adsProduct {
             $this->price_shipping = $shipping[ $key ][ 'cost' ];
 
             $render .= '<div class="single-shipping-select single-shipping-multi">
-				<select class="picker" data-singleProduct="single-shipping" name="shipping">';
+                            <select class="picker form-select" data-singleProduct="single-shipping" name="shipping">';
 
             foreach ( $shipping as $k => $v ) {
 

@@ -12,7 +12,7 @@
         <div class="container">
             <h1><?php _e( 'Contact Us', 'rap' ); ?></h1>
             <div class="row page-contact">
-                <div class="col-sm-29">
+                <div class="col-sm-6">
                     <p class="d-block d-sm-none"><?php _cz('tp_contactUs_text') ?></p>
                     <form class="contact-form" method="POST">
 
@@ -66,7 +66,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-20 col-sm-offset-4 address">
+                <div class="col-sm-4 offset-sm-1 address">
                     <p class="d-none d-sm-block"><?php _cz('tp_contactUs_text') ?></p>
 					<?php if ( cz( 's_mail' ) ): ?>
                         <p>

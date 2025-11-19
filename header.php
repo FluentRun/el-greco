@@ -94,7 +94,7 @@
         <div class="top-panel">
             <div class="container">
                 <div class="row mobile-top-panel desktop-top-panel">
-                    <div class="col-xs-60">
+                    <div class="col-12">
                         <div class="pages-menu">
                             <?php do_action('ads_pages_menu'); ?>
                         </div>
@@ -126,9 +126,7 @@
             <div class="mobile-header desc-header">
                 <button type="button" class="navbar-toggler d-inline-flex d-md-none js-toggle-menu" aria-label="<?php esc_attr_e( 'Toggle navigation', 'rap' ); ?>">
                     <span class="visually-hidden"><?php _e( 'Toggle navigation', 'rap' ); ?></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
                 </button>
                 <div class="wrap box">
                     <div class="box-logo">
@@ -155,7 +153,7 @@
         <div class="categories-menu d-none d-md-block">
             <div class="container">
                 <div class="row">
-                    <div class="categories-menu-box col-xs-60">
+                    <div class="categories-menu-box col-12">
                         <ul class="categories-menu-line">
 					        <?php ads_menu_product(4); ?>
                             <li class="more js-more parent-top"><a href="#"><?php _e('More', 'rap'); ?></a></li>

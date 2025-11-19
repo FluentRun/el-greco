@@ -1,7 +1,7 @@
 <div class="list-order-head d-none d-sm-block">
 	<div class="head">
 		<div class="col-sm-10"></div>
-		<div class="head-product col-sm-30 col-lg-30"><?php _e( 'Product', 'rap' ); ?></div>
+		<div class="head-product col-sm-6 col-lg-6"><?php _e( 'Product', 'rap' ); ?></div>
 		<div class="head-quantity col-sm-9 col-lg-9"><?php _e( 'Quantity', 'rap' ); ?></div>
 		<div class="head-amount col-sm-9 col-lg-9"><?php _e( 'Amount', 'rap' ); ?></div>
 		<div class="col-sm-2"></div>
@@ -18,7 +18,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-30 col-lg-30">
+				<div class="col-sm-6 col-lg-6">
 					<a href="{{link}}" class="title-link">{{title}}</a>
 					<div class="shipping">
 						<span class="head"><?php _e( 'Shipping', 'rap' ); ?>:</span>

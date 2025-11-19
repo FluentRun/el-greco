@@ -12,7 +12,7 @@
 	<div class="page-customers">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-60 customers">
+				<div class="col-md-12 customers">
 					<div class="p-heading">
                                                 <div class="p-title" style="margin: 20px 0px 0px 0px;">
                                                     <?php do_action('adsgal_clientgallery_title');?>

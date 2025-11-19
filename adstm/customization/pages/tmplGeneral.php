@@ -36,7 +36,7 @@ $tmpl->template('ads-color', $tmpl->renderItems());
 ?>
 <div class="wrap">
 	<div class="row">
-		<div class="col-md-29">
+		<div class="col-md-6">
             <form id="custom_form" method="POST">
                 <?php
                 wp_nonce_field( 'cz_setting_action', 'cz_setting' ); ?>
@@ -55,7 +55,7 @@ $tmpl->template('ads-color', $tmpl->renderItems());
 
                 ?>
                 <button form="custom_form" class="btn btn-save no-ads" name="save"><?php _e( 'Save Settings', 'rap' ) ?></button>
-                <button form="custom_form" class="btn btn-default no-ads" name="default"><?php _e( 'Default', 'rap' ) ?></button>
+                <button form="custom_form" class="btn btn-legacy no-ads" name="default"><?php _e( 'Default', 'rap' ) ?></button>
             </form>
 
 		</div>

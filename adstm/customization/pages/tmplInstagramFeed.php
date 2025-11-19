@@ -31,7 +31,7 @@ $tmpl->template('ads-social-link',$tmpl->renderItems());
 
 <div class="wrap">
 	<div class="row">
-		<div class="col-md-30">
+		<div class="col-md-6">
 			<form id="custom_form" method="POST">
 				<?php
 				wp_nonce_field( 'cz_setting_action', 'cz_setting' ); ?>

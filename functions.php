@@ -355,7 +355,7 @@ function image_host_remove() {
 add_action( 'after_switch_theme', 'image_host_remove',40  );
 
 function ads_load_countries() {
-    echo '<select name="Addreview[from]" id="ads_review_shipping_countries" data-ttselect data-search >';
+    echo '<select name="Addreview[from]" id="ads_review_shipping_countries" class="form-select" data-ttselect data-search >';
     ads_get_list_contries();
     echo '</select>';
     die();

@@ -6,7 +6,7 @@
         <h1><?php echo cz('tp_about_b1_title'); ?></h1>
         <div class="container">
             <div class="row">
-                <div class="col-xs-60 col-md-48 col-md-offset-6">
+                <div class="col-12 col-md-10 offset-md-1">
                     <p><?php echo cz('tp_about_b1_description'); ?></p>
                 </div>
             </div>
@@ -20,9 +20,9 @@
 			<div class="container">
 				<div class="row">
 					<h2><?php _cz('tp_our_core_values_title'); ?></h2>
-					<ul class="col-sm-60">
+					<ul class="col-sm-12">
                         <?php if(cz('tp_our_core_values_value1')){ ?>
-						<li class="col-sm-12 col-xs-60">
+						<li class="col-sm-12 col-12">
 							<i class="ico_about ico1">
                                 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 63.9 54" style="enable-background:new 0 0 63.9 54;" xml:space="preserve">
@@ -58,7 +58,7 @@
 						</li>
 						<?php } ?>
                     <?php if(cz('tp_our_core_values_value2')){ ?>
-						<li class="col-sm-12 col-xs-60">
+						<li class="col-sm-12 col-12">
 							<i class="ico_about ico2">
                                 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 66.8 54" style="enable-background:new 0 0 66.8 54;" xml:space="preserve">
@@ -98,7 +98,7 @@
 						</li>
 						<?php } ?>
                     <?php if(cz('tp_our_core_values_value3')){ ?>
-						<li class="col-sm-12 col-xs-60">
+						<li class="col-sm-12 col-12">
 							<i class="ico_about ico3">
                                 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 60.3 54" style="enable-background:new 0 0 60.3 54;" xml:space="preserve">
@@ -125,7 +125,7 @@
 						</li>
 						<?php } ?>
                     <?php if(cz('tp_our_core_values_value4')){ ?>
-						<li class="col-sm-12 col-xs-60">
+						<li class="col-sm-12 col-12">
 							<i class="ico_about ico4">
                                 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 69.1 54" style="enable-background:new 0 0 69.1 54;" xml:space="preserve">
@@ -161,7 +161,7 @@
 						</li>
 						<?php } ?>
                     <?php if(cz('tp_our_core_values_value5')){ ?>
-						<li class="col-sm-12 col-xs-60">
+						<li class="col-sm-12 col-12">
 							<i class="ico_about ico5">
                                 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 52.8 54" style="enable-background:new 0 0 52.8 54;" xml:space="preserve">
@@ -225,7 +225,7 @@
 		<div class="container-fluid abous_b4">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-60">
+					<div class="col-12">
 						<h2><?php _e('Our partners', 'rap'); ?></h2>
 
 						<p><?php echo cz('tp_our_partners_description'); ?></p>

@@ -2,7 +2,7 @@
     <div class="account-details">
         <div class="container">
             <div class="row">
-                <div class="col-md-60 account-details-content">
+                <div class="col-md-12 account-details-content">
                     <div class="p-heading">
                         <div class="p-title">
 							<?php echo function_exists('ads_set_custom_title') ? ads_set_custom_title('', '') : ''; ?>

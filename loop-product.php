@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row page-cat-main">
 
-				<div class="aship-box-products col-xs-60 page-cat-product">
+				<div class="aship-box-products col-12 page-cat-product">
 
                     <div class="clearfix">
                         <h1 class="aship-title cat-name"><?php echo adsTmpl::singleTerm(true) ?></h1>
@@ -35,7 +35,7 @@
 
 							$class = $img_size. ' item_'.$i;
 
-							echo '<div class="col-xs-30 col-sm-20 col-md-15 col-lg-15 item '.$class.'">';
+							echo '<div class="col-6 col-sm-4 col-md-3 col-lg-3 item '.$class.'">';
 							echo '<div class="wrap_product">';
 							do_action('adstm_product_item', $img_size);
 

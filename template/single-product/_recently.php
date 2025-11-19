@@ -15,7 +15,7 @@ if ( have_posts() ) :
 
 	while ( have_posts() ) : the_post();
 
-		echo '<div class="col-md-15 inline-product">';
+		echo '<div class="col-md-3 inline-product">';
 		do_action('adstm_product_item',  'ads-big');
 		echo '</div>';
 

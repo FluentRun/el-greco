@@ -8,7 +8,7 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
     <div class="content-footer">
         <div class="container">
             <div class="row row-footer">
-                <div class="col-xs-60 col-md-15">
+                <div class="col-12 col-md-3">
                     <div class="contact-footer">
                         <div class="footer-head">
                             <a href="javascript:;"><?php _cz('tp_footer_menu_title_1'); ?></a>
@@ -21,7 +21,7 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                     </div>
                 </div>
                 <?php if( isset( $locations[ 'footer-company' ] ) && $locations[ 'footer-company' ] ) { ?>
-                    <div class="col-xs-60 col-md-15">
+                    <div class="col-12 col-md-3">
                         <div class="menu-footer">
                             <div class="footer-head"><a href="javascript:;"><?php _cz('tp_footer_menu_title_2'); ?></a></div>
                             <div class="box-toggle">
@@ -51,7 +51,7 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                 <?php } ?>
 
                 <?php if( isset( $locations[ 'footer-help' ] ) && $locations[ 'footer-help' ] ) { ?>
-                    <div class="col-xs-60 col-md-15">
+                    <div class="col-12 col-md-3">
                         <div class="menu-footer">
                             <div class="footer-head"><a href="javascript:;"><?php _cz('tp_footer_menu_title_3'); ?></a></div>
                             <div class="box-toggle">
@@ -79,7 +79,7 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                         </div>
                     </div>
                 <?php } ?>
-                <div class="col-xs-60 col-md-15">
+                <div class="col-12 col-md-3">
 
                     <?php if (adsTmpl::is_enableSocial()): ?>
                         <div class="social">
@@ -181,7 +181,7 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                 </div>
             <?php endif; ?>
             <div class="row">
-                <div class="col-xs-60 footer-copyright"><?php echo str_replace( '{{YEAR}}', date( 'Y' ), cz( 'tp_copyright' ) ); ?></div>
+                <div class="col-12 footer-copyright"><?php echo str_replace( '{{YEAR}}', date( 'Y' ), cz( 'tp_copyright' ) ); ?></div>
             </div>
 
         </div>

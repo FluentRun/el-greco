@@ -28,7 +28,7 @@
             <?php do_action('adstm_start_form_product'); ?>
 
             <div class="row">
-                <div class="col-xs-60 product-content-left">
+                <div class="col-12 product-content-left">
 
                     <div class="product-main">
                         <div class="wrap-tumb wrap-swim">
@@ -230,11 +230,11 @@
             <?php do_action('ads_single_product_before_content'); ?>
             <div class="row">
 
-                <div class="col-xs-60">
+                <div class="col-12">
                     <?php get_template_part( 'template/single-product/content' ); ?>
                 </div>
 
-                <div class="col-xs-60 single_share-mobile d-block d-sm-none">
+                <div class="col-12 single_share-mobile d-block d-sm-none">
                     <?php do_action('adstm_single_share') ?>
                 </div>
 
@@ -249,7 +249,7 @@
                     <div class="row">
 
                         <?php if(comments_open()):?>
-                            <div class="col-xs-60">
+                            <div class="col-12">
                                 <div id="box-feedback" class="feedback-title">
                                     <?php _cz('tp_tab_item_review_label');?>
                                 </div>

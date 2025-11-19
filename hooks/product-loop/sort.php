@@ -103,7 +103,7 @@ add_action('sortby_show_select', function (){
     ?>
     <div class="sort-select">
         <label for="js-select_sort-picker"><?php _e( 'Sort by :', 'rap' ); ?></label>
-        <select id="js-select_sort-picker" class="js-select_sort" name="select_sort" data-ttselect="1" >
+        <select id="js-select_sort-picker" class="form-select js-select_sort" name="select_sort" data-ttselect="1" >
             <?php sortby_show_select(); ?>
         </select>
     </div>

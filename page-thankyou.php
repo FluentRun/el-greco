@@ -40,10 +40,10 @@ if ( isset( $_GET[ 'fail' ] ) && $_GET[ 'fail' ] == 'no' ) {
 
 							<div class="page-thank__order_btn">
 								<a href="<?php echo esc_url( home_url( '/product/' ) ) ?>"
-								   class="btn btn-default btn-danger rippler rippler-default">
+								   class="btn btn-legacy btn-danger rippler rippler-default">
 									<?php _e( 'Continue shopping', 'rap' ); ?></a>
 								<a href="<?php echo esc_url( home_url( '/contact-us/' ) ) ?>"
-								   class="btn btn-default btn-danger rippler rippler-default">
+								   class="btn btn-legacy btn-danger rippler rippler-default">
 									<?php _e( 'Contact Us', 'rap' ); ?></a>
 							</div>
 						</div>

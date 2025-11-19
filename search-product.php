@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row page-cat-main">
 
-				<div class="col-xs-60 page-cat-product aship-box-products">
+				<div class="col-12 page-cat-product aship-box-products">
 
 					<?php global $wp_query; ?>
                     <div class="search-top">
@@ -37,7 +37,7 @@
 
 								$class = $img_size. ' item_'.$i;
 
-								echo '<div class="col-xs-30 col-sm-20 col-md-15 col-lg-12 item '.$class.'">';
+								echo '<div class="col-6 col-sm-4 col-md-3 col-lg-12 item '.$class.'">';
 								echo '<div class="wrap_product">';
 								do_action('adstm_product_item', $img_size);
 

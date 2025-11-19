@@ -288,16 +288,16 @@
     }
     .btn-guest,
     .btn-account,
-    .btn-default,
+    .btn-legacy,
     .btn-login{
         background: transparent;
         color: <?php echo cz('login_subscription_color');?>!important;
         border: 1px solid <?php echo cz('login_subscription_color');?>!important;
     }
 
-    .btn-default:active,
-    .btn-default:focus,
-    .btn-default:hover,
+    .btn-legacy:active,
+    .btn-legacy:focus,
+    .btn-legacy:hover,
 
     .btn-guest:active,
     .btn-guest:focus,

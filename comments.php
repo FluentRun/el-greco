@@ -112,15 +112,15 @@ function custom_comment_form( $args = array(), $post_id = null ) {
 	$args = wp_parse_args( $args );
 
 	$fields   =  array(
-		'author' => '<p class="col-md-30">
+		'author' => '<p class="col-md-6">
 				<input class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="Your Name" />
 			</p>',
 
-		'email' => '<p class="col-md-30">
+		'email' => '<p class="col-md-6">
 				<input class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" placeholder="Your Email" required />
 			</p>',
 
-		'url' => '<p class="col-md-60">
+		'url' => '<p class="col-md-12">
 				<input class="form-control" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" placeholder="Your Site" />
 			</p>',
 	);
@@ -149,7 +149,7 @@ function custom_comment_form( $args = array(), $post_id = null ) {
 	'comment_notes_after'  => '</div>',
 	'id_form'              => 'commentform',
 	'id_submit'            => 'submit',
-	'class_submit'         => 'submit btn btn-lg btn-default',
+	'class_submit'         => 'submit btn btn-lg btn-legacy',
 	'name_submit'          => 'submit',
 	'title_reply'          => __('Leave a comment'),
 	'title_reply_to'       => __('Leave a reply to %s'),

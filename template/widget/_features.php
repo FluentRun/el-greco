@@ -6,7 +6,7 @@ if ( cz('features_enable') ): ?>
 <div class="wrap-features d-none d-sm-block">
     <div class="container">
         <div class="row features">
-            <div class="col-xs-15">
+            <div class="col-3">
                 <div class="text-feat">
                     <div class="features-main-text">
 				        <?php echo $features['item'][0]['head']; ?>
@@ -14,7 +14,7 @@ if ( cz('features_enable') ): ?>
                     <p><?php echo $features['item'][0]['text']; ?></p>
                 </div>
             </div>
-            <div class="col-xs-15">
+            <div class="col-3">
                 <div class="text-feat">
                     <div class="features-main-text">
 				        <?php echo $features['item'][1]['head']; ?>
@@ -22,7 +22,7 @@ if ( cz('features_enable') ): ?>
                     <p><?php echo $features['item'][1]['text']; ?></p>
                 </div>
             </div>
-            <div class="col-xs-15">
+            <div class="col-3">
                 <div class="text-feat">
                     <div class="features-main-text">
 				        <?php echo $features['item'][2]['head']; ?>
@@ -30,7 +30,7 @@ if ( cz('features_enable') ): ?>
                     <p><?php echo $features['item'][2]['text']; ?></p>
                 </div>
             </div>
-            <div class="col-xs-15">
+            <div class="col-3">
                 <div class="text-feat end">
                     <div class="features-main-text">
 				        <?php echo $features['item'][3]['head']; ?>

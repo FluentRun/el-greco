@@ -11,7 +11,7 @@
 	<div class="page-confirmation">
 		<div class="container">
 			<div class="row page-confirmation">
-				<div class="col-md-60 article">
+				<div class="col-md-12 article">
 					<div class="p-heading">
 						<div class="p-title">
 							<?php echo function_exists('ads_set_custom_title') ? ads_set_custom_title('', '') : ''; ?>

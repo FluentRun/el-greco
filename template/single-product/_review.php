@@ -21,7 +21,7 @@ $posts_per_page = ( isset( $wp_query->query_vars[ 'comments_per_page' ] ) &&
                     <div class="head"><?php _e('We want to hear from you!', 'rap');?></div>
                     <div class="row" id="addReviewDiv">
                         <div class="">
-                            <div class="col-sm-44">
+                            <div class="col-sm-9">
                                 <p class="h3 heading-title" style="margin-top:10px !important;">
                                     <?php _e('Leave a Review', 'ads');?>
                                 </p>
@@ -62,8 +62,8 @@ $posts_per_page = ( isset( $wp_query->query_vars[ 'comments_per_page' ] ) &&
                                     <button type="submit" class="btn submit-review"><?php _e('Submit a Review', 'ads');?></button>
                                     <input hidden="hidden" name="action" value="ads_add_user_review">
                                     <input hidden="hidden" name="Addreview[post_id]" value="<?php echo get_the_ID();?>">
-                                    <span class="btn btn-default fileinput-button" data-bs-toggle="tooltip" data-bs-placement="right" title="<?php _e('Attach file(s)', 'ads');?>">
-                                        <i class="glyphicon glyphicon-paperclip"></i>
+                                    <span class="btn btn-legacy fileinput-button" data-bs-toggle="tooltip" data-bs-placement="right" title="<?php _e('Attach file(s)', 'ads');?>">
+                                        <i class="fa fa-paperclip" aria-hidden="true"></i>
                                         <input id="review-file-upload" type="file" name="review_files[]" multiple>
                                     </span>
                                 </div>
