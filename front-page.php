@@ -13,6 +13,8 @@ wp_enqueue_script(
     true
 );
 
+$theme_dir = get_template_directory_uri();
+
 get_header();
 ?>
 
@@ -71,7 +73,7 @@ get_header();
                 </p>
 
                 <button class="mt-4 btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
-                    <img src="https://www.svgrepo.com/show/355037/google.svg" width="18" alt="Google">
+                    <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
                     Sign up with Google
                 </button>
 
@@ -85,8 +87,8 @@ get_header();
                 <p class="small text-muted mt-2">No credit card required</p>
 
                 <div class="d-flex gap-4 mt-4">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Trustpilot_logo_2022.svg/2560px-Trustpilot_logo_2022.svg.png" height="20" alt="Trustpilot">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Google_Reviews_logo.png" height="20" alt="Google Reviews">
+                    <img src="<?php echo esc_url( $theme_dir . '/images/trustf/sslupf.svg' ); ?>" height="20" alt="Trustpilot">
+                    <img src="<?php echo esc_url( $theme_dir . '/images/trustf/nortonf.svg' ); ?>" height="20" alt="Google Reviews">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -94,7 +96,7 @@ get_header();
                     <div class="p-4 position-relative" style="z-index:2; min-height:350px;">
                         <div class="d-flex justify-content-between align-items-start mb-3">
                             <div class="d-flex gap-3">
-                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=200&amp;q=80" class="rounded-circle" width="48" height="48" alt="Profile">
+                                <img src="<?php echo esc_url( $theme_dir . '/images/home/user2.png' ); ?>" class="rounded-circle" width="48" height="48" alt="Profile">
                                 <div>
                                     <p class="fw-medium mb-1 small text-dark">Isabella Valce</p>
                                     <p class="fw-semibold text-dark mb-1">Creative Photoshoot</p>
@@ -446,41 +448,41 @@ get_header();
                 <div class="border rounded-3 overflow-hidden">
                     <div class="row g-0">
                         <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/281/281769.png" class="opacity-75" width="40" alt="Slack">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/visa.svg' ); ?>" class="opacity-75" width="40" alt="Slack">
                         </div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Zapier_logo.png" class="opacity-75" width="80" alt="Zapier">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/master_card.svg' ); ?>" class="opacity-75" width="80" alt="Zapier">
                         </div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center border-bottom p-4" style="height:120px;">
-                            <img src="https://seeklogo.com/images/S/stripe-logo-66D2C7D7FC-seeklogo.com.png" class="opacity-75" width="55" alt="Stripe">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/american_express.svg' ); ?>" class="opacity-75" width="55" alt="Stripe">
                         </div>
                     </div>
 
                     <div class="row g-0">
                         <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/HubSpot_Logo.png" class="opacity-75" width="60" alt="HubSpot">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/discover.svg' ); ?>" class="opacity-75" width="60" alt="HubSpot">
                         </div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;"></div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center border-bottom p-4" style="height:120px;">
-                            <img src="https://cdn.worldvectorlogo.com/logos/outlook-icon.svg" class="opacity-75" width="55" alt="Outlook">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/paypal.svg' ); ?>" class="opacity-75" width="55" alt="Outlook">
                         </div>
                     </div>
 
                     <div class="row g-0">
                         <div class="col-4 d-flex justify-content-center align-items-center border-end p-4" style="height:120px;">
-                            <img src="https://logos-world.net/wp-content/uploads/2021/03/Salesforce-Logo.png" class="opacity-75" width="80" alt="Salesforce">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/maestro.svg' ); ?>" class="opacity-75" width="80" alt="Salesforce">
                         </div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center border-end p-4" style="height:120px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Google_Meet_icon_(2020).svg" class="opacity-75" width="45" alt="Google Meet">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/payment_methods/western.svg' ); ?>" class="opacity-75" width="45" alt="Google Meet">
                         </div>
 
                         <div class="col-4 d-flex justify-content-center align-items-center p-4" style="height:120px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Calendar_2020_Logo.svg" class="opacity-75" width="45" alt="Google Calendar">
+                            <img src="<?php echo esc_url( $theme_dir . '/images/trustf/goDaddyf.svg' ); ?>" class="opacity-75" width="45" alt="Google Calendar">
                         </div>
                     </div>
                 </div>
