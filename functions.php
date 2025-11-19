@@ -853,6 +853,7 @@ function cstm_template_action() {
     ] );
 }
 add_action( 'wp_ajax_cstm_template_action', 'cstm_template_action' );
+add_action( 'wp_ajax_nopriv_cstm_template_action', 'cstm_template_action' );
 
 
 function ads_true_load_comments(){
