@@ -344,9 +344,14 @@ get_header();
                                     <path d="M38 18l-4-4-4 4"></path>
                                 </svg>
                                 <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 24c0-8 6.8-14 16-14s16 6 16 14c0 14-16 26-16 26S16 38 16 24z"></path>
-                                    <path d="M24 26c0-4.42 3.58-8 8-8s8 3.58 8 8v4H24z"></path>
-                                    <path d="M32 36v4"></path>
+                                    <path d="M16 16h32l-12 12v8l-8 10v-18z"></path>
+                                    <path d="M32 36v6"></path>
+                                    <path d="M28 42l4 4 4-4"></path>
+                                    <circle cx="20" cy="52" r="5"></circle>
+                                    <circle cx="32" cy="52" r="5"></circle>
+                                    <circle cx="44" cy="52" r="5"></circle>
+                                    <path d="M25 52h4"></path>
+                                    <path d="M39 52h4"></path>
                                 </svg>
                                 <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="16" cy="20" r="6"></circle>
