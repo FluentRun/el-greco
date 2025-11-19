@@ -732,3 +732,132 @@ hr {
 .shadow-lg { box-shadow: var(--shadow-md); }
 .rounded { border-radius: var(--radius-md); }
 .rounded-lg { border-radius: var(--radius-lg); }
+
+/* Cal.com-inspired header */
+.cal-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-xs);
+}
+
+.cal-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.cal-header__utility {
+  background: var(--surface-muted);
+  color: var(--muted-color);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-2) 0;
+}
+
+.cal-header__utility-left,
+.cal-header__utility-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cal-header__utility-right .box-active a,
+.cal-header__utility-right .box-active-currency {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.cal-header__main {
+  padding: var(--space-4) 0;
+}
+
+.cal-header__toggle {
+  border: 1px solid var(--border-strong);
+  background: var(--surface-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-xs);
+}
+
+.cal-header__toggle .icon-bar {
+  background: var(--text-color);
+}
+
+.cal-header__search {
+  flex: 1;
+  max-width: 520px;
+}
+
+.cal-header__search .box-search {
+  width: 100%;
+}
+
+.cal-header__shipping,
+.cal-header__cart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--muted-color);
+}
+
+.cal-header__cart a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--surface-muted);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.cal-header__cart a:hover {
+  background: var(--surface);
+  color: var(--accent-strong);
+  box-shadow: var(--shadow-xs);
+}
+
+.cal-header__nav {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface);
+}
+
+.cal-header__nav .categories-menu-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+}
+
+.cal-header__nav .categories-menu-line > li > a {
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-weight: 600;
+}
+
+.cal-header__nav .box-categories-menu-sub {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .cal-header__container {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .cal-header__search {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+
+  .cal-header__shipping,
+  .cal-header__cart {
+    order: 4;
+  }
+}

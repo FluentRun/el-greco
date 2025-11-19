@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js" xmlns="http://www.w3.org/1999/html">
 <head>
-	<link rel="shortcut icon" href="<?php _cz( 'tp_favicon' ); ?>"/>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <link rel="shortcut icon" href="<?php _cz( 'tp_favicon' ); ?>"/>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <?php
     global $ADSTM;
     if(isset($ADSTM[ 'product' ])) {
@@ -29,9 +29,9 @@
 
 
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>    <![endif]-->
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>    <![endif]-->
 
         <?php wp_head(); ?>
 
@@ -89,77 +89,73 @@
             </ul>
         </div>
         <div class="pages-menu">
-	        <?php do_action('ads_pages_menu'); ?>
+                <?php do_action('ads_pages_menu'); ?>
         </div>
     </div>
 </div>
 
 <div class="wrap js-slideout-panel">
-    <div class="top-panel">
-        <div class="container">
-            <div class="row mobile-top-panel desktop-top-panel">
-                <div class="col-xs-60">
+    <header class="cal-header">
+        <div class="cal-header__utility">
+            <div class="container cal-header__container">
+                <div class="cal-header__utility-left">
                     <div class="pages-menu">
                         <?php do_action('ads_pages_menu'); ?>
                     </div>
                     <div class="text-shipping">
                         <?php if(cz('tp_text_top_header')){
                             do_action('adstm_shipping_icon');
-                        echo cz('tp_text_top_header');
+                            echo cz('tp_text_top_header');
                         }  ?>
                     </div>
-                    <div class="top-right">
-		                <div class="box-active">
-			                <?php do_action('adstm_loginButton') ?>
-                        </div>
-
-                        <?php if(cz('tp_currency_switcher')){ ?>
-                            <div class="box-active box-active-currency">
-                                <?php do_action('adstm_dropdown_currency') ?>
-                            </div>
-                        <?php } ?>
-
+                </div>
+                <div class="cal-header__utility-right">
+                    <div class="box-active">
+                        <?php do_action('adstm_loginButton') ?>
                     </div>
+
+                    <?php if(cz('tp_currency_switcher')){ ?>
+                        <div class="box-active box-active-currency">
+                            <?php do_action('adstm_dropdown_currency') ?>
+                        </div>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>
-    </div>
 
-	<header>
-        <div class="container">
-            <div class="mobile-header desc-header">
-                <button type="button" class="visible-xs visible-sm navbar-toggle js-toggle-menu">
+        <div class="cal-header__main">
+            <div class="container cal-header__container">
+                <button type="button" class="visible-xs visible-sm navbar-toggle js-toggle-menu cal-header__toggle">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
                     <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <div class="wrap box">
-                    <div class="box-logo">
-                        <?php do_action('adstm_logo_header') ?>
-                    </div>
-                    <div class="search-wrap">
-                        <div class="box box-search">
-                            <?php do_action('adstm_search') ?>
-                        </div>
-                    </div>
-                    <div class="text-shipping hidden-xs">
-                        <?php if(cz('tp_text_top_header')){
-                            do_action('adstm_shipping_icon');
-                            echo cz('tp_text_top_header'); }
-                        ?>
-                    </div>
-                    <div class="box-cart">
-                        <?php do_action('adstm_cart_quantity_link') ?>
-                    </div>
-
+                <div class="box-logo">
+                    <?php do_action('adstm_logo_header') ?>
                 </div>
+                <div class="cal-header__search">
+                    <div class="box box-search">
+                        <?php do_action('adstm_search') ?>
+                    </div>
+                </div>
+                <div class="cal-header__shipping hidden-xs">
+                    <?php if(cz('tp_text_top_header')){
+                        do_action('adstm_shipping_icon');
+                        echo cz('tp_text_top_header'); }
+                    ?>
+                </div>
+                <div class="cal-header__cart">
+                    <?php do_action('adstm_cart_quantity_link') ?>
+                </div>
+
             </div>
         </div>
-        <div class="categories-menu hidden-sm hidden-xs">
+        <div class="cal-header__nav hidden-sm hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="categories-menu-box col-xs-60">
                         <ul class="categories-menu-line">
-					        <?php ads_menu_product(4); ?>
+                                                <?php ads_menu_product(4); ?>
                             <li class="more js-more parent-top"><a href="#"><?php _e('More', 'rap'); ?></a></li>
                         </ul>
                     </div>
@@ -191,6 +187,14 @@
                                             </a>
                                         </div>
                                         <div class="product product2">
+                                            <a href="">
+                                                <div class="item">
+                                                    <div class="box-img"><img  src=""></div>
+                                                    <div class="box-title"><div class="text"></div></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="product product3">
                                             <a href="">
                                                 <div class="item">
                                                     <div class="box-img"><img  src=""></div>
