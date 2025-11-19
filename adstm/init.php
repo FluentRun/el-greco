@@ -1,12 +1,67 @@
 <?php
 
-if(!function_exists('_cz') ||  !function_exists('cz')){
-    function cz($name){
-        echo '';
-    }
+if ( ! function_exists( 'adstm_get_theme_defaults' ) ) {
+    function adstm_get_theme_defaults() {
+        if ( ! defined( 'ADSTM_HOME' ) ) {
+            define( 'ADSTM_HOME', home_url() );
+        }
 
-    function _cz($name){
-        echo '';
+        if ( ! defined( 'TEMPLATE_URL' ) ) {
+            define( 'TEMPLATE_URL', get_template_directory_uri() );
+        }
+
+        if ( ! defined( 'IMG_DIR' ) ) {
+            define( 'IMG_DIR', trailingslashit( get_template_directory_uri() ) . 'images/' );
+        }
+
+        $defaults = include __DIR__ . '/customization/defaults.php';
+
+        return is_array( $defaults ) ? $defaults : [];
+    }
+}
+
+if ( ! function_exists( 'adstm_get_theme_options' ) ) {
+    function adstm_get_theme_options() {
+        static $options;
+
+        if ( isset( $options ) ) {
+            return $options;
+        }
+
+        $saved_options = get_option( 'raphael_theme_settings', [] );
+        $defaults      = adstm_get_theme_defaults();
+
+        if ( ! is_array( $saved_options ) ) {
+            $saved_options = [];
+        }
+
+        $options = wp_parse_args( $saved_options, $defaults );
+
+        return $options;
+    }
+}
+
+if ( ! function_exists( 'adstm_setup_theme_options' ) ) {
+    function adstm_setup_theme_options() {
+        $options  = adstm_get_theme_options();
+        $defaults = adstm_get_theme_defaults();
+
+        update_option( 'raphael_theme_settings', wp_parse_args( $options, $defaults ) );
+    }
+}
+add_action( 'after_switch_theme', 'adstm_setup_theme_options' );
+
+if ( ! function_exists( 'cz' ) ) {
+    function cz( $name, $default = '' ) {
+        $options = adstm_get_theme_options();
+
+        return isset( $options[ $name ] ) ? $options[ $name ] : $default;
+    }
+}
+
+if ( ! function_exists( '_cz' ) ) {
+    function _cz( $name, $default = '' ) {
+        echo cz( $name, $default );
     }
 }
 
@@ -41,7 +96,66 @@ if( defined( 'SLV_ERROR' ) && ! SLV_ERROR ) {
 }
 
 if ( is_admin() ) {
-	include( __DIR__ . '/setup/create_page_template.php' );
+        include( __DIR__ . '/setup/create_page_template.php' );
+}
+
+function adstm_register_theme_menu() {
+    add_theme_page(
+        __( 'Raphael Theme Settings', 'rap' ),
+        __( 'Raphael Settings', 'rap' ),
+        'manage_options',
+        'raphael-theme-settings',
+        'adstm_render_theme_settings_page'
+    );
+}
+add_action( 'admin_menu', 'adstm_register_theme_menu' );
+
+function adstm_render_theme_settings_page() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['adstm_reset_defaults'] ) && check_admin_referer( 'adstm_reset_defaults_action' ) ) {
+        adstm_setup_theme_options();
+        echo '<div class="updated"><p>' . esc_html__( 'Theme settings were refreshed from defaults.', 'rap' ) . '</p></div>';
+    }
+
+    $options = adstm_get_theme_options();
+
+    ?>
+    <div class="wrap">
+        <h1><?php esc_html_e( 'Raphael Theme Settings', 'rap' ); ?></h1>
+        <p><?php esc_html_e( 'These values are loaded automatically when the theme is activated. Use the Customizer to adjust them or reload the defaults below.', 'rap' ); ?></p>
+        <p>
+            <a class="button button-primary" href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>">
+                <?php esc_html_e( 'Open Customizer', 'rap' ); ?>
+            </a>
+        </p>
+        <form method="post">
+            <?php wp_nonce_field( 'adstm_reset_defaults_action' ); ?>
+            <input type="hidden" name="adstm_reset_defaults" value="1" />
+            <?php submit_button( __( 'Reload Default Settings', 'rap' ), 'secondary' ); ?>
+        </form>
+
+        <h2><?php esc_html_e( 'Current Settings', 'rap' ); ?></h2>
+        <table class="widefat striped">
+            <thead>
+                <tr>
+                    <th><?php esc_html_e( 'Option', 'rap' ); ?></th>
+                    <th><?php esc_html_e( 'Value', 'rap' ); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ( $options as $key => $value ) : ?>
+                    <tr>
+                        <td><code><?php echo esc_html( $key ); ?></code></td>
+                        <td><?php echo is_scalar( $value ) ? esc_html( (string) $value ) : '<pre>' . esc_html( wp_json_encode( $value, JSON_PRETTY_PRINT ) ) . '</pre>'; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
 }
 
 function adstm_lang_init() {
