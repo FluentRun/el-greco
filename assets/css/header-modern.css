@@ -34,7 +34,7 @@
 
 .codex-brand .logo img,
 .codex-brand img {
-    max-height: 54px;
+    max-height: 42px;
     width: auto;
     transition: transform 0.25s ease;
 }
