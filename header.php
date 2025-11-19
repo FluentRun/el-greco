@@ -84,7 +84,7 @@
         do_action('init_image_clean');
     }
 
-    if("RUB"===ADS_CUR){
+    if(defined('ADS_CUR') && "RUB"===ADS_CUR){
         array_push( $body_classes, 'rub_currency_body');
     };
 
