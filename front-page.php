@@ -13,22 +13,6 @@ wp_enqueue_script(
     true
 );
 
-wp_enqueue_script(
-    'lottie-web',
-    'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js',
-    [],
-    '5.12.2',
-    true
-);
-
-wp_enqueue_script(
-    'hero-lottie-animation',
-    get_template_directory_uri() . '/js/hero-animation.js',
-    [ 'lottie-web' ],
-    null,
-    true
-);
-
 $theme_dir = get_template_directory_uri();
 
 get_header();
@@ -46,19 +30,38 @@ get_header();
         background: #0f172a;
         border-radius: 24px;
         overflow: hidden;
+        padding: 24px;
+        display: flex;
+        align-items: center;
     }
-    .hero-animation-shell .hero-lottie-target {
-        position: relative;
+    .hero-feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.25rem;
         width: 100%;
-        padding-top: 56.25%;
-        background: #0f172a;
     }
-    .hero-animation-shell .hero-lottie-target svg,
-    .hero-animation-shell .hero-lottie-target canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+    .hero-feature-card {
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+        padding: 16px;
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+    }
+    .hero-feature-card svg {
+        width: 64px;
+        height: 64px;
+        stroke: #000;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+    }
+    .hero-feature-card span {
+        display: block;
+        margin-top: 12px;
+        font-weight: 600;
+        color: #0f172a;
     }
     .feature-card {
         width: 180px;
@@ -134,12 +137,46 @@ get_header();
                         </div>
 
                         <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell">
-                            <div
-                                class="hero-lottie-target rounded-4"
-                                data-hero-lottie
-                                data-lottie-src="<?php echo esc_url( $theme_dir . '/assets/animations/hero-explainer.json' ); ?>"
-                                role="img"
-                                aria-label="Webmakerr hero automation explainer animation">
+                            <div class="hero-feature-grid" role="list">
+                                <div class="hero-feature-card" role="listitem">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <rect x="10" y="14" width="44" height="38" rx="6"></rect>
+                                        <path d="M20 8v12"></path>
+                                        <path d="M44 8v12"></path>
+                                        <path d="M10 26h44"></path>
+                                        <path d="M22 38h8"></path>
+                                        <path d="M34 38h8"></path>
+                                        <path d="M22 46h20"></path>
+                                    </svg>
+                                    <span>Booking</span>
+                                </div>
+                                <div class="hero-feature-card" role="listitem">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path d="M12 16h8l6 28h24l6-20H20"></path>
+                                        <circle cx="28" cy="50" r="4"></circle>
+                                        <circle cx="44" cy="50" r="4"></circle>
+                                        <path d="M24 28h28"></path>
+                                    </svg>
+                                    <span>E-commerce</span>
+                                </div>
+                                <div class="hero-feature-card" role="listitem">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path d="M12 50h40"></path>
+                                        <path d="M20 42l8-12 10 8 12-18 6 6"></path>
+                                        <path d="M20 22v28"></path>
+                                        <path d="M34 30v20"></path>
+                                        <path d="M48 18v32"></path>
+                                    </svg>
+                                    <span>Tracking</span>
+                                </div>
+                                <div class="hero-feature-card" role="listitem">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path d="M26 20l-12 12 12 12"></path>
+                                        <path d="M38 44l4-24"></path>
+                                        <path d="M38 20l12 12-12 12"></path>
+                                    </svg>
+                                    <span>Programming / Customization</span>
+                                </div>
                             </div>
                         </div>
                     </div>
