@@ -89,38 +89,39 @@
 </div>
 
 <div class="wrap js-slideout-panel">
-    <div class="top-panel">
-        <div class="container">
-            <div class="row mobile-top-panel desktop-top-panel">
-                <div class="col-xs-60">
-                    <div class="pages-menu">
-                        <?php do_action('ads_pages_menu'); ?>
-                    </div>
-                    <div class="text-shipping">
-                        <?php if(cz('tp_text_top_header')){
-                            do_action('adstm_shipping_icon');
-                        echo cz('tp_text_top_header');
-                        }  ?>
-                    </div>
-                    <div class="top-right">
-		                <div class="box-active">
-			                <?php do_action('adstm_loginButton') ?>
+    <div class="site-header site-header--sticky">
+        <div class="top-panel">
+            <div class="container">
+                <div class="row mobile-top-panel desktop-top-panel">
+                    <div class="col-xs-60">
+                        <div class="pages-menu">
+                            <?php do_action('ads_pages_menu'); ?>
                         </div>
-
-                        <?php if(cz('tp_currency_switcher')){ ?>
-                            <div class="box-active box-active-currency">
-                                <?php do_action('adstm_dropdown_currency') ?>
+                        <div class="text-shipping">
+                            <?php if(cz('tp_text_top_header')){
+                                do_action('adstm_shipping_icon');
+                            echo cz('tp_text_top_header');
+                            }  ?>
+                        </div>
+                        <div class="top-right">
+                                    <div class="box-active">
+                                            <?php do_action('adstm_loginButton') ?>
                             </div>
-                        <?php } ?>
 
+                            <?php if(cz('tp_currency_switcher')){ ?>
+                                <div class="box-active box-active-currency">
+                                    <?php do_action('adstm_dropdown_currency') ?>
+                                </div>
+                            <?php } ?>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-	<header>
-        <div class="container">
+        <header class="site-header__bar">
+            <div class="container">
             <div class="mobile-header desc-header">
                 <button type="button" class="visible-xs visible-sm navbar-toggle js-toggle-menu">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
@@ -222,5 +223,7 @@
             </div>
         </div>
         <div class="categories-menu-bg"></div>
-    </header>
+        </header>
+    </div>
+
 <?php get_template_part( 'template/str_data_common' ); ?>

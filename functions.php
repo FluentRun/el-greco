@@ -89,8 +89,14 @@ add_action( 'wp_head', function () {
                 .comment-notes,
                 .comment-reply-title,
                 .comments-title,
-                .logged-in-as {
+                .logged-in-as,
+                .blog-content__sidebar {
                         display: none !important;
+                }
+
+                .blog-content__main {
+                        width: 100% !important;
+                        max-width: 100% !important;
                 }
         </style>
         <?php
