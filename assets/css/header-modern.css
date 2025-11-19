@@ -32,9 +32,19 @@
     padding-bottom: 0.5rem;
 }
 
+.codex-brand .logo,
+.codex-offcanvas-logo .logo {
+    display: inline-flex;
+    align-items: center;
+}
+
 .codex-brand .logo img,
-.codex-brand img {
+.codex-brand img,
+.codex-offcanvas-logo .logo img,
+.codex-offcanvas-logo img {
+    display: block;
     max-height: 42px;
+    max-width: 180px;
     width: auto;
     transition: transform 0.25s ease;
 }
@@ -296,11 +306,7 @@ body.codex-offcanvas-open {
     border-bottom: 1px solid var(--codex-border-color);
 }
 
-.codex-offcanvas-logo .logo img,
-.codex-offcanvas-logo img {
-    max-height: 42px;
-    width: auto;
-}
+
 
 .is-inapp-browser .codex-offcanvas {
     -webkit-text-size-adjust: 100%;
