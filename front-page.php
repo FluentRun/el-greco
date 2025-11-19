@@ -86,7 +86,7 @@ get_header();
         <div class="p-4 p-md-5 bg-white border rounded-4 shadow-sm row g-4 align-items-center">
             <div class="col-lg-6">
                 <span class="d-inline-flex align-items-center small bg-light text-secondary px-3 py-1 rounded-pill mb-3">
-                    Cal.com launches v5.9
+                    webmakerr.com launches v5.9
                     <svg width="12" height="12" class="ms-2" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M4 2l4 4-4 4" />
                     </svg>
@@ -179,7 +179,7 @@ get_header();
                                         <path d="M38 44l4-24"></path>
                                         <path d="M38 20l12 12-12 12"></path>
                                     </svg>
-                                    <span>Programming / Customization</span>
+                                    <span>Customization</span>
                                 </div>
                             </div>
                         </div>
