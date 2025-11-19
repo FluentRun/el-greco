@@ -68,7 +68,7 @@ get_header();
                 </h1>
 
                 <p class="mt-3 text-secondary">
-                    We create fast, clear, conversion-ready websites with custom features built for your exact workflow.
+                    We build fast, clear, conversion-ready websites with custom functionality tailored to your exact workflow — so visitors understand your offer instantly and turn into buyers.
                 </p>
 
                 <button class="mt-4 btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
