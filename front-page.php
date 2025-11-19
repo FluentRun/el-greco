@@ -429,12 +429,11 @@ get_header();
                 </span>
 
                 <h2 class="fw-semibold lh-sm text-dark mb-3" style="font-size: 2.25rem;">
-                    All your key tools in-sync<br>with your meetings
+                    Integrate Anything<br>Automate Everything.
                 </h2>
 
                 <p class="text-muted small mb-4" style="max-width: 420px;">
-                    Cal.com works with all the apps in your workflow, ensuring everything
-                    stays connected and perfectly aligned.
+                    Your entire business runs in one connected system—powered by our custom-built modules and seamless integrations with any plugin.
                 </p>
 
                 <div class="d-flex flex-wrap gap-2">
