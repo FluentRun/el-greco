@@ -117,8 +117,8 @@ if ( ! function_exists( 'adstm_load_textdomain' ) ) {
     }
 }
 
-// Load translations after the theme is set up to avoid early textdomain loading notices.
-add_action( 'after_setup_theme', 'adstm_load_textdomain' );
+// Load translations on init (or later) to avoid early textdomain loading notices introduced in WP 6.7.
+add_action( 'init', 'adstm_load_textdomain' );
 
 if ( ! function_exists( 'adstm_theme_setup' ) ) {
     /**
