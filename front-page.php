@@ -316,53 +316,6 @@ get_header();
                         Speed, hosting, optimization, funnels, tracking, security, automations — everything handled end to end.
                     </p>
 
-                    <div class="mt-auto pt-3">
-                        <div class="border rounded-3 p-3 bg-white shadow-sm">
-                            <div class="row g-3">
-                                <div class="col text-center">
-                                    <div class="rounded-circle bg-light" style="width:56px; height:56px;"></div>
-                                </div>
-                                <div class="col text-center">
-                                    <div class="rounded-circle bg-light" style="width:56px; height:56px;"></div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-center gap-4 mt-3 fs-4 text-muted">
-                                <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 44c0-8.84 7.16-16 16-16s16 7.16 16 16"></path>
-                                    <path d="M12 48h40"></path>
-                                    <path d="M32 44l-6-10"></path>
-                                    <circle cx="32" cy="44" r="2"></circle>
-                                    <path d="M22 40l2-4"></path>
-                                    <path d="M42 40l-2-4"></path>
-                                </svg>
-                                <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="14" y="14" width="36" height="12" rx="3"></rect>
-                                    <rect x="14" y="30" width="36" height="12" rx="3"></rect>
-                                    <rect x="14" y="46" width="36" height="10" rx="3"></rect>
-                                    <circle cx="20" cy="20" r="2"></circle>
-                                    <circle cx="20" cy="36" r="2"></circle>
-                                    <circle cx="20" cy="52" r="2"></circle>
-                                    <path d="M40 38l10 4v6c0 4.4-4.5 7.6-10 9-5.5-1.4-10-4.6-10-9v-6z"></path>
-                                </svg>
-                                <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="12" y="14" width="40" height="26" rx="4"></rect>
-                                    <path d="M18 34l10-10 8 8 10-12"></path>
-                                    <path d="M12 46h40"></path>
-                                    <path d="M26 50h12"></path>
-                                </svg>
-                                <svg width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 16h36"></path>
-                                    <path d="M18 24l14 10"></path>
-                                    <path d="M46 24L32 34"></path>
-                                    <rect x="24" y="30" width="16" height="10" rx="2"></rect>
-                                    <path d="M32 40v10"></path>
-                                    <circle cx="32" cy="54" r="6"></circle>
-                                    <path d="M32 50v4"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
