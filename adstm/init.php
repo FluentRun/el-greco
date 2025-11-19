@@ -105,35 +105,27 @@ if( defined( 'SLV_ERROR' ) && ! SLV_ERROR ) {
 }
 
 if( is_admin() ) {
-	include( __DIR__ . '/setup/create_page_template.php' );
+        include( __DIR__ . '/setup/create_page_template.php' );
 }
 
-function adstm_lang_init() {
-    /*
-     * Load translations after WordPress initializes to align with the
-     * guidance introduced in WordPress 6.7 and avoid "translations loaded
-     * too early" debug notices.
+if ( ! function_exists( 'adstm_theme_setup' ) ) {
+    /**
+     * Set up core theme defaults and translation loading.
      */
-    load_theme_textdomain( 'elgreco', get_template_directory() . '/languages' );
+    function adstm_theme_setup() {
+        load_theme_textdomain( 'elgreco', get_template_directory() . '/languages' );
+
+        add_theme_support( 'post-thumbnails' );
+
+        register_nav_menus( [
+            'category'        => 'Main Menu',
+            'footer-purchase' => 'Purchase info',
+            'footer-company'  => 'Company info',
+        ] );
+    }
 }
 
-// Load the theme textdomain once WordPress initialization is finished.
-add_action( 'init', 'adstm_lang_init' );
-
-/**
- * Add theme support for Featured Images
- */
-add_theme_support( 'post-thumbnails' );
-
-/**
- * Register primary menu
- */
-register_nav_menus( [
-    'category'        => 'Main Menu',
-    'footer-purchase' => 'Purchase info',
-    'footer-company' => 'Company info',
-
-] );
+add_action( 'after_setup_theme', 'adstm_theme_setup' );
 
 /**
  * Filter to name pages
@@ -159,9 +151,9 @@ function adstm_enqueue_script() {
         $elgreco_version = $version;
     }
 
-	// Facebook SDK
-	wp_register_script( 'facebook', sprintf( '//connect.facebook.net/%1$s/sdk.js#xfbml=1&version=v2.5&appId=1049899748393568', get_bloginfo( 'language' ) ), array(), $version, true );
-    wp_register_script( 'front-recaptcha-script', 'https://www.google.com/recaptcha/api.js', $elgreco_version );
+        // Facebook SDK
+        wp_register_script( 'facebook', sprintf( '//connect.facebook.net/%1$s/sdk.js#xfbml=1&version=v2.5&appId=1049899748393568', get_bloginfo( 'language' ) ), array(), $version, true );
+    wp_register_script( 'front-recaptcha-script', 'https://www.google.com/recaptcha/api.js', [], null, true );
 
     wp_register_script( 'adstm', get_template_directory_uri() . '/assets/js/allmin.js', [
         'front-cart',
@@ -207,7 +199,7 @@ function adstm_enqueue_style_header() {
     $version     = $adstm_theme->get( 'Version' );
     $elgreco_version = wp_get_theme('el-greco')->get( 'Version' );
 
-    wp_register_style( 'vnc2_allstyle', get_template_directory_uri() .'/assets/css/allstyle.css','' ,$elgreco_version );
+    wp_register_style( 'vnc2_allstyle', get_template_directory_uri() .'/assets/css/allstyle.css', [], $elgreco_version );
     if(cz( 'tp_do_rtl' )){
         wp_enqueue_style( 'adstm', get_template_directory_uri() .'/assets/css/style_rtl.css', [
             'vnc2_allstyle',
@@ -217,8 +209,8 @@ function adstm_enqueue_style_header() {
             'vnc2_allstyle',
         ] ,$elgreco_version );
     }
-};
-add_action( 'get_header', 'adstm_enqueue_style_header', 10 );
+}
+add_action( 'wp_enqueue_scripts', 'adstm_enqueue_style_header', 20 );
 
 function enabledJsCurrentPage(){
 
@@ -385,7 +377,7 @@ function custom_theme_assets() {
 
 
         wp_deregister_script( 'jquery' );
-        wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', '', '', true );
+        wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', [], null, true );
         wp_enqueue_script( 'jquery' );
     }
 }

@@ -12,7 +12,9 @@ function adstm_updparam() {
 
 function adstm_switch_theme() {
 
-    if( ! current_user_can('level_9') ) return null;
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return null;
+    }
 
     if( isset( $_GET['activated'] ) && $_GET['activated'] == 'true' )
         adstm_download_language_pack();
@@ -21,8 +23,9 @@ add_action( 'admin_init', 'adstm_switch_theme' );
 
 function adstm_init_update_option() {
 
-    if( ! current_user_can('level_9') || ! isset( $_POST['WPLANG'] ) )
+    if ( ! current_user_can( 'manage_options' ) || ! isset( $_POST['WPLANG'] ) ) {
         return null;
+    }
 
     if(
         isset( $_POST['option_page'] )  &&
