@@ -13,7 +13,7 @@ function adstm_search(){
                                placeholder="" required>
                         <button type="submit"><span></span></button>
                         <span class="clear"></span>
-                        <label class="hidden-xs">%2$s</label> 
+                        <label class="d-none d-sm-inline-block">%2$s</label>
                     </form>',
         adstm_home_url('/' ),
         __( "SEARCH", 'rap' )

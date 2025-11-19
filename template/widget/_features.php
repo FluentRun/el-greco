@@ -3,7 +3,7 @@
 $features = cz( 'features' );
 if ( cz('features_enable') ): ?>
     <!-- FEATURES -->
-<div class="wrap-features hidden-xs">
+<div class="wrap-features d-none d-sm-block">
     <div class="container">
         <div class="row features">
             <div class="col-xs-15">

@@ -4,7 +4,7 @@ do_action('adstm_start_loop_recently_product', 4);
 
 if ( have_posts() ) :
 
-	printf( '<div class="list-product recently-products visible-lg">
+        printf( '<div class="list-product recently-products d-none d-lg-block">
 				<div class="container">
 					<div class="p-heading">
 						<div class="p-title">%1$s</div>

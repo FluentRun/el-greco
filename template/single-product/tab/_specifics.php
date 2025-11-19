@@ -1,6 +1,6 @@
 <?php $product = adsTmpl::product(); ?>
 <?php if ( $product['attrib'] ) : ?>
-	<h2 class="hidden-xs colored"><?php _e( 'Item Specifics', 'rap' ) ?></h2>
+<h2 class="colored d-none d-sm-block"><?php _e( 'Item Specifics', 'rap' ) ?></h2>
 	<div class="wrap-attrib">
 		<?php
 		foreach ( $product['attrib'] as $k => $attr ) {

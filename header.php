@@ -21,7 +21,8 @@
     $version = $adstm_theme->get( 'Version' );
     ?>
 
-	<link  href="<?php echo get_template_directory_uri(); ?>/assets/css/head.css?ver=<?php echo $version; ?>" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link  href="<?php echo get_template_directory_uri(); ?>/assets/css/head.css?ver=<?php echo $version; ?>" rel="stylesheet">
 
 
 
@@ -123,9 +124,11 @@
         <header class="site-header__bar">
             <div class="container">
             <div class="mobile-header desc-header">
-                <button type="button" class="visible-xs visible-sm navbar-toggle js-toggle-menu">
-                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggler d-inline-flex d-md-none js-toggle-menu" aria-label="<?php esc_attr_e( 'Toggle navigation', 'rap' ); ?>">
+                    <span class="visually-hidden"><?php _e( 'Toggle navigation', 'rap' ); ?></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <div class="wrap box">
                     <div class="box-logo">
@@ -136,7 +139,7 @@
                             <?php do_action('adstm_search') ?>
                         </div>
                     </div>
-                    <div class="text-shipping hidden-xs">
+                    <div class="text-shipping d-none d-sm-block">
                         <?php if(cz('tp_text_top_header')){
                             do_action('adstm_shipping_icon');
                             echo cz('tp_text_top_header'); }
@@ -149,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div class="categories-menu hidden-sm hidden-xs">
+        <div class="categories-menu d-none d-md-block">
             <div class="container">
                 <div class="row">
                     <div class="categories-menu-box col-xs-60">

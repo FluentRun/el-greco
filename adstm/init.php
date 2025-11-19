@@ -205,7 +205,8 @@ function adstm_enqueue_script() {
 	// Facebook SDK
 	wp_register_script( 'facebook', sprintf( '//connect.facebook.net/%1$s/sdk.js#xfbml=1&version=v2.5&appId=1049899748393568', get_bloginfo( 'language' ) ), array(), $version, true );
 
-    wp_register_script( 'bootstrap-tmpl', get_template_directory_uri() . '/frontend-libs/bootstrap.min.js', array( 'jquery' ), '1.12.4', true );
+    wp_register_script( 'bootstrap-tmpl', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), '5.3.3', true );
+    wp_register_script( 'bootstrap-init', get_template_directory_uri() . '/assets/js/bootstrap-init.js', array( 'bootstrap-tmpl' ), $version, true );
 
     wp_register_script( 'ttgallery', get_template_directory_uri() . '/assets/js/ttgallery.js', array( 'jquery' ), $version, true );
     wp_register_script( 'selects', get_template_directory_uri() . '/assets/js/selects.js', array( 'jquery' ), $version, true );
@@ -224,16 +225,16 @@ function adstm_enqueue_script() {
     wp_register_script( 'rap_lity', get_template_directory_uri() . '/assets/js/lity.min.js','' , $version, true );
 
     /**/
-	wp_register_script( 'adstm', get_template_directory_uri() . '/js/script.js', array(
-		'jquery',
-        'ttlazy',
-        'bootstrap-tmpl',
-		'common-tmpl',
-		'front-cart',
-        'selects',
-		'header-tmpl',
+    wp_register_script( 'adstm', get_template_directory_uri() . '/js/script.js', array(
+                'jquery',
+                'ttlazy',
+                'bootstrap-init',
+                'common-tmpl',
+                'front-cart',
+                'selects',
+                'header-tmpl',
 
-	), $version, true );
+        ), $version, true );
 
 	wp_localize_script( 'adstm', 'tmplLang',
 		array(
@@ -251,12 +252,13 @@ function adstm_enqueue_script() {
 
     $pageName = get_query_var( 'pagename' );
 
-	if($pageName !== 'cart'){
+        if($pageName !== 'cart'){
         wp_enqueue_script( 'slideout' );
         wp_enqueue_script( 'adstm' );
     }else{
-		wp_enqueue_script( 'bootstrap-tmpl' );
-	}
+        wp_enqueue_script( 'bootstrap-tmpl' );
+        wp_enqueue_script( 'bootstrap-init' );
+        }
 
 	enabledJsCurrentPage();
 }

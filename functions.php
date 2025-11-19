@@ -127,7 +127,7 @@ if ( is_user_logged_in() && ! current_user_can( "level_2" ) ) {
  * @return string
  */
 function adstm_oembed_filter( $html, $url, $attr, $post_ID ) {
-	return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+        return '<div class="ratio ratio-16x9">' . $html . '</div>';
 }
 
 add_filter( 'embed_oembed_html', 'adstm_oembed_filter', 10, 4 );

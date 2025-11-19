@@ -9,7 +9,7 @@
 <?php get_header() ?>
 
 <!-- BREADCRUMBS -->
-<div class="breadcrumbs hidden-xs">
+<div class="breadcrumbs d-none d-sm-block">
 	<div class="container">
 		<?php adsTmpl::breadcrumbs() ?>
 	</div>

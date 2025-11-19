@@ -1,5 +1,5 @@
 <?php if ( cz( 'tp_single_buyer_protection' ) ): ?>
-	<div class="hidden-xs col-sm-60">
+<div class="col-sm-60 d-none d-sm-block">
         <div class="buyer_protection">
             <div class="item_1 col-sm-52 col-sm-offset-3 col-lg-offset-0 col-lg-34">
                 <div class="cart">

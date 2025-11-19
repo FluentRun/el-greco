@@ -25,7 +25,7 @@ function adstm_single_gallery( $items = array(), $video=[]) {
 
     $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-lazy' : 'src';
 	?>
-    <div class="slider-box-tt hidden-xs">
+<div class="slider-box-tt d-none d-sm-block">
         <div class="single_showroom">
             <?php do_action('single_showroom_before_img'); ?>
             <div class="item_slider">

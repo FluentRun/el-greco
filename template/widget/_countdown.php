@@ -1,6 +1,6 @@
 <!-- COUNTDOWN -->
 <?php if(cz('tp_countdown')): ?>
-	<div class="content-countdown hidden-xs">
+<div class="content-countdown d-none d-sm-block">
 			<div class="top-plate clearfix">
 				<div class="text">
 					<?php _e(cz('tp_countdown_text'), 'rap');?>

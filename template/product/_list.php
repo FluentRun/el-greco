@@ -1,4 +1,4 @@
-<div class="list-order-head hidden-xs">
+<div class="list-order-head d-none d-sm-block">
 	<div class="head">
 		<div class="col-sm-10"></div>
 		<div class="head-product col-sm-30 col-lg-30"><?php _e( 'Product', 'rap' ); ?></div>
@@ -10,7 +10,7 @@
 <div class="list-product-cart js-cart_item-list">
 	<script id="cart_item_template" type="text/template">
 		<div class="js-cart-item cart-item" data-key="{{order_id}}" data-post="{{post_id}}">
-			<div class="hidden-xs desc">
+                        <div class="desc d-none d-sm-block">
 				<div class="col-sm-10 col-images">
 					<div class="im-wrap">
 						<div class="thumb-wrap">
@@ -46,7 +46,7 @@
 			</div>
 			<!---->
 
-			<div class="visible-xs mobile">
+                        <div class="mobile d-block d-sm-none">
 				<div class="row-item">
 					<div class="col-img">
 						<div class="wrap-img">

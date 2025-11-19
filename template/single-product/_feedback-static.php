@@ -44,7 +44,7 @@
 							<div class="col2">
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="%2$d" aria-valuemin="0" aria-valuemax="100" style="width: %2$s%%;">
-                                            <span class="sr-only">%2$s%%</span>
+<span class="visually-hidden">%2$s%%</span>
                                         </div>
                                 </div>
 							</div>

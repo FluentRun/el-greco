@@ -67,7 +67,7 @@
 						                            <?php endif; ?>
                                                 </div>
 				                            <?php endif; ?>
-                                            <div class="hidden-xs">
+                                            <div class="d-none d-sm-block">
 					                            <?php do_action('adstm_single_share') ?>
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@
                                                 <span class="value" data-singleProduct="savePrice"></span>
                                             </div>
 
-                                            <div class="box-stock-desc hidden-xs">
+                                            <div class="box-stock-desc d-none d-sm-block">
                                                 <span style="display: none;" data-singleProduct="stock"><?php echo $product[ 'stock' ]; ?></span>
 
 					                            <?php if ($product['stock'] <= 0) : ?>
@@ -147,11 +147,11 @@
                                 
                                 <?php do_action('ads_template_single_sku_after', $post->ID);?>
                                 
-                                <div class="box-input_quantity-mobile visible-xs" style="display: none">
+                                <div class="box-input_quantity-mobile d-block d-sm-none" style="display: none">
 	                                <?php get_template_part( 'template/single-product/meta/_input_quantity'); ?>
                                 </div>
 
-                                <div class="box-stock-mobile visible-xs">
+                                <div class="box-stock-mobile d-block d-sm-none">
 		                            <?php if ($product['stock'] <= 0) : ?>
                                         <div class="stock" data-singleProductBox="stock">
 				                            <?php _e('Out of stock', 'rap'); ?>
@@ -174,13 +174,13 @@
                                     <div class="info-sipping"><img src="<?php echo get_template_directory_uri(); ?>/images/single/check.svg?1000" alt=""><?php echo cz('tp_single_shipping_description'); ?></div>
                                     <?php endif;?>
 
-                                    <div class="box-input_quantity hidden-xs">
+                                    <div class="box-input_quantity d-none d-sm-block">
 		                                <?php get_template_part( 'template/single-product/meta/_input_quantity'); ?>
                                     </div>
 
                                     <?php do_action('ads_countdown_timer', adsTmpl::product('post_id'));?>
 
-			                        <?php $class = cz('add_fix') ? 'hidden-xs': ''; ?>
+                                                <?php $class = cz('add_fix') ? 'd-none d-sm-block': ''; ?>
                                     <div class="box-btn">
                                         <div class=">">
 		                                    <?php //TODO mobile in footer
@@ -234,7 +234,7 @@
                     <?php get_template_part( 'template/single-product/content' ); ?>
                 </div>
 
-                <div class="col-xs-60 single_share-mobile visible-xs">
+                <div class="col-xs-60 single_share-mobile d-block d-sm-none">
                     <?php do_action('adstm_single_share') ?>
                 </div>
 

@@ -3,7 +3,7 @@
 /**
  *<div class="wrap-sortby">
 <ul class="sortby">
-<li class="hidden-xs"><strong><?php _e( 'Sort by', 'rap' ) ?></strong></li>
+<li class="d-none d-sm-block"><strong><?php _e( 'Sort by', 'rap' ) ?></strong></li>
 <?php do_action('sortby_show'); ?>
 
 </ul>

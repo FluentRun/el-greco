@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <!-- BREADCRUMBS -->
-    <div class="breadcrumbs hidden-xs">
+    <div class="breadcrumbs d-none d-sm-block">
         <div class="container">
 			<?php adsTmpl::breadcrumbs() ?>
         </div>
@@ -13,7 +13,7 @@
             <h1><?php _e( 'Contact Us', 'rap' ); ?></h1>
             <div class="row page-contact">
                 <div class="col-sm-29">
-                    <p class="visible-xs"><?php _cz('tp_contactUs_text') ?></p>
+                    <p class="d-block d-sm-none"><?php _cz('tp_contactUs_text') ?></p>
                     <form class="contact-form" method="POST">
 
                        <div class="item">
@@ -67,7 +67,7 @@
                     </form>
                 </div>
                 <div class="col-sm-20 col-sm-offset-4 address">
-                    <p class="hidden-xs"><?php _cz('tp_contactUs_text') ?></p>
+                    <p class="d-none d-sm-block"><?php _cz('tp_contactUs_text') ?></p>
 					<?php if ( cz( 's_mail' ) ): ?>
                         <p>
                             <a href="mailto:<?php echo cz( 's_mail' ); ?>" target="_blank"> <?php echo cz( 's_mail' ); ?></a>

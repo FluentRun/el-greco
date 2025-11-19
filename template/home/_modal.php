@@ -2,18 +2,17 @@
 
 if(cz('id_video_youtube_home')):?>
 
-	<div class="modal fade b-modal_cart" id="prHome_video" tabindex="-1" role="dialog" aria-labelledby="prModalCartLabel"
-	     aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span class="times" aria-hidden="true"></span>
-						<span class="sr-only"><?php _e( 'Close', 'rap' ) ?></span>
-					</button>
-					<h4 class="modal-title" id="prModalCartLabel">
-					</h4>
-				</div>
+        <div class="modal fade b-modal_cart" id="prHome_video" tabindex="-1" aria-labelledby="prModalCartLabel"
+             aria-hidden="true" role="dialog">
+                <div class="modal-dialog">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?php _e( 'Close', 'rap' ); ?>">
+                                                <span class="times" aria-hidden="true"></span>
+                                        </button>
+                                        <h4 class="modal-title" id="prModalCartLabel">
+                                        </h4>
+                                </div>
 				<div class="modal-body">
 
 					<div class="video-responsive">
@@ -56,15 +55,25 @@ if(cz('id_video_youtube_home')):?>
 
 		}
 
-		window.onload = function() {
-			jQuery( '#prHome_video' ).on( 'show.bs.modal', function ( e ) {
-				player.playVideo();
-			} );
-			jQuery( '#prHome_video' ).on( 'hidden.bs.modal', function ( e ) {
-				player.stopVideo()
-			} );
-		};
+                document.addEventListener('DOMContentLoaded', function () {
+                        var modalEl = document.getElementById('prHome_video');
+                        if (!modalEl) {
+                                return;
+                        }
 
-	</script>
+                        modalEl.addEventListener('show.bs.modal', function () {
+                                if (player && typeof player.playVideo === 'function') {
+                                        player.playVideo();
+                                }
+                        });
+
+                        modalEl.addEventListener('hidden.bs.modal', function () {
+                                if (player && typeof player.stopVideo === 'function') {
+                                        player.stopVideo();
+                                }
+                        });
+                });
+
+        </script>
 
 <?php endif; ?>
