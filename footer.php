@@ -231,7 +231,7 @@ $footer_icon_markup = static function ( $url ) use ( $footer_icons_lazy_load ) {
 
 <?php //do_action('adstm_modal'); ?>
 <?php do_action('adstm_footer'); ?>
-<div class="cookie-consent__backdrop" id="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-body" aria-hidden="true">
+<div class="cookie-consent__backdrop" id="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-body" aria-hidden="false">
     <div class="cookie-consent__panel">
         <h2 class="cookie-consent__headline" id="cookie-consent-title">We value your privacy</h2>
         <p class="cookie-consent__body" id="cookie-consent-body">We use cookies to enhance your browsing experience, serve personalized offers, and analyze traffic. By clicking “Accept &amp; continue” you agree to our use of cookies as described in our Privacy Policy.</p>
@@ -339,26 +339,35 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        var getCookieValue = function () {
-            var pattern = storageKey + '=';
-            return document.cookie.split(';').map(function (part) {
-                return part.trim();
-            }).find(function (cookie) {
-                return cookie.indexOf(pattern) === 0;
-            });
-        };
+        var getStoredDecision = function () {
+            var storedValue = null;
 
-        var hasDecision = function () {
             try {
-                var stored = localStorage.getItem(storageKey);
-                if (stored !== null) {
-                    return true;
-                }
+                storedValue = localStorage.getItem(storageKey);
             } catch (e) {
-                // Fallback to cookie check below.
+                // Ignore localStorage errors and use cookie fallback.
             }
 
-            return Boolean(getCookieValue());
+            if (storedValue !== null) {
+                return storedValue;
+            }
+
+            var pattern = storageKey + '=';
+            var cookie = document.cookie.split(';').map(function (part) {
+                return part.trim();
+            }).find(function (candidate) {
+                return candidate.indexOf(pattern) === 0;
+            });
+
+            if (cookie) {
+                return decodeURIComponent(cookie.slice(pattern.length));
+            }
+
+            return null;
+        };
+
+        var isAccepted = function () {
+            return getStoredDecision() === 'accepted';
         };
 
         var setDecision = function (value) {
@@ -380,10 +389,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var openConsent = function () {
             consentBackdrop.style.display = 'flex';
-            consentBackdrop.removeAttribute('aria-hidden');
+            consentBackdrop.setAttribute('aria-hidden', 'false');
         };
 
-        if (!hasDecision()) {
+        if (isAccepted()) {
+            closeConsent();
+        } else {
             openConsent();
         }
 
@@ -394,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         declineButton.addEventListener('click', function () {
             setDecision('essential_only');
-            closeConsent();
+            openConsent();
         });
     })();
 });
