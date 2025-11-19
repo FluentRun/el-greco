@@ -27,7 +27,7 @@ get_header();
     }
     .hero-animation-shell {
         min-height: 260px;
-        background: linear-gradient(135deg, #001e3c 50%, #000000 50%);
+        background: linear-gradient(135deg, #1877F2 50%, #000000 50%);
         border-radius: 24px;
         overflow: hidden;
         padding: 24px;
