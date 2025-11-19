@@ -1,7 +1,23 @@
 </main><!-- #site-content -->
 <?php $confidence = cz('tp_confidence_img_1') || cz('tp_confidence_img_2') || cz('tp_confidence_img_3');
 $locations = get_nav_menu_locations();
-$src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
+$footer_icons_lazy_load = (bool) cz( 'tp_item_imgs_lazy_load' );
+$footer_icon_markup = static function ( $url ) use ( $footer_icons_lazy_load ) {
+    if ( empty( $url ) ) {
+        return '';
+    }
+
+    $url = esc_url( $url );
+    $attributes = 'src="' . $url . '"';
+    $class_attribute = '';
+
+    if ( $footer_icons_lazy_load ) {
+        $attributes .= ' data-src="' . $url . '"';
+        $class_attribute = ' class="lazyload"';
+    }
+
+    return '<img ' . $attributes . $class_attribute . ' alt="">';
+};
 ?>
 <footer class="footer">
 
@@ -142,16 +158,26 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                                 <div class="box-partners">
                                     <div class="name"><?php echo cz('tp_payment_methods'); ?></div>
                                     <ul class="box-payment">
-	                                    <?php
+                                        <?php
+                                        $payment_icons = [
+                                            'tp_footer_payment_methods_1',
+                                            'tp_footer_payment_methods_2',
+                                            'tp_footer_payment_methods_3',
+                                            'tp_footer_payment_methods_4',
+                                            'tp_footer_payment_methods_5',
+                                            'tp_footer_payment_methods_6',
+                                        ];
 
-                                        $tmp = '<li><img '.$src.'="%s" alt=""></li>';
-	                                    tmpCz('tp_footer_payment_methods_1', $tmp);
-	                                    tmpCz('tp_footer_payment_methods_2', $tmp);
-	                                    tmpCz('tp_footer_payment_methods_3', $tmp);
-	                                    tmpCz('tp_footer_payment_methods_4', $tmp);
-	                                    tmpCz('tp_footer_payment_methods_5', $tmp);
-	                                    tmpCz('tp_footer_payment_methods_6', $tmp);
-	                                    ?>
+                                        foreach ( $payment_icons as $payment_icon_option ) {
+                                            $icon = $footer_icon_markup( cz( $payment_icon_option ) );
+
+                                            if ( ! $icon ) {
+                                                continue;
+                                            }
+
+                                            echo '<li>' . $icon . '</li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                             <?php endif; ?>
@@ -159,21 +185,29 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
                                 <div class="box-partners">
                                     <div class="name"><?php echo cz('tp_confidence'); ?></div>
                                     <ul class="box-confidence">
-                                        <?php if (cz('tp_confidence_img_1')): ?>
-                                            <li>
-                                                <img <?php echo $src; ?>="<?php echo cz('tp_confidence_img_1'); ?>?1000">
-                                            </li>
-                                        <?php endif; ?>
-                                        <?php if (cz('tp_confidence_img_2')): ?>
-                                            <li>
-                                                <img <?php echo $src; ?>="<?php echo cz('tp_confidence_img_2'); ?>?1000">
-                                            </li>
-                                        <?php endif; ?>
-                                        <?php if (cz('tp_confidence_img_3')): ?>
-                                            <li>
-                                                <img <?php echo $src; ?>="<?php echo cz('tp_confidence_img_3'); ?>?1000">
-                                            </li>
-                                        <?php endif; ?>
+                                        <?php
+                                        $confidence_icons = [
+                                            'tp_confidence_img_1',
+                                            'tp_confidence_img_2',
+                                            'tp_confidence_img_3',
+                                        ];
+
+                                        foreach ( $confidence_icons as $confidence_icon_option ) {
+                                            $confidence_icon = cz( $confidence_icon_option );
+
+                                            if ( ! $confidence_icon ) {
+                                                continue;
+                                            }
+
+                                            $icon_markup = $footer_icon_markup( $confidence_icon . '?1000' );
+
+                                            if ( ! $icon_markup ) {
+                                                continue;
+                                            }
+
+                                            echo '<li>' . $icon_markup . '</li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                             <?php endif; ?>
@@ -197,6 +231,95 @@ $src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
 
 <?php //do_action('adstm_modal'); ?>
 <?php do_action('adstm_footer'); ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var allFooterHeads = Array.prototype.slice.call(document.querySelectorAll('.footer .footer-head'));
+    if (!allFooterHeads.length) {
+        return;
+    }
+
+    var accordionHeads = allFooterHeads.filter(function (head) {
+        return head.nextElementSibling && head.nextElementSibling.classList.contains('box-toggle');
+    });
+
+    if (!accordionHeads.length) {
+        return;
+    }
+
+    var isMobileViewport = function () {
+        if (window.matchMedia) {
+            return window.matchMedia('(max-width: 767px)').matches;
+        }
+
+        return window.innerWidth <= 767;
+    };
+
+    var closeAll = function () {
+        accordionHeads.forEach(function (head) {
+            head.classList.remove('open');
+            head.setAttribute('aria-expanded', 'false');
+        });
+    };
+
+    accordionHeads.forEach(function (head) {
+        head.setAttribute('role', 'button');
+        if (!head.hasAttribute('tabindex')) {
+            head.setAttribute('tabindex', '0');
+        }
+        head.setAttribute('aria-expanded', head.classList.contains('open') ? 'true' : 'false');
+
+        var toggleSection = function () {
+            if (!isMobileViewport()) {
+                return;
+            }
+
+            var shouldOpen = !head.classList.contains('open');
+            closeAll();
+
+            if (shouldOpen) {
+                head.classList.add('open');
+                head.setAttribute('aria-expanded', 'true');
+            }
+        };
+
+        var getLinkFromEvent = function (target) {
+            var current = target;
+            while (current && current !== head) {
+                if (current.tagName && current.tagName.toLowerCase() === 'a') {
+                    return current;
+                }
+                current = current.parentNode;
+            }
+
+            if (current && current.tagName && current.tagName.toLowerCase() === 'a') {
+                return current;
+            }
+
+            return null;
+        };
+
+        head.addEventListener('click', function (event) {
+            if (!isMobileViewport()) {
+                return;
+            }
+
+            var link = getLinkFromEvent(event.target);
+            if (link) {
+                event.preventDefault();
+            }
+
+            toggleSection();
+        });
+
+        head.addEventListener('keydown', function (event) {
+            if ((event.key === 'Enter' || event.key === ' ') && isMobileViewport()) {
+                event.preventDefault();
+                toggleSection();
+            }
+        });
+    });
+});
+</script>
 <script type="text/javascript"> self != top ? document.body.className+=' is_frame' : '';</script>
 <?php wp_footer(); ?>
 
