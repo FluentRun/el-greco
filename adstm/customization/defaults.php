@@ -22,6 +22,10 @@ if ( defined( 'IMG_DIR' ) ) {
 
 $TEMPLATE_URL = str_replace( '//' . $cur_website, '', $template_url );
 $IMG_DIR = str_replace( '//' . $cur_website, '', $img_dir );
+
+if ( ! class_exists( 'ads\\customization\\czOptions' ) ) {
+    require_once __DIR__ . '/czOptions.php';
+}
 return [
 	'tp_head'                => '',
 	'tp_style'               => '',
