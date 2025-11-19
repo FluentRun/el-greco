@@ -434,7 +434,10 @@ get_header();
                 </p>
 
                 <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">N</text>
+                    </svg>
                     <div class="ms-3 text-start">
                         <p class="fw-semibold text-dark small mb-1">Noah Patel</p>
                         <p class="text-muted small m-0">Operations Lead, Horizon Creative</p>
@@ -448,7 +451,10 @@ get_header();
                 </p>
 
                 <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-secondary" style="width:40px; height:40px;"></div>
+                    <svg width="40" height="40" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="22" cy="22" r="20" fill="white" stroke="black" stroke-width="2"></circle>
+                        <text x="22" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="black">M</text>
+                    </svg>
                     <div class="ms-3 text-start">
                         <p class="fw-semibold text-dark small mb-1">Melissa Grant</p>
                         <p class="text-muted small m-0">VP Revenue Operations, Northwind Legal</p>
@@ -462,7 +468,10 @@ get_header();
                 </p>
 
                 <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">S</text>
+                    </svg>
                     <div class="ms-3 text-start">
                         <p class="fw-semibold text-dark small mb-1">Sofia Alvarez</p>
                         <p class="text-muted small m-0">Head of Growth, Latitude Labs</p>
@@ -478,7 +487,10 @@ get_header();
                 </p>
 
                 <div class="d-flex align-items-center">
-                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">M</text>
+                    </svg>
                     <div class="ms-3 text-start">
                         <p class="fw-semibold text-dark small mb-1">Melissa Grant</p>
                         <p class="text-muted small m-0">VP Revenue Operations, Northwind Legal</p>
