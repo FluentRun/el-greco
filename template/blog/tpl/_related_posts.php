@@ -1,9 +1,9 @@
 <?php
 
-$cats            = get_the_category();
+$cats = get_the_category();
 $primary_term_id = null;
 
-if ( ! is_wp_error( $cats ) && ! empty( $cats ) && is_array( $cats ) ) {
+if ( ! empty( $cats ) && is_array( $cats ) ) {
     foreach ( $cats as $term ) {
         if ( $term instanceof WP_Term && ! empty( $term->term_id ) ) {
             $primary_term_id = (int) $term->term_id;
