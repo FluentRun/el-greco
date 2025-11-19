@@ -75,6 +75,23 @@ get_header();
         background: #f5f5f5;
         border: 1px solid #e5e7eb;
     }
+    .more-feature-card {
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+    .more-feature-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1);
+        background-color: #f8fafc;
+    }
+    .more-feature-card .feature-icon-box svg {
+        width: 48px;
+        height: 48px;
+        stroke: #000;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+    }
 </style>
 
 <section class="pt-5 pb-5 bg-light">
@@ -330,33 +347,44 @@ get_header();
         </h2>
 
         <div class="row g-4 justify-content-center">
-            <?php for ($i = 1; $i <= 8; $i++): ?>
-                <?php
-                $icons = ['💳', '🎥', '🔗', '✔️', '🌐', '📥', '⭐', '💬'];
-                $labels = [
-                    'Accept payments',
-                    'Built-in video conferencing',
-                    'Short booking links',
-                    'Privacy first',
-                    '65+ languages',
-                    'Easy embeds',
-                    'All your favorite apps',
-                    'Simple customization'
-                ];
+            <?php
+            $icons = [
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="18" width="44" height="28" rx="6"></rect><path d="M18 26h12"></path><path d="M18 34h8"></path><path d="M42 34h8"></path><path d="M38 22h14"></path><path d="M32 42l4 4 8-8"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="16" width="30" height="32" rx="6"></rect><path d="M26 28c0 3.866-3.134 7-7 7s-7-3.134-7-7 3.134-7 7-7 7 3.134 7 7z"></path><path d="M20 35v5"></path><path d="M40 26l12-7v26l-12-7"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 36l-6 6c-4.418 4.418-4.418 11.582 0 16s11.582 4.418 16 0l6-6"></path><path d="M42 28l6-6c4.418-4.418 4.418-11.582 0-16s-11.582-4.418-16 0l-6 6"></path><path d="M28 36l8-8"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 54c11 0 20-9 20-20V18l-20-8-20 8v16c0 11 9 20 20 20z"></path><path d="M26 32l4 4 8-8"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"></circle><path d="M10 32h44"></path><path d="M32 10c6 6 9 14 9 22s-3 16-9 22c-6-6-9-14-9-22s3-16 9-22z"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="30" rx="6"></rect><path d="M20 32h24"></path><path d="M28 24l-8 8 8 8"></path><path d="M36 40l8-8-8-8"></path><path d="M24 50h16"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="20" r="6"></circle><circle cx="44" cy="16" r="6"></circle><circle cx="48" cy="40" r="6"></circle><circle cx="22" cy="46" r="6"></circle><path d="M25 24l12 8"></path><path d="M26 40l16 0"></path><path d="M40 18l6 14"></path></svg>',
+                '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 20h24c4.418 0 8 3.582 8 8s-3.582 8-8 8H16z"></path><path d="M32 28v-8"></path><path d="M32 44v-8"></path><path d="M16 44h24c4.418 0 8 3.582 8 8s-3.582 8-8 8H16z"></path></svg>',
+            ];
+
+            $labels = [
+                'Accept payments',
+                'Built-in video conferencing',
+                'Short booking links',
+                'Privacy first',
+                '65+ languages',
+                'Easy embeds',
+                'All your favorite apps',
+                'Simple customization'
+            ];
+
+            foreach ($labels as $index => $label):
                 ?>
                 <div class="col-6 col-md-3 d-flex justify-content-center">
-                    <div class="feature-card bg-white border rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-3">
+                    <div class="feature-card more-feature-card bg-white border rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-3">
                         <div class="feature-icon-box d-flex align-items-center justify-content-center position-relative mb-3">
                             <span class="position-absolute top-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
                             <span class="position-absolute top-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
                             <span class="position-absolute bottom-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
                             <span class="position-absolute bottom-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
-                            <span class="fs-4"><?php echo $icons[$i - 1]; ?></span>
+                            <?php echo $icons[$index]; ?>
                         </div>
-                        <p class="fw-medium text-dark small mb-0"><?php echo $labels[$i - 1]; ?></p>
+                        <p class="fw-medium text-dark small mb-0"><?php echo $label; ?></p>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
