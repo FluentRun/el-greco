@@ -95,17 +95,21 @@
 ?>
 
 <div class="offcanvas offcanvas-end codex-offcanvas" tabindex="-1" id="codexOffcanvas" aria-labelledby="codexOffcanvasLabel">
-    <div class="offcanvas-header">
+    <div class="offcanvas-header codex-offcanvas-header">
         <div class="codex-offcanvas-logo" id="codexOffcanvasLabel">
             <?php do_action('adstm_logo_header'); ?>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?php esc_attr_e('Close menu', 'rap'); ?>"></button>
+        <button type="button" class="btn-close codex-offcanvas-close" data-bs-dismiss="offcanvas" aria-label="<?php esc_attr_e('Close menu', 'rap'); ?>"></button>
     </div>
-    <div class="offcanvas-body d-flex flex-column gap-4">
-        <div class="codex-offcanvas-search">
-            <?php do_action('adstm_search'); ?>
-        </div>
-        <nav class="codex-offcanvas-nav flex-grow-1">
+    <div class="offcanvas-body codex-offcanvas-body d-flex flex-column gap-4">
+        <section class="codex-offcanvas-section codex-offcanvas-search">
+            <p class="codex-offcanvas-label text-uppercase fw-semibold mb-2"><?php esc_html_e('Search store', 'rap'); ?></p>
+            <div class="codex-offcanvas-search-form">
+                <?php do_action('adstm_search'); ?>
+            </div>
+        </section>
+        <nav class="codex-offcanvas-nav flex-grow-1" aria-label="<?php esc_attr_e('Mobile navigation', 'rap'); ?>">
+            <p class="codex-offcanvas-label text-uppercase fw-semibold mb-2"><?php esc_html_e('Browse', 'rap'); ?></p>
             <?php
             if($mobile_menu) {
                 echo $mobile_menu;
@@ -118,11 +122,17 @@
             ?>
         </nav>
         <div class="codex-offcanvas-meta d-flex flex-column gap-3">
-            <div class="codex-offcanvas-account">
-                <?php do_action('adstm_loginButton'); ?>
+            <div class="codex-offcanvas-card">
+                <div class="codex-offcanvas-card-label text-uppercase fw-semibold"><?php esc_html_e('Account', 'rap'); ?></div>
+                <div class="codex-offcanvas-card-content codex-offcanvas-account">
+                    <?php do_action('adstm_loginButton'); ?>
+                </div>
             </div>
-            <div class="codex-offcanvas-cart">
-                <?php do_action('adstm_cart_quantity_link'); ?>
+            <div class="codex-offcanvas-card">
+                <div class="codex-offcanvas-card-label text-uppercase fw-semibold"><?php esc_html_e('Shopping bag', 'rap'); ?></div>
+                <div class="codex-offcanvas-card-content codex-offcanvas-cart">
+                    <?php do_action('adstm_cart_quantity_link'); ?>
+                </div>
             </div>
         </div>
     </div>
