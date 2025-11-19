@@ -383,12 +383,12 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         var closeConsent = function () {
-            consentBackdrop.style.display = 'none';
+            consentBackdrop.classList.add('is-hidden');
             consentBackdrop.setAttribute('aria-hidden', 'true');
         };
 
         var openConsent = function () {
-            consentBackdrop.style.display = 'flex';
+            consentBackdrop.classList.remove('is-hidden');
             consentBackdrop.setAttribute('aria-hidden', 'false');
         };
 
