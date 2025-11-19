@@ -328,87 +328,87 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-
-    (function () {
-        var consentBackdrop = document.getElementById('cookie-consent');
-        var acceptButton = document.getElementById('cookie-consent-accept');
-        var declineButton = document.getElementById('cookie-consent-decline');
-        var storageKey = 'raphaelCookieConsent';
-
-        if (!consentBackdrop || !acceptButton || !declineButton) {
-            return;
-        }
-
-        var getStoredDecision = function () {
-            var storedValue = null;
-
-            try {
-                storedValue = localStorage.getItem(storageKey);
-            } catch (e) {
-                // Ignore localStorage errors and use cookie fallback.
-            }
-
-            if (storedValue !== null) {
-                return storedValue;
-            }
-
-            var pattern = storageKey + '=';
-            var cookie = document.cookie.split(';').map(function (part) {
-                return part.trim();
-            }).find(function (candidate) {
-                return candidate.indexOf(pattern) === 0;
-            });
-
-            if (cookie) {
-                return decodeURIComponent(cookie.slice(pattern.length));
-            }
-
-            return null;
-        };
-
-        var isAccepted = function () {
-            return getStoredDecision() === 'accepted';
-        };
-
-        var setDecision = function (value) {
-            var cookieValue = storageKey + '=' + encodeURIComponent(value) + ';path=/;max-age=' + 60 * 60 * 24 * 180;
-
-            try {
-                localStorage.setItem(storageKey, value);
-            } catch (e) {
-                // Ignore localStorage errors and use cookie fallback.
-            }
-
-            document.cookie = cookieValue;
-        };
-
-        var closeConsent = function () {
-            consentBackdrop.classList.add('is-hidden');
-            consentBackdrop.setAttribute('aria-hidden', 'true');
-        };
-
-        var openConsent = function () {
-            consentBackdrop.classList.remove('is-hidden');
-            consentBackdrop.setAttribute('aria-hidden', 'false');
-        };
-
-        if (isAccepted()) {
-            closeConsent();
-        } else {
-            openConsent();
-        }
-
-        acceptButton.addEventListener('click', function () {
-            setDecision('accepted');
-            closeConsent();
-        });
-
-        declineButton.addEventListener('click', function () {
-            setDecision('essential_only');
-            openConsent();
-        });
-    })();
 });
+
+(function () {
+    var consentBackdrop = document.getElementById('cookie-consent');
+    var acceptButton = document.getElementById('cookie-consent-accept');
+    var declineButton = document.getElementById('cookie-consent-decline');
+    var storageKey = 'raphaelCookieConsent';
+
+    if (!consentBackdrop || !acceptButton || !declineButton) {
+        return;
+    }
+
+    var getStoredDecision = function () {
+        var storedValue = null;
+
+        try {
+            storedValue = localStorage.getItem(storageKey);
+        } catch (e) {
+            // Ignore localStorage errors and use cookie fallback.
+        }
+
+        if (storedValue !== null) {
+            return storedValue;
+        }
+
+        var pattern = storageKey + '=';
+        var cookie = document.cookie.split(';').map(function (part) {
+            return part.trim();
+        }).find(function (candidate) {
+            return candidate.indexOf(pattern) === 0;
+        });
+
+        if (cookie) {
+            return decodeURIComponent(cookie.slice(pattern.length));
+        }
+
+        return null;
+    };
+
+    var isAccepted = function () {
+        return getStoredDecision() === 'accepted';
+    };
+
+    var setDecision = function (value) {
+        var cookieValue = storageKey + '=' + encodeURIComponent(value) + ';path=/;max-age=' + 60 * 60 * 24 * 180;
+
+        try {
+            localStorage.setItem(storageKey, value);
+        } catch (e) {
+            // Ignore localStorage errors and use cookie fallback.
+        }
+
+        document.cookie = cookieValue;
+    };
+
+    var closeConsent = function () {
+        consentBackdrop.classList.add('is-hidden');
+        consentBackdrop.setAttribute('aria-hidden', 'true');
+    };
+
+    var openConsent = function () {
+        consentBackdrop.classList.remove('is-hidden');
+        consentBackdrop.setAttribute('aria-hidden', 'false');
+    };
+
+    openConsent();
+
+    if (isAccepted()) {
+        closeConsent();
+    }
+
+    acceptButton.addEventListener('click', function () {
+        setDecision('accepted');
+        closeConsent();
+    });
+
+    declineButton.addEventListener('click', function () {
+        setDecision('essential_only');
+        openConsent();
+    });
+})();
 </script>
 <script type="text/javascript"> self != top ? document.body.className+=' is_frame' : '';</script>
 <?php wp_footer(); ?>
