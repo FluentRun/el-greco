@@ -20,6 +20,7 @@ wp_enqueue_script(
     null,
     true
 );
+wp_script_add_data( 'lottie-player', 'type', 'module' );
 
 $theme_dir = get_template_directory_uri();
 
