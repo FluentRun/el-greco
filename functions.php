@@ -777,6 +777,14 @@ function handle_live_customization_request() {
     $requested_path = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
 
     if ( 'live_customization' === $requested_path ) {
+        if ( ! function_exists( 'live_cstm_get_defaults' ) ) {
+            $live_core = __DIR__ . '/inc/live_core.php';
+
+            if ( file_exists( $live_core ) ) {
+                include_once $live_core;
+            }
+        }
+
         status_header( 200 );
 
         include get_template_directory() . '/inc/live_customization.php';
