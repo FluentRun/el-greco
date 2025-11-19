@@ -18,6 +18,18 @@ $theme_dir = get_template_directory_uri();
 get_header();
 ?>
 
+<script>
+    (function() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/FBAN|FBAV|Instagram/i.test(ua)) {
+            document.documentElement.classList.add('is-inapp-browser');
+            if (document.body) {
+                document.body.classList.add('is-inapp-browser');
+            }
+        }
+    })();
+</script>
+
 <style>
     .booking-ambient {
         background:

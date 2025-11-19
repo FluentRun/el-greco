@@ -302,6 +302,32 @@ body.codex-offcanvas-open {
     width: auto;
 }
 
+.is-inapp-browser .codex-offcanvas {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    font-size: 1rem;
+}
+
+.is-inapp-browser .codex-offcanvas-logo img {
+    max-height: 48px;
+    width: auto;
+}
+
+.is-inapp-browser .codex-offcanvas-links > li > a,
+.is-inapp-browser .codex-offcanvas .codex-offcanvas-card-content a,
+.is-inapp-browser .codex-offcanvas .codex-offcanvas-card-content .btn,
+.is-inapp-browser .codex-offcanvas .codex-offcanvas-card-content .cart a {
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.is-inapp-browser .codex-offcanvas-links > li > a svg,
+.is-inapp-browser .codex-offcanvas-meta svg,
+.is-inapp-browser .codex-offcanvas .cart__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
 .codex-offcanvas-close {
     border-radius: 999px;
     border: 1px solid transparent;
