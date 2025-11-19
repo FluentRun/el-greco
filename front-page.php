@@ -95,6 +95,26 @@ get_header();
     }
 </style>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var userAgent = navigator.userAgent || '';
+        var isInAppBrowser = /(FBAN|FBAV|Instagram|WebView)/i.test(userAgent);
+
+        if (!isInAppBrowser) {
+            return;
+        }
+
+        document.body.classList.add('codex-inapp-fallback');
+
+        var toggler = document.querySelector('.navbar-toggler');
+        if (toggler) {
+            toggler.setAttribute('data-bs-toggle', 'collapse');
+            toggler.setAttribute('data-bs-target', '#codexMobileMenuFallback');
+            toggler.setAttribute('aria-controls', 'codexMobileMenuFallback');
+        }
+    });
+</script>
+
 <section class="pt-5 pb-5 bg-light">
     <div class="container-lg">
         <div class="p-4 p-md-5 bg-white border rounded-4 shadow-sm row g-4 align-items-center">

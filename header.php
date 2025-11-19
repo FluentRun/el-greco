@@ -184,6 +184,36 @@
                     </svg>
                 </span>
             </button>
+            <div class="collapse navbar-collapse codex-mobile-collapse d-lg-none w-100" id="codexMobileMenuFallback">
+                <div class="codex-mobile-collapse-inner d-flex flex-column gap-3 pt-3 pb-4">
+                    <div class="codex-mobile-search">
+                        <?php do_action('adstm_search'); ?>
+                    </div>
+                    <nav aria-label="<?php esc_attr_e('Mobile navigation', 'rap'); ?>">
+                        <?php
+                        if($mobile_menu) {
+                            echo $mobile_menu;
+                        } else {
+                            ob_start();
+                            do_action('ads_pages_menu');
+                            $fallback_mobile_menu = ob_get_clean();
+                            echo '<div class="codex-fallback-menu">' . $fallback_mobile_menu . '</div>';
+                        }
+                        ?>
+                    </nav>
+                    <div class="codex-mobile-meta d-flex flex-column gap-2">
+                        <div class="codex-mobile-account">
+                            <?php do_action('adstm_loginButton'); ?>
+                        </div>
+                        <div class="codex-mobile-cart">
+                            <?php do_action('adstm_cart_quantity_link'); ?>
+                        </div>
+                        <?php if($cta_text && $cta_link){ ?>
+                            <a class="btn btn-primary" href="<?php echo esc_url($cta_link); ?>"<?php echo $cta_target; ?>><?php echo esc_html($cta_text); ?></a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="collapse codex-header-search" id="codexHeaderSearch">

@@ -589,6 +589,58 @@ body.codex-offcanvas-open {
     border: none;
 }
 
+.codex-mobile-collapse {
+    border-top: 1px solid var(--codex-border-color);
+    box-shadow: none;
+}
+
+.codex-mobile-collapse nav ul,
+.codex-mobile-collapse .codex-fallback-menu ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.codex-mobile-collapse nav a,
+.codex-mobile-collapse .codex-fallback-menu a {
+    display: block;
+    padding: 0.75rem 0.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--codex-dark);
+    border-radius: var(--codex-radius-md);
+}
+
+.codex-mobile-collapse nav a:hover,
+.codex-mobile-collapse nav a:focus,
+.codex-mobile-collapse .codex-fallback-menu a:hover,
+.codex-mobile-collapse .codex-fallback-menu a:focus {
+    color: var(--codex-primary);
+}
+
+.codex-mobile-meta .btn,
+.codex-mobile-meta .cart a {
+    width: 100%;
+    justify-content: center;
+}
+
+body.codex-inapp-fallback .codex-offcanvas,
+body.codex-inapp-fallback .codex-offcanvas-backdrop {
+    display: none !important;
+}
+
+body.codex-inapp-fallback .codex-mobile-collapse {
+    display: block !important;
+    position: static;
+    transform: none;
+    visibility: visible;
+    width: 100%;
+    background: #fff;
+}
+
 @media (max-width: 575.98px) {
     .codex-offcanvas-header,
     .codex-offcanvas-body {
