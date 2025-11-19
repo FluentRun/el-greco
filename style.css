@@ -39,24 +39,27 @@ body {
 
 .cookie-consent__backdrop {
     position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(2px);
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: none;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     padding: 16px;
     z-index: 9999;
 }
 
 .cookie-consent__panel {
-    max-width: 480px;
+    max-width: 960px;
     width: 100%;
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
     padding: 24px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
     color: #0f172a;
 }
@@ -117,5 +120,7 @@ body {
 
     .cookie-consent__panel {
         padding: 28px 32px;
+        align-items: center;
+        text-align: center;
     }
 }
