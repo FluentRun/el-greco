@@ -45,6 +45,26 @@ get_header();
         max-height: 44px;
     }
 
+    .is-inapp-browser .codex-offcanvas .codex-offcanvas-links svg,
+    .is-inapp-browser .codex-offcanvas .codex-offcanvas-meta svg,
+    .is-inapp-browser .codex-offcanvas .cart__icon svg,
+    .is-inapp-browser .codex-offcanvas .search-post__icon svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+        flex-shrink: 0;
+    }
+
+    .is-inapp-browser .codex-offcanvas .search-post__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem 0.35rem;
+        line-height: 1;
+        gap: 0;
+    }
+
     .booking-ambient {
         background:
             radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.08), transparent 45%),
