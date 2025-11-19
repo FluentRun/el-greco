@@ -156,11 +156,92 @@
     background: #f8fafc;
 }
 
+.codex-search-form {
+    padding: 0.25rem 0 0.5rem;
+}
+
 .codex-search-form .search-post {
+    padding: 0;
+}
+
+.search-post {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+    margin: 0;
+}
+
+.search-post__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--codex-muted);
+}
+
+.search-post__controls {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 0;
+    gap: 0.35rem;
+    width: 100%;
+    padding: 0.25rem 0.35rem 0.25rem 0.25rem;
+    border-radius: var(--codex-radius-lg);
+    border: 1px solid var(--codex-border-color);
+    background-color: #fff;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-post__controls:focus-within {
+    border-color: var(--codex-primary);
+    box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.12), 0 18px 40px rgba(15, 23, 42, 0.1);
+}
+
+.search-post__icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--codex-radius-md);
+    background-color: var(--codex-gray-25);
+    color: var(--codex-primary);
+    flex-shrink: 0;
+}
+
+.search-post__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.search-post__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--codex-dark);
+    padding: 0.85rem 0.5rem;
+}
+
+.search-post__input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-post__submit {
+    border: none;
+    border-radius: var(--codex-radius-md);
+    padding: 0.85rem 1.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 15px 30px rgba(15, 98, 254, 0.3);
+}
+
+.search-post__submit span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 .codex-offcanvas {
@@ -214,12 +295,40 @@
     color: var(--codex-muted);
 }
 
-.codex-offcanvas-search .search-post,
-.codex-offcanvas-search form {
-    display: flex;
-    flex-direction: column;
+.codex-offcanvas-search .search-post {
     gap: 0.75rem;
     margin-bottom: 0;
+}
+
+.codex-offcanvas-search .search-post__controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    gap: 0.75rem;
+}
+
+.codex-offcanvas-search .search-post__icon {
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    background: transparent;
+    color: var(--codex-muted);
+    padding-left: 0.15rem;
+}
+
+.codex-offcanvas-search .search-post__input {
+    border-radius: var(--codex-radius-md);
+    border: 1px solid var(--codex-border-color);
+    padding: 0.85rem 1rem;
+    background: #fff;
+}
+
+.codex-offcanvas-search .search-post__submit {
+    width: 100%;
+    box-shadow: none;
 }
 
 .codex-offcanvas-search input[type="search"],

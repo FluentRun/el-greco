@@ -8,15 +8,28 @@
 
 function adstm_search(){
 
-    printf('<form method="GET" action="%1$s" class="search-post">
-                        <input class="js-autocomplete-search" autocomplete="off" type="text" id="s" value="" name="s"
-                               placeholder="" required>
-                        <button type="submit"><span></span></button>
-                        <span class="clear"></span>
-                        <label class="d-none d-sm-inline-block">%2$s</label>
-                    </form>',
-        adstm_home_url('/' ),
-        __( "SEARCH", 'rap' )
+    $search_id = uniqid('codex-search-');
+    $search_placeholder = __('Search for products, posts or collections', 'rap');
+    $search_label = __('Search the store', 'rap');
+    $search_button = __('Search', 'rap');
+    $search_action = adstm_home_url('/');
+
+    printf(
+        '<form method="GET" action="%1$s" class="search-post" role="search" aria-label="%2$s">'
+        .'<label class="search-post__label" for="%3$s">%2$s</label>'
+        .'<div class="search-post__controls">'
+            .'<span class="search-post__icon" aria-hidden="true">'
+                .'<svg viewBox="0 0 24 24" role="presentation" focusable="false"><path d="M15.5 14h-.79l-.28-.27A6 6 0 1 0 14 15.5l.27.28v.79L21 22.5 22.5 21zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>'
+            .'</span>'
+            .'<input class="js-autocomplete-search search-post__input" autocomplete="off" type="text" id="%3$s" value="" name="s" placeholder="%4$s" required>'
+            .'<button type="submit" class="btn btn-primary search-post__submit"><span>%5$s</span></button>'
+        .'</div>'
+        .'</form>',
+        esc_url($search_action),
+        esc_html($search_label),
+        esc_attr($search_id),
+        esc_attr($search_placeholder),
+        esc_html($search_button)
     );
 }
 
