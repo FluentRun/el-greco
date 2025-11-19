@@ -1,172 +1,515 @@
-<?php get_header() ?>
-<?php $home_url = home_url();
-$src = cz( 'tp_item_imgs_lazy_load' ) ? 'data-src' : 'src';
+<?php
+wp_enqueue_style(
+    'bootstrap-5-landing',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+    [],
+    '5.3.3'
+);
+wp_enqueue_script(
+    'bootstrap-5-landing',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+    [],
+    '5.3.3',
+    true
+);
+
+get_header();
 ?>
 
-    <?php if(cz('tp_home_slider_enable')){ ?>
-        <div class="home-slider" style="opacity: 0"
-             data-auto="<?php echo cz( 'tp_home_slider_rotating' ) ? 'true' : 'false' ?>"
-             data-time="<?php echo cz( 'tp_home_slider_rotating_time' ) ?
-                 cz( 'tp_home_slider_rotating_time' ) . '000' : '4000' ?>"
-        >
-            <?php do_action( 'ads_top_category' ) ?>
-        </div>
-    <?php } ?>
+<style>
+    .booking-panel {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+        transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+    }
+    .booking-panel.is-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+    .booking-ambient {
+        background:
+            radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.08), transparent 45%),
+            radial-gradient(circle at 80% 0%, rgba(167, 139, 250, 0.08), transparent 35%),
+            radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08), transparent 40%);
+    }
+    .feature-card {
+        width: 180px;
+        height: 180px;
+        border-radius: 28px;
+    }
+    .feature-icon-box {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: #f5f5f5;
+        border: 1px solid #e5e7eb;
+    }
+</style>
 
-    <!-- MOST POPULAR CATEGORIES -->
-    <?php if(cz('most_popular_enable')){?>
-    <div id="most-popular-categories" class="most-popular-categories">
-        <div class="container">
-            <div class="p-heading">
-                <h3 class="p-title">
-                    <a href="<?php echo  cz('most_popular_link_head'); ?>"><?php echo  cz('most_popular_head'); ?></a>
-                </h3>
-            </div>
-            <div class="row wrap-slider-most">
-                    <?php $mp = cz('most_popular_list');
-                     $class_bg = cz('most_popular_fix') ? 'active' : '';
-                     ?>
-                <div class="slider-most <?php if(count($mp)<4){ ?>few<?php } ?>">
-                    <?php foreach ($mp as $item){
-                        printf('<div class="wrap-item"><a href="%1$s"> <div class="bg %4$s"> <div class="bg-img"> <img %7$s="%2$s?1000" alt=""> <div style="background: %6$s;" class="bg-over"></div> </div> <div style="color: %5$s"> <div class="text">%3$s</div> </div> </div> </a></div>',
-                            $item['link'],
-                            $item['image'],
-                            $item['name'],
-                            $class_bg,
-                            isset($item['color']) ? $item['color'] : '#fff',
-                            isset($item['bg_color']) ? $item['bg_color'] : 'rgba(0,0,0,.3)',
-                            'src'
-                        );
-                    } ?>
-                    </div>
+<section class="pt-5 pb-5 bg-light">
+    <div class="container-lg">
+        <div class="p-4 p-md-5 bg-white border rounded-4 shadow-sm row g-4 align-items-center">
+            <div class="col-lg-6">
+                <span class="d-inline-flex align-items-center small bg-light text-secondary px-3 py-1 rounded-pill mb-3">
+                    Cal.com launches v5.9
+                    <svg width="12" height="12" class="ms-2" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 2l4 4-4 4" />
+                    </svg>
+                </span>
 
-            </div>
-        </div>
-    </div>
-    <?php } ?>
+                <h1 class="fw-semibold display-5 lh-sm text-dark">
+                    The better way to<br>schedule your<br>meetings
+                </h1>
 
-<?php
-if( cz( 'home_featured_ones' ) ){ ?>
-    <div id="home-featured-ones" class="aship-box-products list-product home-featured-ones">
-        <div class="container">
-            <div class="p-heading">
-                <h3 class="aship-title p-title">
-                    <span><?php _cz( 'home_featured_title' ); ?></span>
-                </h3>
-            </div>
-            <div class="row">
-                <?php do_action('adstm_start_loop_featured_product', 8);
-                get_template_part('template/loop/home/loop'); ?>
-            </div>
-        </div>
-    </div>
-<?php }
-if( cz( 'tp_top_selling' ) ){ ?>
-    <div id="top-selling-product" class="aship-box-products list-product top-selling-product">
-        <div class="container">
-            <div class="p-heading">
-                <h3 class="aship-title p-title">
-                    <a href="<?php echo $home_url?>/product/?orderby=orders"><?php _cz( 'tp_top_selling_label' ); ?></a>
-                </h3>
-            </div>
-            <div class="row">
-				<?php get_template_part( 'template/loop/home/_topselling' ); ?>
-            </div>
-        </div>
-    </div>
-<?php }
-if( cz( 'tp_best_deals' ) ){ ?>
-    <div id="best-deals" class="aship-box-products list-product best-deals">
-        <div class="container">
-            <div class="p-heading">
-                <h3 class="aship-title p-title">
-                    <a href="<?php echo $home_url?>/product/?orderby=discount"><?php _cz( 'tp_best_deals_label' ); ?></a>
-                </h3>
-            </div>
-            <div class="row">
-				<?php get_template_part( 'template/loop/home/_bestdials' ); ?>
-            </div>
-        </div>
-    </div>
-<?php }
-if( cz( 'tp_new_arrivals' ) ){ ?>
-    <div id="new-arrivals" class="aship-box-products list-product new-arrivals">
-        <div class="container">
-            <div class="p-heading">
-                <h3 class="aship-title p-title">
-                    <a href="<?php echo $home_url?>/product/?orderby=newest"><?php _cz( 'tp_new_arrivals_label' ); ?></a>
-                </h3>
-            </div>
-            <div class="row">
-				<?php get_template_part( 'template/loop/home/_arrivals' ); ?>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-<?php if(cz('testimonials_enabled')):?>
+                <p class="mt-3 text-secondary">
+                    A fully customizable scheduling software for individuals, businesses
+                    taking calls, and developers building scheduling platforms where users meet users.
+                </p>
 
-    <div id="review-home" class="review-home">
-        <div class="container">
-            <div class="slider-review"
-                 data-auto="<?php echo cz( 'testimonials_rotating' ) ? 'true' : 'false' ?>"
-                 data-time="<?php echo cz( 'testimonials_rotating_time' ) ?
-                     cz( 'tp_home_slider_rotating_time' ) . '000' : '4000' ?>">
-                <?php foreach (cz('testimonials') as $item):?>
-                <div class="">
-                    <div class="user"><img <?php echo $src ?>="<?php echo $item['image'] ?>?1000" alt=""></div>
-                    <div class="name"><?php echo $item['country'] ?></div>
-                    <div class="text"><?php echo $item['text'] ?></div>
-                    <div class="star">
-                        <span class="starRating">
-                            <div class="stars">
-                                <?php for($i=1;$i<=5;$i++){
-	                                printf('<span class="star %1$s"></span>', $item['stars'] >= $i ? 'star-full' : 'star-no');
-                                }?>
+                <button class="mt-4 btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
+                    <img src="https://www.svgrepo.com/show/355037/google.svg" width="18" alt="Google">
+                    Sign up with Google
+                </button>
 
+                <button class="mt-2 btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
+                    <span class="text-dark">Sign up with email</span>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <path d="M4 2l6 5-6 5" />
+                    </svg>
+                </button>
+
+                <p class="small text-muted mt-2">No credit card required</p>
+
+                <div class="d-flex gap-4 mt-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Trustpilot_logo_2022.svg/2560px-Trustpilot_logo_2022.svg.png" height="20" alt="Trustpilot">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Google_Reviews_logo.png" height="20" alt="Google Reviews">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative bg-white border rounded-4 shadow-sm overflow-hidden booking-ambient">
+                    <div class="p-4 position-relative" style="z-index:2; min-height:350px;">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="d-flex gap-3">
+                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=200&amp;q=80" class="rounded-circle" width="48" height="48" alt="Profile">
+                                <div>
+                                    <p class="fw-medium mb-1 small text-dark">Isabella Valce</p>
+                                    <p class="fw-semibold text-dark mb-1">Creative Photoshoot</p>
+                                    <p class="small text-muted">A modern booking experience that moves smoothly from availability to confirmation.</p>
+                                </div>
                             </div>
-                        </span>
+                            <span class="badge bg-dark small px-3 py-2">Live preview</span>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2 small text-muted mb-3">
+                            <span class="border rounded-pill px-3 py-1">30 min</span>
+                            <span class="border rounded-pill px-3 py-1">Virtual / In-person</span>
+                            <span class="border rounded-pill px-3 py-1">Timezone aware</span>
+                        </div>
+
+                        <div class="position-relative border rounded-3 p-3 bg-white bg-opacity-75 shadow-sm" style="min-height:260px;">
+                            <div class="booking-panel is-active" data-booking-state="calendar">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div>
+                                        <p class="text-uppercase small text-muted">Availability</p>
+                                        <p class="fw-semibold fs-5 text-dark">May 2025</p>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-sm border rounded-circle" aria-label="Previous">&lsaquo;</button>
+                                        <button class="btn btn-sm border rounded-circle" aria-label="Next">&rsaquo;</button>
+                                    </div>
+                                </div>
+
+                                <div class="row text-center small text-muted mb-2">
+                                    <div class="col">SUN</div>
+                                    <div class="col">MON</div>
+                                    <div class="col">TUE</div>
+                                    <div class="col">WED</div>
+                                    <div class="col">THU</div>
+                                    <div class="col">FRI</div>
+                                    <div class="col">SAT</div>
+                                </div>
+
+                                <div class="row g-2 text-center">
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col bg-light rounded py-2">1</div>
+                                    <div class="col bg-light rounded py-2">2</div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+
+                                    <div class="col bg-light py-2 rounded">5</div>
+                                    <div class="col bg-light py-2 rounded">6</div>
+                                    <div class="col bg-dark text-white fw-bold rounded py-2 shadow">7</div>
+                                    <div class="col bg-light py-2 rounded">8</div>
+                                    <div class="col bg-light py-2 rounded">9</div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+
+                                    <div class="col py-2">12</div>
+                                    <div class="col py-2">13</div>
+                                    <div class="col py-2">14</div>
+                                    <div class="col bg-light rounded py-2">15</div>
+                                    <div class="col bg-light rounded py-2">16</div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+
+                                    <div class="col bg-light py-2 rounded">19</div>
+                                    <div class="col bg-light py-2 rounded">20</div>
+                                    <div class="col bg-light py-2 rounded">21</div>
+                                    <div class="col bg-light py-2 rounded">22</div>
+                                    <div class="col bg-light py-2 rounded">23</div>
+                                    <div class="col opacity-25 py-2"></div>
+                                    <div class="col opacity-25 py-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-absolute inset-0 bg-white bg-opacity-75" style="pointer-events:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light border-top">
+    <div class="container-lg">
+        <div class="text-center mx-auto" style="max-width: 700px;">
+            <span class="d-inline-flex align-items-center bg-white border px-3 py-1 rounded-pill text-secondary small shadow-sm mb-3">
+                How it works
+            </span>
+
+            <h2 class="fw-semibold display-6 text-dark lh-sm">
+                With us, appointment scheduling is easy
+            </h2>
+
+            <p class="mt-3 text-secondary">
+                Streamlined scheduling for individuals, teams, and fast-growing companies.
+            </p>
+
+            <button class="btn btn-dark btn-lg mt-4 shadow-sm">
+                Get started →
+            </button>
+        </div>
+
+        <div class="row g-4 mt-5">
+            <div class="col-md-4">
+                <div class="bg-white border rounded-4 shadow-sm p-4 h-100 d-flex flex-column">
+                    <span class="d-flex justify-content-center align-items-center bg-light rounded-3 shadow-sm mb-3" style="width: 48px; height: 48px;">
+                        <span class="fw-bold text-secondary small">01</span>
+                    </span>
+
+                    <h5 class="fw-semibold text-dark">Connect your calendar</h5>
+
+                    <p class="text-muted small mt-2">
+                        We automatically sync everything so you never double-book again.
+                    </p>
+
+                    <div class="mt-auto d-flex justify-content-center pt-3">
+                        <div class="position-relative border rounded-circle d-flex justify-content-center align-items-center" style="width: 160px; height: 160px;">
+                            <span class="position-absolute bg-white px-2 py-1 small border rounded-pill shadow">
+                                App
+                            </span>
+
+                            <span class="position-absolute top-0 translate-middle-x bg-white p-2 border rounded-circle small shadow">
+                                📅
+                            </span>
+                            <span class="position-absolute start-0 top-50 translate-middle-y bg-white p-2 border rounded-circle small shadow">
+                                🔄
+                            </span>
+                            <span class="position-absolute bottom-0 translate-middle-x bg-white p-2 border rounded-circle small shadow">
+                                📆
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <?php endforeach;?>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bg-white border rounded-4 shadow-sm p-4 h-100 d-flex flex-column">
+                    <span class="d-flex justify-content-center align-items-center bg-light rounded-3 shadow-sm mb-3" style="width: 48px; height: 48px;">
+                        <span class="fw-bold text-secondary small">02</span>
+                    </span>
+
+                    <h5 class="fw-semibold text-dark">Set your availability</h5>
+
+                    <p class="text-muted small mt-2">
+                        Define your working hours, buffers, and availability preferences.
+                    </p>
+
+                    <div class="mt-auto pt-3">
+                        <div class="border rounded-3 shadow-sm p-3 bg-white">
+                            <div class="d-flex justify-content-between text-dark small mb-2">
+                                <span class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-dark d-inline-block" style="width: 8px; height: 8px;"></span> Mon
+                                </span>
+                                <span>8:30am – 5:00pm</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between text-muted small mb-2">
+                                <span class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-secondary d-inline-block opacity-50" style="width: 8px; height: 8px;"></span> Tue
+                                </span>
+                                <span>–</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between text-dark small">
+                                <span class="d-flex align-items-center gap-2">
+                                    <span class="rounded-circle bg-dark d-inline-block" style="width: 8px; height: 8px;"></span> Wed
+                                </span>
+                                <span>10:00am – 7:00pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bg-white border rounded-4 shadow-sm p-4 h-100 d-flex flex-column">
+                    <span class="d-flex justify-content-center align-items-center bg-light rounded-3 shadow-sm mb-3" style="width: 48px; height: 48px;">
+                        <span class="fw-bold text-secondary small">03</span>
+                    </span>
+
+                    <h5 class="fw-semibold text-dark">Choose how to meet</h5>
+
+                    <p class="text-muted small mt-2">
+                        Meet via video call, phone, or whatever works best for you.
+                    </p>
+
+                    <div class="mt-auto pt-3">
+                        <div class="border rounded-3 p-3 bg-white shadow-sm">
+                            <div class="row g-3">
+                                <div class="col text-center">
+                                    <div class="rounded-circle bg-light" style="width:56px; height:56px;"></div>
+                                </div>
+                                <div class="col text-center">
+                                    <div class="rounded-circle bg-light" style="width:56px; height:56px;"></div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center gap-4 mt-3 fs-4 text-muted">
+                                <span>🎤</span>
+                                <span>🎥</span>
+                                <span>💬</span>
+                                <span>🔗</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-<?php endif;?>
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h2 class="text-center fw-semibold lh-sm text-dark mb-5" style="font-size: 2.5rem;">
+            ...and so much more!
+        </h2>
 
-<?php if ( cz('s_in_name_api') && 0): ?>
-
-    <div id="instagram-home">
-        <div class="p-heading">
-            <h3 class="p-title">
-                <a target="_blank" href="https://www.instagram.com/<?php echo cz('s_in_name_api'); ?>"><?php echo cz('s_in_name_group'); ?></a>
-            </h3>
+        <div class="row g-4 justify-content-center">
+            <?php for ($i = 1; $i <= 8; $i++): ?>
+                <?php
+                $icons = ['💳', '🎥', '🔗', '✔️', '🌐', '📥', '⭐', '💬'];
+                $labels = [
+                    'Accept payments',
+                    'Built-in video conferencing',
+                    'Short booking links',
+                    'Privacy first',
+                    '65+ languages',
+                    'Easy embeds',
+                    'All your favorite apps',
+                    'Simple customization'
+                ];
+                ?>
+                <div class="col-6 col-md-3 d-flex justify-content-center">
+                    <div class="feature-card bg-white border rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-3">
+                        <div class="feature-icon-box d-flex align-items-center justify-content-center position-relative mb-3">
+                            <span class="position-absolute top-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
+                            <span class="position-absolute top-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
+                            <span class="position-absolute bottom-0 start-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
+                            <span class="position-absolute bottom-0 end-0 translate-middle bg-secondary rounded-circle opacity-50" style="width:4px; height:4px;"></span>
+                            <span class="fs-4"><?php echo $icons[$i - 1]; ?></span>
+                        </div>
+                        <p class="fw-medium text-dark small mb-0"><?php echo $labels[$i - 1]; ?></p>
+                    </div>
+                </div>
+            <?php endfor; ?>
         </div>
-        <div class="instagram-user">#<?php echo cz('s_in_name_api'); ?></div>
-        <div class="">
-            <div class="slider-instagram">
-                <?php get_template_part( 'template/social' ); ?>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container-lg text-center">
+        <span class="d-inline-flex align-items-center bg-white border px-3 py-1 rounded-pill text-secondary small shadow-sm mb-3">
+            Testimonials
+        </span>
+
+        <h2 class="fw-semibold lh-sm text-dark" style="font-size: 2.5rem;">
+            Don’t just take our word for it
+        </h2>
+
+        <p class="mt-3 text-secondary small mx-auto" style="max-width: 620px;">
+            Our users are our best ambassadors. Discover why we’re the top choice for scheduling meetings.
+        </p>
+
+        <div class="d-none d-md-flex justify-content-center align-items-center gap-4 mt-5">
+            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
+                <p class="text-dark small fst-italic mb-4">
+                    “Absolutely love this tool. Best scheduling experience by far.”
+                </p>
+
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <div class="ms-3 text-start">
+                        <p class="fw-semibold text-dark small mb-1">Jane Doe</p>
+                        <p class="text-muted small m-0">Founder, Example Co.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 420px; height: 230px;">
+                <p class="text-dark fw-semibold mb-4">
+                    “Moving here was the best decision. Smooth, simple, and everything just works.”
+                </p>
+
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-secondary" style="width:40px; height:40px;"></div>
+                    <div class="ms-3 text-start">
+                        <p class="fw-semibold text-dark small mb-1">Alex Carter</p>
+                        <p class="text-muted small m-0">CTO, Example App</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
+                <p class="text-dark small fst-italic mb-4">
+                    “Cleaner, faster, and better than anything else I've used.”
+                </p>
+
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <div class="ms-3 text-start">
+                        <p class="fw-semibold text-dark small mb-1">Rachel Mei</p>
+                        <p class="text-muted small m-0">Marketing Lead, Startup X</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-md-none mx-auto mt-4" style="max-width: 380px;">
+            <div class="bg-white border rounded-4 shadow-sm p-4">
+                <p class="text-dark fw-semibold mb-4">
+                    “Moving here was the best decision. Smooth, simple, and everything just works.”
+                </p>
+
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-secondary" style="width:36px; height:36px;"></div>
+                    <div class="ms-3 text-start">
+                        <p class="fw-semibold text-dark small mb-1">Alex Carter</p>
+                        <p class="text-muted small m-0">CTO, Example App</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-<?php endif; ?>
+</section>
 
-<?php if(cz('home_blog_enable')):?>
-    <?php get_template_part( 'template/home/blog' ); ?>
-<?php endif;?>
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="bg-white border rounded-4 shadow-sm p-4 p-md-5 row g-4 align-items-center">
+            <div class="col-md-5 d-flex flex-column">
+                <span class="d-inline-flex align-items-center bg-white border px-3 py-1 rounded-pill text-secondary small shadow-sm mb-3">
+                    App store
+                </span>
 
+                <h2 class="fw-semibold lh-sm text-dark mb-3" style="font-size: 2.25rem;">
+                    All your key tools in-sync<br>with your meetings
+                </h2>
 
-<?php if(cz('tp_home_article')):?>
-    <div class="home_article">
-        <div class="container">
-            <?php do_action( 'adstm_home_article' ) ?>
+                <p class="text-muted small mb-4" style="max-width: 420px;">
+                    Cal.com works with all the apps in your workflow, ensuring everything
+                    stays connected and perfectly aligned.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-dark btn-lg shadow-sm">Get started →</button>
+                    <button class="btn btn-light border btn-lg">Explore apps →</button>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="border rounded-3 overflow-hidden">
+                    <div class="row g-0">
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/281/281769.png" class="opacity-75" width="40" alt="Slack">
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Zapier_logo.png" class="opacity-75" width="80" alt="Zapier">
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center border-bottom p-4" style="height:120px;">
+                            <img src="https://seeklogo.com/images/S/stripe-logo-66D2C7D7FC-seeklogo.com.png" class="opacity-75" width="55" alt="Stripe">
+                        </div>
+                    </div>
+
+                    <div class="row g-0">
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/HubSpot_Logo.png" class="opacity-75" width="60" alt="HubSpot">
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end border-bottom p-4" style="height:120px;"></div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center border-bottom p-4" style="height:120px;">
+                            <img src="https://cdn.worldvectorlogo.com/logos/outlook-icon.svg" class="opacity-75" width="55" alt="Outlook">
+                        </div>
+                    </div>
+
+                    <div class="row g-0">
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end p-4" style="height:120px;">
+                            <img src="https://logos-world.net/wp-content/uploads/2021/03/Salesforce-Logo.png" class="opacity-75" width="80" alt="Salesforce">
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center border-end p-4" style="height:120px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Google_Meet_icon_(2020).svg" class="opacity-75" width="45" alt="Google Meet">
+                        </div>
+
+                        <div class="col-4 d-flex justify-content-center align-items-center p-4" style="height:120px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Calendar_2020_Logo.svg" class="opacity-75" width="45" alt="Google Calendar">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-<?php endif;?>
+</section>
 
-<?php
-if(cz( 'tp_subscribe_show' )){
-    _cz( 'tp_subscribe' );
-}
-get_template_part( 'template/widget/_features' );
-get_footer() ?>
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="position-relative bg-white border rounded-4 shadow-sm p-4 p-md-5 text-center overflow-hidden">
+            <div class="position-absolute top-0 bottom-0 start-0 end-0 opacity-25"
+                 style="background-image: radial-gradient(circle at center, #000 1px, transparent 1px), radial-gradient(circle at center, #000 1px, transparent 1px); background-size: 34px 34px; background-position: 0 0, 17px 17px; pointer-events: none;">
+            </div>
+
+            <div class="position-relative" style="z-index:2;">
+                <h2 class="fw-semibold lh-sm text-dark mx-auto" style="font-size: 2.25rem; max-width: 700px;">
+                    Free up your time. We’ve got your scheduling covered.
+                    <br class="d-none d-sm-block">Try Cal.com now!
+                </h2>
+
+                <div class="mt-4">
+                    <button class="btn btn-dark btn-lg shadow-sm">
+                        Get started →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php get_footer(); ?>
