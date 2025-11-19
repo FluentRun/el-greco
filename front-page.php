@@ -1,4 +1,34 @@
 <?php
+wp_enqueue_style(
+    'bootstrap-5-landing',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+    [],
+    '5.3.3'
+);
+wp_enqueue_script(
+    'bootstrap-5-landing',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+    [],
+    '5.3.3',
+    true
+);
+
+wp_enqueue_script(
+    'lottie-web',
+    'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js',
+    [],
+    '5.12.2',
+    true
+);
+
+wp_enqueue_script(
+    'hero-lottie-animation',
+    get_template_directory_uri() . '/js/hero-animation.js',
+    [ 'lottie-web' ],
+    null,
+    true
+);
+
 $theme_dir = get_template_directory_uri();
 
 get_header();
@@ -12,19 +42,16 @@ get_header();
             radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08), transparent 40%);
     }
     .hero-animation-shell {
-        min-height: 280px;
-        background: #050c1f;
+        min-height: 260px;
+        background: #0f172a;
         border-radius: 24px;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .hero-animation-shell .hero-lottie-target {
         position: relative;
         width: 100%;
-        aspect-ratio: 4 / 3;
-        min-height: 320px;
-        background: #0b1120;
-        box-shadow: inset 0 0 120px rgba(14, 23, 48, 0.65);
+        padding-top: 56.25%;
+        background: #0f172a;
     }
     .hero-animation-shell .hero-lottie-target svg,
     .hero-animation-shell .hero-lottie-target canvas {
@@ -32,8 +59,6 @@ get_header();
         inset: 0;
         width: 100%;
         height: 100%;
-        opacity: 1;
-        visibility: visible;
     }
     .feature-card {
         width: 180px;
