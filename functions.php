@@ -799,10 +799,12 @@ function live_template() {
 
     if(isset($_POST['template'])){
         $file = __DIR__ . '/inc/live_tabs/'.$_POST['template'].'.php';
-        if(defined( 'ADS_PATH' ) && file_exists(ADS_PATH . 'includes/live/settings_template.php')){
+        if( defined( 'ADS_PATH' ) && file_exists( ADS_PATH . 'includes/live/settings_template.php' ) ){
             include( ADS_PATH . 'includes/live/settings_template.php' );
-        }elseif(defined( 'SLV_PATH' ) && file_exists(SLV_PATH . 'includes/live/settings_template.php')){
+        } elseif( defined( 'SLV_PATH' ) && file_exists( SLV_PATH . 'includes/live/settings_template.php' ) ){
             include( SLV_PATH . 'includes/live/settings_template.php' );
+        } else {
+            require_once __DIR__ . '/inc/settings_template.php';
         }
 
         if(file_exists( $file )){
