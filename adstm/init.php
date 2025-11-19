@@ -1,14 +1,81 @@
 <?php
 
-if( ! function_exists( '_cz' ) || ! function_exists( 'cz' ) ) {
- 
-	function cz( $name ) {
-        echo '';
+if ( ! function_exists( '_cz' ) || ! function_exists( 'cz' ) ) {
+
+    /**
+     * Build the option name used to store customization settings for the active theme.
+     *
+     * @return string
+     */
+    function adstm_get_option_name() {
+        $theme = wp_get_theme();
+
+        return 'cz_' . $theme->get( 'Name' );
     }
 
-    function _cz( $name ) {
-        echo '';
+    /**
+     * Load customization options from the database merged with defaults.
+     *
+     * @return array
+     */
+    function adstm_get_options( $refresh = false ) {
+        static $options = null;
+
+        if ( null !== $options && ! $refresh ) {
+            return $options;
+        }
+
+        $defaults = [];
+
+        if ( function_exists( 'live_cstm_get_defaults' ) ) {
+            $defaults = live_cstm_get_defaults();
+        } elseif ( file_exists( __DIR__ . '/customization/defaults.php' ) ) {
+            $defaults = include __DIR__ . '/customization/defaults.php';
+        }
+
+        $stored  = get_option( adstm_get_option_name(), [] );
+        $options = array_merge( $defaults, is_array( $stored ) ? $stored : [] );
+
+        return $options;
     }
+
+    /**
+     * Return a customization value.
+     *
+     * @param string $name    Option key.
+     * @param mixed  $default Fallback when option is missing.
+     *
+     * @return mixed
+     */
+    function cz( $name, $default = '' ) {
+        $options = adstm_get_options();
+
+        return isset( $options[ $name ] ) ? $options[ $name ] : $default;
+    }
+
+    /**
+     * Echo a customization value.
+     *
+     * @param string $name    Option key.
+     * @param mixed  $default Fallback when option is missing.
+     */
+    function _cz( $name, $default = '' ) {
+        echo cz( $name, $default );
+    }
+
+    /**
+     * Reset cached customization options after they are updated.
+     */
+    function adstm_reset_options_cache() {
+        // Clear WordPress cache and the in-memory value from adstm_get_options().
+        if ( function_exists( 'wp_cache_delete' ) ) {
+            wp_cache_delete( adstm_get_option_name(), 'options' );
+        }
+
+        adstm_get_options( true );
+    }
+
+    add_action( 'cz_change_options', 'adstm_reset_options_cache' );
 }
 
 if( ! defined( 'ADSTM_HOME' ) )	define( 'ADSTM_HOME', home_url() );
