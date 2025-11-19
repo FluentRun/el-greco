@@ -81,6 +81,19 @@ if ( ! function_exists( '_cz' ) || ! function_exists( 'cz' ) ) {
 if( ! defined( 'ADSTM_HOME' ) )	define( 'ADSTM_HOME', home_url() );
 if( ! defined( 'ADSTM_T_DOMAIN' ) )	define( 'ADSTM_T_DOMAIN', 'elgreco' );
 
+if ( ! function_exists( 'adstm_load_textdomain' ) ) {
+	/**
+	 * Load translations for the theme early so strings used during bootstrapping
+	 * don't trigger the just-in-time loader before the {@see init} hook.
+	 */
+	function adstm_load_textdomain() {
+		load_theme_textdomain( ADSTM_T_DOMAIN, get_template_directory() . '/languages' );
+	}
+}
+
+// Load translations as soon as theme setup begins to avoid WP 6.7 "too early" notices.
+add_action( 'after_setup_theme', 'adstm_load_textdomain', 0 );
+
 include( __DIR__ . '/core.php' );
 include( __DIR__ . '/adsTmpl.php' );
 include( __DIR__ . '/widget/countdown.php' );
@@ -107,18 +120,6 @@ if( defined( 'SLV_ERROR' ) && ! SLV_ERROR ) {
 if( is_admin() ) {
         include( __DIR__ . '/setup/create_page_template.php' );
 }
-
-if ( ! function_exists( 'adstm_load_textdomain' ) ) {
-    /**
-     * Load translations for the theme at the recommended time.
-     */
-    function adstm_load_textdomain() {
-        load_theme_textdomain( ADSTM_T_DOMAIN, get_template_directory() . '/languages' );
-    }
-}
-
-// Load translations on init (or later) to avoid early textdomain loading notices introduced in WP 6.7.
-add_action( 'init', 'adstm_load_textdomain' );
 
 if ( ! function_exists( 'adstm_theme_setup' ) ) {
     /**
