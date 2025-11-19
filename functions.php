@@ -822,6 +822,27 @@ function live_template() {
 add_action( 'wp_ajax_live_template', 'live_template' );
 
 
+function cstm_template_action() {
+
+    if ( ! function_exists( 'adstm_create_pages' ) ) {
+        $create_pages = __DIR__ . '/adstm/setup/create_page_template.php';
+
+        if ( file_exists( $create_pages ) ) {
+            include_once $create_pages;
+        }
+    }
+
+    if ( function_exists( 'adstm_create_pages' ) ) {
+        adstm_create_pages();
+    } else {
+        wp_send_json_error( [
+            'message' => __( 'Unable to apply demo content. Please try again later.', 'elgreco' ),
+        ] );
+    }
+}
+add_action( 'wp_ajax_cstm_template_action', 'cstm_template_action' );
+
+
 function ads_true_load_comments(){
     $feedback= new \ads\adsFeedback($_POST['post_id'], $_POST['page'], $_POST['perpage']);
     $comments = $feedback->comments;
