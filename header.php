@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js" xmlns="http://www.w3.org/1999/html">
 <head>
-	<link rel="shortcut icon" href="<?php _cz( 'tp_favicon' ); ?>"/>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <link rel="shortcut icon" href="<?php _cz( 'tp_favicon' ); ?>"/>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <?php
     global $ADSTM;
     if(isset($ADSTM[ 'product' ])) {
@@ -24,19 +24,20 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
         <link  href="<?php echo get_template_directory_uri(); ?>/assets/css/head.css?ver=<?php echo $version; ?>" rel="stylesheet">
         <link  href="<?php echo get_template_directory_uri(); ?>/assets/css/bootstrap5-overrides.css?ver=<?php echo $version; ?>" rel="stylesheet">
+        <link  href="<?php echo get_template_directory_uri(); ?>/assets/css/header-modern.css?ver=<?php echo $version; ?>" rel="stylesheet">
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script defer src="<?php echo get_template_directory_uri(); ?>/js/header-modern.js?ver=<?php echo $version; ?>"></script>
 
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>    <![endif]-->
 
+        <?php wp_head(); ?>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>    <![endif]-->
-
-	<?php wp_head(); ?>
-
-	<style>
-		<?php echo cz('tp_style');?>
-	</style>
-	<?php echo cz( 'tp_head' ); ?>
+        <style>
+                <?php echo cz('tp_style');?>
+        </style>
+        <?php echo cz( 'tp_head' ); ?>
 
     <?php $body_classes = [];
 
@@ -68,168 +69,131 @@
 </head>
 
 <body <?php body_class($body_classes); ?>>
+<?php wp_body_open(); ?>
+<?php
+    $cta_text = trim( cz('tp_header_cta_text') );
+    $cta_link = trim( cz('tp_header_cta_link') );
+    $cta_target = cz('tp_header_cta_target') ? ' target="_blank" rel="noopener"' : '';
+    $top_message = cz('tp_text_top_header');
+    $account_url = adstm_home_url('/account/');
 
-<div class="js-slideout-menu" >
-    <div class="mobile-menu  js-mobile-menu">
-        <div class="head-menu">
-            <div class="link-home">
-                <a class="name-home" href="/"><?php _e( 'Home', 'rap' ); ?></a>
-                <a class="name-menu"><?php _e( 'Menu', 'rap' ); ?></a>
+    $desktop_menu = wp_nav_menu([
+        'theme_location' => 'top_menu',
+        'container' => false,
+        'menu_class' => 'navbar-nav flex-lg-row align-items-lg-center justify-content-center gap-lg-4 text-uppercase fw-medium',
+        'fallback_cb' => false,
+        'echo' => false
+    ]);
+
+    $mobile_menu = wp_nav_menu([
+        'theme_location' => 'top_menu',
+        'container' => false,
+        'menu_class' => 'nav flex-column gap-2 list-unstyled codex-offcanvas-links',
+        'fallback_cb' => false,
+        'echo' => false
+    ]);
+?>
+
+<div class="offcanvas offcanvas-end codex-offcanvas" tabindex="-1" id="codexOffcanvas" aria-labelledby="codexOffcanvasLabel">
+    <div class="offcanvas-header">
+        <div class="codex-offcanvas-logo" id="codexOffcanvasLabel">
+            <?php do_action('adstm_logo_header'); ?>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?php esc_attr_e('Close menu', 'rap'); ?>"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column gap-4">
+        <div class="codex-offcanvas-search">
+            <?php do_action('adstm_search'); ?>
+        </div>
+        <nav class="codex-offcanvas-nav flex-grow-1">
+            <?php
+            if($mobile_menu) {
+                echo $mobile_menu;
+            } else {
+                ob_start();
+                do_action('ads_pages_menu');
+                $fallback_mobile_menu = ob_get_clean();
+                echo '<div class="codex-fallback-menu">' . $fallback_mobile_menu . '</div>';
+            }
+            ?>
+        </nav>
+        <div class="codex-offcanvas-meta d-flex flex-column gap-3">
+            <div class="codex-offcanvas-account">
+                <?php do_action('adstm_loginButton'); ?>
             </div>
-            <div class="btn-close js-btn-close"></div>
-        </div>
-
-        <div class="category-menu">
-            <ul class="menu-list">
-                <?php do_action('ads_menu_product');?>
-            </ul>
-        </div>
-        <div class="pages-menu">
-	        <?php do_action('ads_pages_menu'); ?>
+            <div class="codex-offcanvas-cart">
+                <?php do_action('adstm_cart_quantity_link'); ?>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="wrap js-slideout-panel">
-    <div class="site-header site-header--sticky">
-        <div class="top-panel">
-            <div class="container">
-                <div class="row mobile-top-panel desktop-top-panel">
-                    <div class="col-12">
-                        <div class="top-panel__layout d-flex flex-column flex-lg-row align-items-lg-center gap-3">
-                            <div class="text-shipping order-1 order-lg-2">
-                                <?php if(cz('tp_text_top_header')){
-                                    do_action('adstm_shipping_icon');
-                                echo cz('tp_text_top_header');
-                                }  ?>
-                            </div>
-                            <div class="pages-menu flex-grow-1 order-2 order-lg-1">
-                                <?php do_action('ads_pages_menu'); ?>
-                            </div>
-                            <div class="top-right d-flex align-items-center gap-3 justify-content-end ms-lg-auto order-3">
-                                        <div class="box-active">
-                                                <?php do_action('adstm_loginButton') ?>
-                                </div>
-
-                                <?php if(cz('tp_currency_switcher')){ ?>
-                                    <div class="box-active box-active-currency">
-                                        <?php do_action('adstm_dropdown_currency') ?>
-                                    </div>
-                                <?php } ?>
-
-                            </div>
-                        </div>
+<header class="codex-header position-sticky top-0 w-100 bg-white">
+    <div class="codex-top-bar border-bottom">
+        <div class="container-xl d-flex flex-wrap align-items-center gap-3 py-2">
+            <div class="codex-top-message d-flex align-items-center gap-2 text-muted small">
+                <?php if($top_message){
+                    do_action('adstm_shipping_icon');
+                    echo wp_kses_post($top_message);
+                } ?>
+            </div>
+            <div class="codex-top-right d-flex align-items-center gap-3 ms-auto">
+                <?php if(cz('tp_currency_switcher')){ ?>
+                    <div class="codex-currency-switcher">
+                        <?php do_action('adstm_dropdown_currency'); ?>
                     </div>
+                <?php } ?>
+                <div class="codex-top-account d-none d-lg-flex align-items-center gap-1">
+                    <?php do_action('adstm_loginButton'); ?>
                 </div>
             </div>
         </div>
-
-        <header class="site-header__bar">
-            <div class="container">
-            <div class="mobile-header desc-header">
-                <div class="site-header__grid d-flex align-items-center flex-wrap gap-3">
-                    <button type="button" class="navbar-toggler d-inline-flex d-md-none js-toggle-menu order-0" aria-label="<?php esc_attr_e( 'Toggle navigation', 'rap' ); ?>">
-                        <span class="visually-hidden"><?php _e( 'Toggle navigation', 'rap' ); ?></span>
-                        <span class="navbar-toggler-icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="wrap box d-flex align-items-center flex-wrap gap-3 flex-grow-1 order-1">
-                        <div class="box-logo flex-shrink-0">
-                            <?php do_action('adstm_logo_header') ?>
-                        </div>
-                        <div class="search-wrap flex-grow-1 order-3 order-md-2">
-                            <div class="box box-search">
-                                <?php do_action('adstm_search') ?>
-                            </div>
-                        </div>
-                        <div class="text-shipping d-none d-sm-block order-2 order-lg-3 ms-lg-auto">
-                            <?php if(cz('tp_text_top_header')){
-                                do_action('adstm_shipping_icon');
-                                echo cz('tp_text_top_header'); }
-                            ?>
-                        </div>
-                        <div class="box-cart order-4">
-                            <?php do_action('adstm_cart_quantity_link') ?>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="categories-menu d-none d-md-block">
-            <div class="container">
-                <div class="row gy-3">
-                    <div class="categories-menu-box col-12">
-                        <ul class="categories-menu-line nav flex-wrap align-items-center">
-					        <?php ads_menu_product(4); ?>
-                            <li class="more js-more parent-top"><a href="#"><?php _e('More', 'rap'); ?></a></li>
-                        </ul>
-                    </div>
-                    <div class="box-categories-menu-sub">
-                        <div class="menu-sub-wrap">
-                            <div class="box-menu">
-                                <div class="menu menu-1"><ul></ul></div>
-                                <div class="menu menu-2">
-                                    <ul></ul>
-                                    <div class="wrap-product wrap-product-2">
-                                        <div class="product product1">
-                                            <a href="">
-                                                <div class="item">
-                                                    <div class="box-img"><img  src=""></div>
-                                                    <div class="box-title"><div class="text"></div></div>
-                                                </div></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="menu menu-3">
-                                    <ul></ul>
-                                    <div class="wrap-product wrap-product-3">
-                                        <div class="product product1">
-                                            <a href="">
-                                                <div class="item">
-                                                    <div class="box-img"><img  src=""></div>
-                                                    <div class="box-title"><div class="text"></div></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="product product2">
-                                            <a href="">
-                                                <div class="item">
-                                                    <div class="box-img"><img  src=""></div>
-                                                    <div class="box-title"><div class="text"></div></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="menu menu-4">
-                                    <ul></ul>
-                                    <div class="wrap-product wrap-product-4">
-                                        <div class="product product1">
-                                            <a href="">
-                                                <div class="item">
-                                                    <div class="box-img"><img  src=""></div>
-                                                    <div class="box-title"><div class="text"></div></div>
-                                                </div></a>
-                                        </div>
-                                        <div class="product product2">
-                                            <a href="">
-                                                <div class="item">
-                                                    <div class="box-img"><img  src=""></div>
-                                                    <div class="box-title"><div class="text"></div></div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="categories-menu-bg"></div>
-        </header>
     </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-xl d-flex align-items-center gap-3">
+            <div class="codex-brand flex-shrink-0">
+                <?php do_action('adstm_logo_header'); ?>
+            </div>
+            <div class="codex-main-nav d-none d-lg-flex flex-grow-1 justify-content-center">
+                <?php
+                if($desktop_menu){
+                    echo $desktop_menu;
+                } else {
+                    ob_start();
+                    do_action('ads_pages_menu');
+                    $fallback_desktop_menu = ob_get_clean();
+                    echo '<div class="codex-fallback-menu">' . $fallback_desktop_menu . '</div>';
+                }
+                ?>
+            </div>
+            <div class="codex-header-icons d-none d-lg-flex align-items-center gap-2 ms-auto">
+                <button class="btn btn-outline-secondary btn-icon" type="button" data-bs-toggle="collapse" data-bs-target="#codexHeaderSearch" aria-expanded="false" aria-controls="codexHeaderSearch">
+                    <span class="visually-hidden"><?php _e('Search', 'rap'); ?></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 14h-.79l-.28-.27A6 6 0 1 0 14 15.5l.27.28v.79L21 22.5 22.5 21zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+                </button>
+                <a class="btn btn-outline-secondary btn-icon" href="<?php echo esc_url($account_url); ?>">
+                    <span class="visually-hidden"><?php _e('Account', 'rap'); ?></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4 0-7 2-7 4.44V21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.56C19 16 16 14 12 14z"/></svg>
+                </a>
+                <div class="codex-cart-link">
+                    <?php do_action('adstm_cart_quantity_link'); ?>
+                </div>
+                <?php if($cta_text && $cta_link){ ?>
+                    <a class="btn btn-primary ms-2" href="<?php echo esc_url($cta_link); ?>"<?php echo $cta_target; ?>><?php echo esc_html($cta_text); ?></a>
+                <?php } ?>
+            </div>
+            <button class="navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#codexOffcanvas" aria-controls="codexOffcanvas" aria-label="<?php esc_attr_e( 'Toggle navigation', 'rap' ); ?>">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="collapse codex-header-search" id="codexHeaderSearch">
+        <div class="container-xl py-3">
+            <div class="codex-search-form">
+                <?php do_action('adstm_search'); ?>
+            </div>
+        </div>
+    </div>
+</header>
 
 <?php get_template_part( 'template/str_data_common' ); ?>
