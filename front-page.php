@@ -316,20 +316,6 @@ get_header();
                         Speed, hosting, optimization, funnels, tracking, security, automations — everything handled end to end.
                     </p>
 
-                    <div class="mt-auto d-flex justify-content-center pt-3">
-                        <svg width="140" height="140" viewBox="0 0 140 140" role="img" aria-hidden="true" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                            <path d="M36 30h68l-20 30v18l-14 12-14-12V60Z"></path>
-                            <path d="M60 86h20"></path>
-                            <path d="M54 58h32"></path>
-                            <path d="M44 44h52"></path>
-                            <path d="M52 76h12v16c0 2.8 2.2 5 5 5s5-2.2 5-5V76h12v16c0 10.5-8.5 19-19 19s-19-8.5-19-19Z"></path>
-                            <circle cx="46" cy="108" r="6"></circle>
-                            <circle cx="94" cy="108" r="6"></circle>
-                            <circle cx="70" cy="116" r="6"></circle>
-                            <path d="M88 92l8-4"></path>
-                            <path d="M52 92l-8-4"></path>
-                        </svg>
-                    </div>
                 </div>
             </div>
         </div>
