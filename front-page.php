@@ -499,8 +499,8 @@ get_header();
 
             <div class="position-relative" style="z-index:2;">
                 <h2 class="fw-semibold lh-sm text-dark mx-auto" style="font-size: 2.25rem; max-width: 700px;">
-                    Free up your time. We’ve got your scheduling covered.
-                    <br class="d-none d-sm-block">Try Cal.com now!
+                    Get Your Free Project Plan Today
+                    <br class="d-none d-sm-block">Try now!
                 </h2>
 
                 <div class="mt-4">
