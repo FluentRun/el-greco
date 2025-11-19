@@ -306,6 +306,13 @@ body.codex-offcanvas-open {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     font-size: 1rem;
+    position: fixed;
+    right: 0;
+    left: auto;
+    width: min(420px, 92vw);
+    max-width: 100%;
+    background-color: #ffffff;
+    color: var(--codex-dark);
 }
 
 .is-inapp-browser .codex-offcanvas-logo img {
@@ -326,6 +333,17 @@ body.codex-offcanvas-open {
 .is-inapp-browser .codex-offcanvas .cart__icon svg {
     width: 20px;
     height: 20px;
+}
+
+.is-inapp-browser .codex-offcanvas-header,
+.is-inapp-browser .codex-offcanvas-body {
+    padding: 1.5rem;
+}
+
+.is-inapp-browser .codex-offcanvas-section,
+.is-inapp-browser .codex-offcanvas-nav,
+.is-inapp-browser .codex-offcanvas-card {
+    padding: 1.25rem;
 }
 
 .codex-offcanvas-close {
@@ -621,9 +639,20 @@ body.codex-offcanvas-open {
         padding: 1.25rem;
     }
 
+    .is-inapp-browser .codex-offcanvas-header,
+    .is-inapp-browser .codex-offcanvas-body {
+        padding: 1.25rem;
+    }
+
     .codex-offcanvas-section,
     .codex-offcanvas-nav,
     .codex-offcanvas-card {
+        padding: 1rem;
+    }
+
+    .is-inapp-browser .codex-offcanvas-section,
+    .is-inapp-browser .codex-offcanvas-nav,
+    .is-inapp-browser .codex-offcanvas-card {
         padding: 1rem;
     }
 

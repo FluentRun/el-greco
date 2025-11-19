@@ -21,10 +21,34 @@ get_header();
 <script>
     (function() {
         var ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (/FBAN|FBAV|Instagram/i.test(ua)) {
+        var isInAppBrowser = /FBAN|FBAV|Instagram/i.test(ua);
+
+        if (isInAppBrowser) {
             document.documentElement.classList.add('is-inapp-browser');
             if (document.body) {
                 document.body.classList.add('is-inapp-browser');
+            }
+
+            var headEl = document.head || document.getElementsByTagName('head')[0];
+            var existingStylesheet = document.querySelector('link[href*="/assets/css/header-modern.css"]');
+
+            var ensureStylesheet = function(stylesheet) {
+                if (!stylesheet) {
+                    return false;
+                }
+
+                stylesheet.rel = 'stylesheet';
+                stylesheet.media = 'all';
+                return true;
+            };
+
+            if (!ensureStylesheet(existingStylesheet) && headEl) {
+                var inAppStylesheet = document.createElement('link');
+                inAppStylesheet.rel = 'stylesheet';
+                inAppStylesheet.media = 'all';
+                inAppStylesheet.href = '<?php echo esc_url( $theme_dir . '/assets/css/header-modern.css' ); ?>?inapp=1';
+                inAppStylesheet.id = 'codex-offcanvas-inapp-style';
+                headEl.appendChild(inAppStylesheet);
             }
         }
     })();
