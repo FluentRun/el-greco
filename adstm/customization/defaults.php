@@ -35,13 +35,13 @@ return array(
 
 	'tp_favicon'    => $TEMPLATE_URL . '/favicon.ico',
 	's_mail'        => 'support@' . parse_url(ADSTM_HOME, PHP_URL_HOST),
-	'tp_header_phone'       => '123 456 78 90',
+        'tp_header_phone'       => '+4915510676259',
 
 	'tp_icon_phone'       => 'fa-phone',
 
 	'tp_buttons_colors' => '#ff9749',
 
-	'tp_header_email'           => 'support@' . parse_url(ADSTM_HOME, PHP_URL_HOST),
+        'tp_header_email'           => 'info@webmakerr.com',
 	'tp_text_top_header'        => __( 'Free Worldwide Shipping', 'rap' ),
 	'shipping_icon'             => '',
 	'tp_show_discount'          => true,
@@ -364,7 +364,7 @@ return array(
 	'tp_confidence_img_3' => $IMG_DIR . 'trustf/sslf.svg',
 
 	'tp_copyright'               => '© Copyright {{YEAR}}. All Rights Reserved',
-	'tp_address'                 => '111 Your Street, Your City, Your State 11111, Your Country',
+        'tp_address'                 => 'Radelandstraße 38, 13589 Berlin Germany',
 	'tp_copyright__line'         => parse_url(ADSTM_HOME, PHP_URL_HOST),
 	'tp_footer_script'           => '',
 	'tp_footer_payment_methods'  => true,
