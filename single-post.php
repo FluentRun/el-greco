@@ -25,7 +25,11 @@ if (!$product && $post instanceof WP_Post) {
 }
 
 if (!$product || !$product->detail) {
-    the_content();
+    get_header();
+
+    get_template_part('template/blog/index');
+
+    get_footer();
     return;
 }
 
