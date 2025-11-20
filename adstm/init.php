@@ -21,10 +21,10 @@ if ( ! function_exists( 'adstm_get_theme_defaults' ) ) {
 }
 
 if ( ! function_exists( 'adstm_get_theme_options' ) ) {
-    function adstm_get_theme_options() {
+    function adstm_get_theme_options( $refresh = false ) {
         static $options;
 
-        if ( isset( $options ) ) {
+        if ( isset( $options ) && ! $refresh ) {
             return $options;
         }
 
@@ -117,12 +117,55 @@ function adstm_render_theme_settings_page() {
         return;
     }
 
+    $json_error = false;
+
+    if ( isset( $_POST['adstm_save_settings'] ) && check_admin_referer( 'adstm_save_settings_action' ) ) {
+        $options  = adstm_get_theme_options();
+        $updated  = [];
+
+        foreach ( $options as $key => $value ) {
+            $field_key = 'adstm_option_' . $key;
+
+            if ( is_bool( $value ) ) {
+                $updated[ $key ] = isset( $_POST[ $field_key ] );
+                continue;
+            }
+
+            if ( is_array( $value ) ) {
+                $raw_value = isset( $_POST[ $field_key ] ) ? wp_unslash( $_POST[ $field_key ] ) : '';
+                $decoded   = json_decode( $raw_value, true );
+
+                if ( JSON_ERROR_NONE === json_last_error() && is_array( $decoded ) ) {
+                    $updated[ $key ] = $decoded;
+                } else {
+                    $updated[ $key ] = $value;
+                    $json_error       = true;
+                }
+
+                continue;
+            }
+
+            $raw_value       = isset( $_POST[ $field_key ] ) ? wp_unslash( $_POST[ $field_key ] ) : '';
+            $updated[ $key ] = sanitize_text_field( $raw_value );
+        }
+
+        $defaults = adstm_get_theme_defaults();
+        update_option( 'raphael_theme_settings', wp_parse_args( $updated, $defaults ) );
+        adstm_get_theme_options( true );
+
+        echo '<div class="updated"><p>' . esc_html__( 'Theme settings were saved.', 'rap' ) . '</p></div>';
+
+        if ( $json_error ) {
+            echo '<div class="notice notice-warning"><p>' . esc_html__( 'Some complex settings could not be saved because the JSON format is invalid. Please check your entries and try again.', 'rap' ) . '</p></div>';
+        }
+    }
+
     if ( isset( $_POST['adstm_reset_defaults'] ) && check_admin_referer( 'adstm_reset_defaults_action' ) ) {
         adstm_setup_theme_options();
         echo '<div class="updated"><p>' . esc_html__( 'Theme settings were refreshed from defaults.', 'rap' ) . '</p></div>';
     }
 
-    $options = adstm_get_theme_options();
+    $options = adstm_get_theme_options( true );
 
     ?>
     <div class="wrap">
@@ -139,23 +182,42 @@ function adstm_render_theme_settings_page() {
             <?php submit_button( __( 'Reload Default Settings', 'rap' ), 'secondary' ); ?>
         </form>
 
-        <h2><?php esc_html_e( 'Current Settings', 'rap' ); ?></h2>
-        <table class="widefat striped">
-            <thead>
-                <tr>
-                    <th><?php esc_html_e( 'Option', 'rap' ); ?></th>
-                    <th><?php esc_html_e( 'Value', 'rap' ); ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ( $options as $key => $value ) : ?>
+        <h2><?php esc_html_e( 'Update Settings', 'rap' ); ?></h2>
+        <form method="post">
+            <?php wp_nonce_field( 'adstm_save_settings_action' ); ?>
+            <input type="hidden" name="adstm_save_settings" value="1" />
+
+            <table class="widefat striped">
+                <thead>
                     <tr>
-                        <td><code><?php echo esc_html( $key ); ?></code></td>
-                        <td><?php echo is_scalar( $value ) ? esc_html( (string) $value ) : '<pre>' . esc_html( wp_json_encode( $value, JSON_PRETTY_PRINT ) ) . '</pre>'; ?></td>
+                        <th><?php esc_html_e( 'Option', 'rap' ); ?></th>
+                        <th><?php esc_html_e( 'Value', 'rap' ); ?></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ( $options as $key => $value ) : ?>
+                        <tr>
+                            <td style="width: 25%;"><label for="<?php echo esc_attr( 'adstm_option_' . $key ); ?>"><code><?php echo esc_html( $key ); ?></code></label></td>
+                            <td>
+                                <?php if ( is_bool( $value ) ) : ?>
+                                    <label>
+                                        <input type="checkbox" id="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" name="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" <?php checked( $value ); ?> />
+                                        <?php esc_html_e( 'Enabled', 'rap' ); ?>
+                                    </label>
+                                <?php elseif ( is_array( $value ) ) : ?>
+                                    <textarea id="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" name="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" rows="6" class="large-text code"><?php echo esc_textarea( wp_json_encode( $value, JSON_PRETTY_PRINT ) ); ?></textarea>
+                                    <p class="description"><?php esc_html_e( 'Edit array values using JSON format.', 'rap' ); ?></p>
+                                <?php else : ?>
+                                    <input type="text" id="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" name="<?php echo esc_attr( 'adstm_option_' . $key ); ?>" value="<?php echo esc_attr( (string) $value ); ?>" class="regular-text" />
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <?php submit_button( __( 'Save Settings', 'rap' ) ); ?>
+        </form>
     </div>
     <?php
 }
