@@ -260,54 +260,8 @@ get_header();
                         </div>
 
                         <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell">
-                            <div class="row g-1 hero-feature-row" role="list">
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <rect x="10" y="14" width="44" height="38" rx="6"></rect>
-                                            <path d="M20 8v12"></path>
-                                            <path d="M44 8v12"></path>
-                                            <path d="M10 26h44"></path>
-                                            <path d="M22 38h8"></path>
-                                            <path d="M34 38h8"></path>
-                                            <path d="M22 46h20"></path>
-                                        </svg>
-                                        <span>Ad Playbooks</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M12 16h8l6 28h24l6-20H20"></path>
-                                            <circle cx="28" cy="50" r="4"></circle>
-                                            <circle cx="44" cy="50" r="4"></circle>
-                                            <path d="M24 28h28"></path>
-                                        </svg>
-                                        <span>Offer Templates</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M12 50h40"></path>
-                                            <path d="M20 42l8-12 10 8 12-18 6 6"></path>
-                                            <path d="M20 22v28"></path>
-                                            <path d="M34 30v20"></path>
-                                            <path d="M48 18v32"></path>
-                                        </svg>
-                                        <span>Tracking Dashboard</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M26 20l-12 12 12 12"></path>
-                                            <path d="M38 44l4-24"></path>
-                                            <path d="M38 20l12 12-12 12"></path>
-                                        </svg>
-                                        <span>Optimization Labs</span>
-                                    </div>
-                                </div>
+                            <div class="ratio ratio-16x9 w-100">
+                                <video class="w-100 h-100 rounded-3" src="https://alidrives.b-cdn.net/Intro.mp4" autoplay muted playsinline loop controls></video>
                             </div>
                         </div>
                     </div>
