@@ -1,5 +1,8 @@
 <?php
 /* Template Name: Contact Us */
+
+$webhook_url = get_option('raphael_webhook_url');
+
 get_header();
 ?>
 
@@ -46,6 +49,8 @@ get_header();
 </div>
 
 <script>
+const WEBHOOK_URL = "<?php echo esc_url( $webhook_url ); ?>";
+
 document.getElementById("ticketForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
@@ -66,7 +71,7 @@ document.getElementById("ticketForm").addEventListener("submit", async function(
     };
 
     try {
-        const res = await fetch("https://beta.webmakerr.com/wp-json/fluent-support/v2/public/incoming_webhook/3fd51a1b-3363-48e8-8d08-df7d39e5cc5e", {
+        const res = await fetch(WEBHOOK_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
