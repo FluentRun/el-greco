@@ -106,6 +106,19 @@ get_header();
         gap: 0;
     }
 
+    :root {
+        --bs-border-radius: 4px;
+        --bs-border-radius-sm: 4px;
+        --bs-border-radius-lg: 4px;
+        --bs-border-radius-xl: 4px;
+        --bs-border-radius-xxl: 4px;
+        --bs-border-radius-pill: 4px;
+    }
+
+    .rounded-circle {
+        border-radius: 4px !important;
+    }
+
     .booking-ambient {
         background:
             radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.08), transparent 45%),
@@ -115,7 +128,7 @@ get_header();
     .hero-animation-shell {
         min-height: 260px;
         background: linear-gradient(135deg, #1877F2 50%, #000000 50%);
-        border-radius: 24px;
+        border-radius: 4px;
         overflow: hidden;
         padding: 24px;
         display: flex;
@@ -153,7 +166,7 @@ get_header();
     .feature-card {
         width: 180px;
         height: 180px;
-        border-radius: 28px;
+        border-radius: 4px;
     }
     .feature-icon-box {
         width: 56px;
