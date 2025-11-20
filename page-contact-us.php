@@ -16,7 +16,7 @@ get_header();
                     <p class="fs-5 text-secondary mb-3">Share your request and a member of our partnerships desk will reach out with the next steps. We keep communication concise, transparent, and focused on solving your needs.</p>
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-4 shadow-sm h-100 border border-light">
+                            <div class="p-3 bg-white shadow-sm h-100 border border-light" style="border-radius: 4px;">
                                 <div class="d-flex align-items-center gap-2 fw-semibold mb-1">
                                     <span class="text-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
@@ -29,7 +29,7 @@ get_header();
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="p-3 bg-white rounded-4 shadow-sm h-100 border border-light">
+                            <div class="p-3 bg-white shadow-sm h-100 border border-light" style="border-radius: 4px;">
                                 <div class="d-flex align-items-center gap-2 fw-semibold mb-1">
                                     <span class="text-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
@@ -63,7 +63,7 @@ get_header();
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="card border-0 shadow-lg rounded-4">
+                <div class="card border-0 shadow-lg" style="border-radius: 4px;">
                     <div class="card-body p-4 p-md-5">
                         <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-4">
                             <div>
@@ -110,7 +110,7 @@ get_header();
     <div class="container">
         <div class="row g-4 align-items-start">
             <div class="col-lg-5">
-                <div class="p-4 p-md-5 rounded-4 shadow-sm border bg-light">
+                <div class="p-4 p-md-5 shadow-sm border bg-light" style="border-radius: 4px;">
                     <p class="text-uppercase text-secondary small fw-semibold mb-2">Guidance</p>
                     <h2 class="h4 fw-bold mb-3">What to expect</h2>
                     <ul class="list-unstyled d-flex flex-column gap-3 text-secondary mb-0">
@@ -142,7 +142,7 @@ get_header();
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="card border-0 shadow-sm rounded-4">
+                <div class="card border-0 shadow-sm" style="border-radius: 4px;">
                     <div class="card-body p-4 p-md-5">
                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
                             <div>
@@ -152,9 +152,9 @@ get_header();
                             <div class="badge bg-success-subtle text-success fw-semibold">Updated weekly</div>
                         </div>
                         <div class="accordion" id="faqAccordion">
-                            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 4px;">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button shadow-none fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button shadow-none fw-semibold" style="border-radius: 4px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         How quickly will I receive a response?
                                     </button>
                                 </h2>
@@ -164,9 +164,9 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 4px;">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed shadow-none fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="accordion-button collapsed shadow-none fw-semibold" style="border-radius: 4px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         What information should I include in my ticket?
                                     </button>
                                 </h2>
@@ -176,9 +176,9 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 4px;">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed shadow-none fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button class="accordion-button collapsed shadow-none fw-semibold" style="border-radius: 4px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         Can I update my request after submission?
                                     </button>
                                 </h2>
@@ -188,9 +188,9 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+                            <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 4px;">
                                 <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed shadow-none fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <button class="accordion-button collapsed shadow-none fw-semibold" style="border-radius: 4px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         Who will handle my partnership inquiry?
                                     </button>
                                 </h2>
@@ -200,9 +200,9 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0 shadow-sm rounded-3">
+                            <div class="accordion-item border-0 shadow-sm" style="border-radius: 4px;">
                                 <h2 class="accordion-header" id="headingFive">
-                                    <button class="accordion-button collapsed shadow-none fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <button class="accordion-button collapsed shadow-none fw-semibold" style="border-radius: 4px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                         Do you offer support in multiple languages?
                                     </button>
                                 </h2>
