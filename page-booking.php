@@ -1165,6 +1165,7 @@ get_header();
                 .then(function () {
                     form.reset();
                     showStatus('success');
+                    window.location.href = '/thank-you-contact';
                 })
                 .catch(function () {
                     showStatus('error');
