@@ -311,8 +311,8 @@ get_header();
     .trial-modal-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(15, 23, 42, 0.5);
-        backdrop-filter: blur(4px);
+        background: rgba(15, 23, 42, 0.35);
+        backdrop-filter: blur(2px);
         display: none;
         align-items: center;
         justify-content: center;
@@ -330,13 +330,13 @@ get_header();
     .trial-modal {
         width: 100%;
         max-width: 640px;
-        background: linear-gradient(160deg, #0f172a 0%, #111827 40%, #0b1224 100%);
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 28px 80px rgba(15, 23, 42, 0.35);
+        background: #ffffff;
+        border-radius: 4px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 22px 60px rgba(15, 23, 42, 0.14);
         position: relative;
         overflow: hidden;
-        color: #e2e8f0;
+        color: #0f172a;
     }
 
     .trial-modal::before {
@@ -344,9 +344,9 @@ get_header();
         position: absolute;
         inset: 0;
         background:
-            radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.14), transparent 38%),
-            radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.12), transparent 36%),
-            linear-gradient(120deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0));
+            radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08), transparent 48%),
+            radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.08), transparent 44%),
+            linear-gradient(120deg, rgba(148, 163, 184, 0.05), rgba(255, 255, 255, 0));
         pointer-events: none;
     }
 
@@ -369,26 +369,29 @@ get_header();
         position: absolute;
         top: 14px;
         right: 14px;
-        border: none;
-        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid #e5e7eb;
+        background: #ffffff;
         width: 38px;
         height: 38px;
-        border-radius: 12px;
+        border-radius: 4px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: #e2e8f0;
-        transition: background-color 150ms ease, transform 150ms ease;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #0f172a;
+        transition: background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+        z-index: 3;
     }
 
     .trial-modal__close:hover {
-        background: rgba(255, 255, 255, 0.12);
+        background: #f8fafc;
         transform: translateY(-1px);
+        box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
     }
 
     .trial-modal__subtitle {
-        color: #cbd5e1;
+        color: #475569;
     }
 
     .trial-modal__status {
@@ -406,10 +409,11 @@ get_header();
         gap: 8px;
         padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.06);
-        color: #e2e8f0;
+        background: #f8fafc;
+        color: #0f172a;
         font-size: 0.92rem;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
     }
 
     .trial-modal__pill svg {
@@ -425,11 +429,11 @@ get_header();
     }
 
     .trial-modal__card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
         padding: 12px 14px;
-        color: #e2e8f0;
+        color: #0f172a;
         display: flex;
         gap: 10px;
         align-items: flex-start;
@@ -438,9 +442,9 @@ get_header();
     .trial-modal__icon {
         width: 34px;
         height: 34px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(16, 185, 129, 0.22));
-        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 4px;
+        background: linear-gradient(135deg, #eef2f7, #f9fafb);
+        border: 1px solid #e5e7eb;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -449,25 +453,26 @@ get_header();
     .trial-modal__icon svg {
         width: 18px;
         height: 18px;
-        color: #e2e8f0;
+        color: #0f172a;
     }
 
     .trial-modal__card h6 {
         margin: 0 0 4px;
-        color: #f8fafc;
+        color: #0f172a;
     }
 
     .trial-modal__card p {
         margin: 0;
-        color: #cbd5e1;
+        color: #475569;
         font-size: 0.95rem;
     }
 
     .trial-modal__form {
         background: #ffffff;
-        border-radius: 14px;
+        border-radius: 4px;
         padding: 18px;
-        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+        border: 1px solid #e5e7eb;
     }
 
     .trial-modal__form label {
@@ -475,7 +480,7 @@ get_header();
     }
 
     .trial-modal__form .form-control {
-        border-radius: 12px;
+        border-radius: 4px;
         border: 1px solid #e2e8f0;
         padding: 12px 14px;
         font-size: 1rem;
@@ -489,15 +494,15 @@ get_header();
     }
 
     .trial-modal__form .btn {
-        border-radius: 12px;
+        border-radius: 4px;
         padding: 12px;
         font-weight: 600;
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.22);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
     }
 
     @media (max-width: 575.98px) {
         .trial-modal {
-            border-radius: 14px;
+            border-radius: 4px;
         }
 
         .trial-modal__header,
@@ -605,7 +610,7 @@ get_header();
                     </svg>
                     Verified onboarding request
                 </span>
-                <h3 class="fw-semibold text-white mt-3 mb-1" style="font-size: 1.6rem;">Try Our Booking Plugin</h3>
+                <h3 class="fw-semibold text-dark mt-3 mb-1" style="font-size: 1.6rem;">Try Our Booking Plugin</h3>
                 <p class="trial-modal__subtitle small mb-0">Tell us where to send your onboarding link and setup steps.</p>
             </div>
 
