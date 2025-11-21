@@ -223,6 +223,23 @@ get_header();
         --bs-gutter-y: 1.25rem;
     }
 
+    @media (min-width: 992px) {
+        .hero-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .hero-actions .btn {
+            width: 100%;
+            max-width: 260px;
+        }
+
+        .hero-actions .btn + .btn {
+            margin-top: 0 !important;
+        }
+    }
+
     .mobile-sticky-bar {
         display: none;
         position: fixed;
