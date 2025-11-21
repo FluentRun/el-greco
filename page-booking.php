@@ -326,7 +326,7 @@ get_header();
                                 <p class="fw-semibold text-dark mb-1">Booking System Launch Call</p>
                                 <p class="small text-muted mb-0">Plan the calendars, payment steps, and automations that stop no-shows, cut admin time, and increase closed deals.</p>
                             </div>
-                            <span class="badge bg-dark small px-3 py-2 hero-pill">Done-for-you delivery</span>
+                            <span class="small text-muted fw-normal hero-pill">Done-for-you delivery</span>
                         </div>
 
                         <div class="d-flex flex-wrap gap-2 small text-muted mb-3">
