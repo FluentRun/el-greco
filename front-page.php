@@ -172,6 +172,12 @@ get_header();
     .hero-pill {
         white-space: nowrap;
     }
+    .hero-actions {
+        gap: 1rem;
+    }
+    .hero-media-card {
+        padding: 20px;
+    }
     .feature-card {
         width: 180px;
         height: 180px;
@@ -212,6 +218,15 @@ get_header();
             width: 52px;
             height: 52px;
         }
+        .hero-actions {
+            gap: 0.75rem;
+        }
+        .hero-actions .btn {
+            max-width: none;
+        }
+        .hero-media-card {
+            padding: 12px;
+        }
     }
 
     @media (max-width: 767.98px) {
@@ -224,6 +239,16 @@ get_header();
         }
         .hero-feature-card span {
             margin-top: 8px;
+        }
+        .hero-actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .hero-actions .btn {
+            width: 100%;
+        }
+        .hero-media-card {
+            padding: 10px;
         }
     }
 </style>
@@ -247,17 +272,19 @@ get_header();
                     We build fast, clear, conversion-ready websites with custom functionality tailored to your exact workflow — so visitors understand your offer instantly and turn into buyers.
                 </p>
 
-                <button class="mt-4 btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
-                    <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
-                    Sign up with Google
-                </button>
+                <div class="d-flex flex-wrap hero-actions mt-4">
+                    <button class="btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
+                        <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
+                        Sign up with Google
+                    </button>
 
-                <button class="mt-2 btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
-                    <span class="text-dark">Sign up with email</span>
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
-                        <path d="M4 2l6 5-6 5" />
-                    </svg>
-                </button>
+                    <button class="btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
+                        <span class="text-dark">Sign up with email</span>
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
+                            <path d="M4 2l6 5-6 5" />
+                        </svg>
+                    </button>
+                </div>
 
                 <p class="small text-muted mt-2">No credit card required</p>
 
@@ -283,56 +310,16 @@ get_header();
                             <span class="border rounded-pill px-3 py-1">Timezone aware</span>
                         </div>
 
-                        <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell">
-                            <div class="row g-1 hero-feature-row" role="list">
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <rect x="10" y="14" width="44" height="38" rx="6"></rect>
-                                            <path d="M20 8v12"></path>
-                                            <path d="M44 8v12"></path>
-                                            <path d="M10 26h44"></path>
-                                            <path d="M22 38h8"></path>
-                                            <path d="M34 38h8"></path>
-                                            <path d="M22 46h20"></path>
-                                        </svg>
-                                        <span>Booking</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M12 16h8l6 28h24l6-20H20"></path>
-                                            <circle cx="28" cy="50" r="4"></circle>
-                                            <circle cx="44" cy="50" r="4"></circle>
-                                            <path d="M24 28h28"></path>
-                                        </svg>
-                                        <span>E-commerce</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M12 50h40"></path>
-                                            <path d="M20 42l8-12 10 8 12-18 6 6"></path>
-                                            <path d="M20 22v28"></path>
-                                            <path d="M34 30v20"></path>
-                                            <path d="M48 18v32"></path>
-                                        </svg>
-                                        <span>Tracking</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" role="listitem">
-                                    <div class="hero-feature-card h-100">
-                                        <svg viewBox="0 0 64 64" aria-hidden="true">
-                                            <path d="M26 20l-12 12 12 12"></path>
-                                            <path d="M38 44l4-24"></path>
-                                            <path d="M38 20l12 12-12 12"></path>
-                                        </svg>
-                                        <span>Customization</span>
-                                    </div>
-                                </div>
+                        <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell hero-media-card">
+                            <div class="ratio ratio-16x9 w-100 mb-3">
+                                <video class="w-100 h-100 rounded-3" src="https://alidrives.b-cdn.net/Intro.mp4" autoplay muted playsinline loop controls></video>
                             </div>
+                            <a href="/page-explanier-video.php" class="btn btn-dark d-flex align-items-center justify-content-center gap-2 w-100">
+                                <span>Watch the full workflow</span>
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
+                                    <path d="M4 2l6 5-6 5" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
