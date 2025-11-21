@@ -377,11 +377,11 @@ get_header();
                 <div class="d-flex flex-wrap hero-actions mt-4">
                     <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
                         <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
-                        Book an appointment
+                        Order Now
                     </a>
 
                     <a href="/contact-us" class="btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
-                        <span class="text-dark">Get sample website</span>
+                        <span class="text-dark">Get Free Trail</span>
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
                             <path d="M4 2l6 5-6 5" />
                         </svg>
@@ -481,7 +481,7 @@ get_header();
             </p>
 
             <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-dark btn-lg mt-4 shadow-sm">
-                Book an appointment →
+                Order Now
             </a>
         </div>
 
@@ -759,8 +759,8 @@ get_header();
                 </p>
 
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Get started →</a>
-                    <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-light border btn-lg">Explore apps →</a>
+                    <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Order Now</a>
+                    <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-light border btn-lg">Get Free Trail</a>
                 </div>
             </div>
 
@@ -814,7 +814,7 @@ get_header();
 
                 <div class="mt-4">
                     <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-dark btn-lg shadow-sm">
-                        Get a Sample Website →
+                        Order Now
                     </a>
                 </div>
             </div>
@@ -829,7 +829,7 @@ get_header();
                 Order Now
             </a>
             <a href="/contact-us" class="btn btn-light border btn-lg w-100 text-dark">
-                Get a Demo
+                Get Free Trail
             </a>
         </div>
     </div>
