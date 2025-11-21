@@ -127,11 +127,14 @@ get_header();
     }
     .hero-animation-shell {
         min-height: 260px;
+        aspect-ratio: 16 / 9;
         background: linear-gradient(135deg, #1877F2 50%, #000000 50%);
         border-radius: 4px;
         overflow: hidden;
         padding: 0;
         position: relative;
+        display: flex;
+        align-items: stretch;
     }
     .hero-feature-grid {
         display: grid;
@@ -177,6 +180,56 @@ get_header();
     .hero-media-card {
         padding: 0;
     }
+    .hero-video-shell {
+        background: linear-gradient(135deg, #1877f2 50%, #000 50%);
+        position: relative;
+    }
+    .hero-video-placeholder-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .hero-video-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+    }
+    .hero-video-overlay .hero-play-badge {
+        background: rgba(255, 255, 255, 0.9);
+        color: #0f172a;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+        font-weight: 700;
+    }
+    .hero-video-shell video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 200ms ease;
+        border: 0;
+    }
+    .hero-video-shell.hero-video-loaded video {
+        opacity: 1;
+    }
+    .hero-video-shell .hero-video-placeholder-img {
+        transition: opacity 200ms ease;
+    }
+    .hero-video-shell.hero-video-loaded .hero-video-placeholder-img,
+    .hero-video-shell.hero-video-loaded .hero-video-overlay {
+        opacity: 0;
+    }
     .feature-card {
         width: 180px;
         height: 180px;
@@ -212,6 +265,7 @@ get_header();
         .hero-animation-shell {
             padding: 0;
             min-height: 220px;
+            aspect-ratio: 16 / 9;
         }
         .hero-feature-card svg {
             width: 52px;
@@ -222,9 +276,13 @@ get_header();
         }
         .hero-actions .btn {
             max-width: none;
+            min-height: 52px;
         }
         .hero-media-card {
             padding: 0;
+        }
+        .hero-video-shell {
+            border-radius: 4px;
         }
     }
 
@@ -232,6 +290,9 @@ get_header();
         .hero-info-row {
             flex-direction: column;
             align-items: flex-start;
+        }
+        .hero-animation-shell {
+            min-height: 200px;
         }
         .hero-feature-card {
             padding: 14px;
@@ -249,14 +310,10 @@ get_header();
         .hero-media-card {
             padding: 0;
         }
-    }
-
-    .hero-animation-shell video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        .hero-video-overlay .hero-play-badge {
+            width: 48px;
+            height: 48px;
+        }
     }
 </style>
 
@@ -317,8 +374,20 @@ get_header();
                             <span class="border rounded-pill px-3 py-1">Timezone aware</span>
                         </div>
 
-                        <div class="position-relative border rounded-3 shadow-sm hero-animation-shell hero-media-card">
-                            <video class="w-100 h-100" src="https://cdn.webmakerr.com/website/webdesign.mp4" autoplay muted playsinline loop controls></video>
+                        <div
+                            class="position-relative border rounded-3 shadow-sm hero-animation-shell hero-media-card hero-video-shell"
+                            data-video-src="https://cdn.webmakerr.com/website/webdesign.mp4"
+                        >
+                            <img
+                                class="hero-video-placeholder-img"
+                                src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201280%20720%27%20preserveAspectRatio%3D%27xMidYMid%20slice%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%25%27%20y1%3D%27100%25%27%20x2%3D%27100%25%27%20y2%3D%270%25%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%231877f2%27%20stop-opacity%3D%270.95%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23000000%27%20stop-opacity%3D%270.95%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20fill%3D%27url(%23g)%27%20width%3D%271280%27%20height%3D%27720%27/%3E%3Cpath%20d%3D%27M840%20310c0-11-9-20-20-20H511c-11%200-20%209-20%2020v140c0%2011%209%2020%2020%2020h309c11%200%2020-9%2020%2020V310z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.08%27%20/%3E%3Crect%20x%3D%27320%27%20y%3D%27240%27%20width%3D%27640%27%20height%3D%27240%27%20rx%3D%2716%27%20ry%3D%2716%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.08%27/%3E%3Cpath%20d%3D%27M640%20240c-88.36%200-160%2071.64-160%20160s71.64%20160%20160%20160%20160-71.64%20160-160S728.36%20240%20640%20240Zm0%20130l80%2030-80%2030Z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.2%27/%3E%3C/svg%3E"
+                                alt="Website demo placeholder"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                            <div class="hero-video-overlay">
+                                <span class="hero-play-badge">▶</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -326,6 +395,37 @@ get_header();
         </div>
     </div>
 </section>
+
+<script>
+    window.addEventListener('load', function() {
+        var heroVideoShell = document.querySelector('.hero-video-shell');
+
+        if (!heroVideoShell || heroVideoShell.dataset.loaded === '1') {
+            return;
+        }
+
+        var videoSrc = heroVideoShell.getAttribute('data-video-src');
+        if (!videoSrc) {
+            return;
+        }
+
+        var videoEl = document.createElement('video');
+        videoEl.setAttribute('playsinline', '');
+        videoEl.setAttribute('muted', '');
+        videoEl.setAttribute('loop', '');
+        videoEl.setAttribute('autoplay', '');
+        videoEl.setAttribute('controls', '');
+        videoEl.className = 'w-100 h-100';
+        videoEl.src = videoSrc;
+
+        videoEl.addEventListener('loadeddata', function() {
+            heroVideoShell.classList.add('hero-video-loaded');
+        });
+
+        heroVideoShell.appendChild(videoEl);
+        heroVideoShell.dataset.loaded = '1';
+    });
+</script>
 
 <section class="py-5 bg-light border-top">
     <div class="container-lg">
