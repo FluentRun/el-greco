@@ -20,7 +20,16 @@ wp_enqueue_script(
 
 $theme_dir = get_template_directory_uri();
 $checkout_url = 'https://beta.webmakerr.com/?fluent-cart=instant_checkout&item_id=1&quantity=1';
-$lead_capture_webhook = get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true );
+$webhook_url = $webhook_url ?? 'YOUR_WEBHOOK_URL_HERE';
+$webhook_url = trim( $webhook_url );
+
+if ( $webhook_url === 'YOUR_WEBHOOK_URL_HERE' || $webhook_url === '' ) {
+    $webhook_url = get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true );
+}
+
+if ( ! empty( $webhook_url ) ) {
+    $webhook_url = esc_url_raw( $webhook_url );
+}
 
 get_header();
 ?>
@@ -893,7 +902,7 @@ get_header();
     </div>
 </div>
 
-<div class="booking-lead-modal" id="bookingLeadModal" data-webhook="<?php echo esc_attr( $lead_capture_webhook ); ?>">
+<div class="booking-lead-modal" id="bookingLeadModal" data-webhook="<?php echo esc_attr( $webhook_url ); ?>">
     <div class="booking-lead-backdrop" data-close-lead-popup></div>
     <div class="booking-lead-dialog">
         <button type="button" class="booking-lead-close" aria-label="Close" data-close-lead-popup>
@@ -932,7 +941,7 @@ get_header();
 
             <div class="mb-4">
                 <label for="bookingLeadRequest" class="form-label">Where do you want to get the plugin?</label>
-                <input type="text" class="form-control" id="bookingLeadRequest" name="request" placeholder="Tell us the site or platform" required>
+                <input type="text" class="form-control" id="bookingLeadRequest" name="plugin_destination" placeholder="Tell us the site or platform" required>
             </div>
 
             <button type="submit" class="btn btn-dark btn-lg w-100 d-flex align-items-center justify-content-center gap-2" data-lead-submit>
@@ -958,11 +967,21 @@ get_header();
         var successAlert = modal.querySelector('[data-lead-success]');
         var errorAlert = modal.querySelector('[data-lead-error]');
         var submitBtn = modal.querySelector('[data-lead-submit]');
-        var defaultWebhook = modal.getAttribute('data-webhook') || '';
         var submitText = submitBtn ? submitBtn.textContent : '';
+        var placeholderWebhook = 'YOUR_WEBHOOK_URL_HERE';
+
+        function normalizeWebhook(url) {
+            var parsed = (url || '').trim();
+            if (!parsed || parsed === placeholderWebhook) {
+                return '';
+            }
+            return parsed;
+        }
+
+        var defaultWebhook = normalizeWebhook(modal.getAttribute('data-webhook'));
 
         function setActiveWebhook(url) {
-            modal.dataset.activeWebhook = url || '';
+            modal.dataset.activeWebhook = normalizeWebhook(url);
         }
 
         function openModal(webhook) {
@@ -997,7 +1016,7 @@ get_header();
         triggers.forEach(function (trigger) {
             trigger.addEventListener('click', function (event) {
                 event.preventDefault();
-                openModal(trigger.dataset.webhook || trigger.getAttribute('data-webhook') || defaultWebhook);
+                openModal(normalizeWebhook(trigger.dataset.webhook || trigger.getAttribute('data-webhook')) || defaultWebhook);
             });
         });
 
@@ -1023,11 +1042,14 @@ get_header();
                 submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting...';
             }
 
-            var webhookEndpoint = modal.dataset.activeWebhook || defaultWebhook || form.dataset.webhook || '';
+            var webhookEndpoint = normalizeWebhook(modal.dataset.activeWebhook || defaultWebhook || form.dataset.webhook);
             if (!webhookEndpoint) {
                 if (errorAlert) {
-                    errorAlert.textContent = 'Webhook URL is missing for this page.';
+                    errorAlert.textContent = 'Webhook URL is missing for this page. Set $webhook_url at the top of the template.';
                     errorAlert.classList.add('is-visible');
+                }
+                if (successAlert) {
+                    successAlert.classList.remove('is-visible');
                 }
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -1040,7 +1062,7 @@ get_header();
             var payload = {
                 name: formData.get('name') || '',
                 email: formData.get('email') || '',
-                request: formData.get('request') || ''
+                plugin_destination: formData.get('plugin_destination') || ''
             };
 
             fetch(webhookEndpoint, {
