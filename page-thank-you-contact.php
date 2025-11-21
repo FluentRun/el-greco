@@ -19,8 +19,7 @@ wp_enqueue_script(
 );
 
 $theme_dir   = get_template_directory_uri();
-$booking_page = get_page_by_path('booking');
-$booking_url  = $booking_page ? get_permalink($booking_page) : home_url('/booking');
+$booking_url = 'https://webmakerr.com/?booking=calendar&host=webmakerr&event=30min';
 
 get_header();
 ?>
@@ -98,6 +97,22 @@ get_header();
         stroke: #0f172a;
     }
 
+    @media (max-width: 575.98px) {
+        .thankyou-primary-actions {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .thankyou-primary-actions .btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .thankyou-primary-actions .text-muted {
+            width: 100%;
+        }
+    }
+
     .thankyou-header {
         gap: 12px;
     }
@@ -148,7 +163,7 @@ get_header();
                     <p class="mb-0">
                         <?php esc_html_e('Thanks for reaching out. Our team is reviewing your note and will reply shortly with next steps tailored to your request.', 'rap'); ?>
                     </p>
-                    <div class="mt-4 d-flex flex-wrap align-items-center gap-2">
+                    <div class="mt-4 d-flex flex-wrap align-items-center gap-2 thankyou-primary-actions">
                         <a class="btn btn-dark btn-lg fw-semibold" href="<?php echo esc_url($booking_url); ?>">
                             <?php esc_html_e('Book an appointment', 'rap'); ?>
                         </a>
