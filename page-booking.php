@@ -7,10 +7,6 @@
 $default_booking_webhook = 'https://webmakerr.com/?fluentcrm=1&route=contact&hash=fb919fc9-b574-4847-8d03-014249a2767e';
 $webhook_url = isset( $webhook_url ) ? $webhook_url : $default_booking_webhook;
 
-if ( '' === trim( (string) $webhook_url ) ) {
-    $webhook_url = $default_booking_webhook;
-}
-
 wp_enqueue_style(
     'bootstrap-5-landing',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
@@ -27,15 +23,18 @@ wp_enqueue_script(
 
 $theme_dir = get_template_directory_uri();
 $checkout_url = 'https://beta.webmakerr.com/?fluent-cart=instant_checkout&item_id=1&quantity=1';
-$webhook_url = trim( $webhook_url );
+$webhook_url = trim( (string) $webhook_url );
+$meta_webhook = trim( (string) get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true ) );
 
-if ( $webhook_url === $default_booking_webhook || $webhook_url === '' ) {
-    $webhook_url = get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true );
+if ( $meta_webhook !== '' && ( $webhook_url === $default_booking_webhook || $webhook_url === '' ) ) {
+    $webhook_url = $meta_webhook;
 }
 
-if ( ! empty( $webhook_url ) ) {
-    $webhook_url = esc_url_raw( $webhook_url );
+if ( $webhook_url === '' ) {
+    $webhook_url = $default_booking_webhook;
 }
+
+$webhook_url = esc_url_raw( $webhook_url );
 
 get_header();
 ?>
