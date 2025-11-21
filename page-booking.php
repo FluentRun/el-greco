@@ -4,6 +4,8 @@
  * Template Post Type: page
  */
 
+$webhook_url = 'PASTE_WEBHOOK_URL_HERE';
+
 wp_enqueue_style(
     'bootstrap-5-landing',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
@@ -20,10 +22,9 @@ wp_enqueue_script(
 
 $theme_dir = get_template_directory_uri();
 $checkout_url = 'https://beta.webmakerr.com/?fluent-cart=instant_checkout&item_id=1&quantity=1';
-$webhook_url = $webhook_url ?? 'https://webmakerr.com/?fluentcrm=1&route=contact&hash=fb919fc9-b574-4847-8d03-014249a2767e';
 $webhook_url = trim( $webhook_url );
 
-if ( $webhook_url === 'https://webmakerr.com/?fluentcrm=1&route=contact&hash=fb919fc9-b574-4847-8d03-014249a2767e' || $webhook_url === '' ) {
+if ( $webhook_url === 'PASTE_WEBHOOK_URL_HERE' || $webhook_url === '' ) {
     $webhook_url = get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true );
 }
 
@@ -968,7 +969,7 @@ get_header();
         var errorAlert = modal.querySelector('[data-lead-error]');
         var submitBtn = modal.querySelector('[data-lead-submit]');
         var submitText = submitBtn ? submitBtn.textContent : '';
-        var placeholderWebhook = 'YOUR_WEBHOOK_URL_HERE';
+        var placeholderWebhook = 'PASTE_WEBHOOK_URL_HERE';
 
         function normalizeWebhook(url) {
             var parsed = (url || '').trim();
@@ -1036,33 +1037,48 @@ get_header();
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+            if (errorAlert) {
+                errorAlert.textContent = 'Something went wrong. Please try again.';
+                errorAlert.classList.remove('is-visible');
+            }
+            if (successAlert) {
+                successAlert.classList.remove('is-visible');
+            }
+
+            var webhookEndpoint = normalizeWebhook(modal.dataset.activeWebhook || defaultWebhook || form.dataset.webhook);
+            var formData = new FormData(form);
+            var nameValue = (formData.get('name') || '').trim();
+            var emailValue = (formData.get('email') || '').trim();
+            var pluginRequestValue = (formData.get('plugin_destination') || '').trim();
+            var emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+
+            if (!nameValue || !emailIsValid || !pluginRequestValue) {
+                if (errorAlert) {
+                    errorAlert.textContent = 'Please add your name, a valid email, and where to send the plugin.';
+                    errorAlert.classList.add('is-visible');
+                }
+                return;
+            }
+
+            if (!webhookEndpoint) {
+                if (errorAlert) {
+                    errorAlert.textContent = 'Webhook URL is missing for this page. Set $webhook_url at the top of the template.';
+                    errorAlert.classList.add('is-visible');
+                }
+                return;
+            }
 
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting...';
             }
 
-            var webhookEndpoint = normalizeWebhook(modal.dataset.activeWebhook || defaultWebhook || form.dataset.webhook);
-            if (!webhookEndpoint) {
-                if (errorAlert) {
-                    errorAlert.textContent = 'Webhook URL is missing for this page. Set $webhook_url at the top of the template.';
-                    errorAlert.classList.add('is-visible');
-                }
-                if (successAlert) {
-                    successAlert.classList.remove('is-visible');
-                }
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = submitText || 'Get Free Trail';
-                }
-                return;
-            }
-
-            var formData = new FormData(form);
             var payload = {
-                name: formData.get('name') || '',
-                email: formData.get('email') || '',
-                plugin_destination: formData.get('plugin_destination') || ''
+                email: emailValue,
+                first_name: nameValue,
+                fields: {
+                    plugin_request: pluginRequestValue
+                }
             };
 
             fetch(webhookEndpoint, {
