@@ -331,11 +331,11 @@ get_header();
                 <div class="d-flex flex-wrap hero-actions mt-4">
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
                         <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
-                        Connect Google Calendar
+                        Order Plugin Now
                     </a>
 
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
-                        <span class="text-dark">Start with email</span>
+                        <span class="text-dark">Start for free</span>
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
                             <path d="M4 2l6 5-6 5" />
                         </svg>
@@ -509,7 +509,7 @@ get_header();
             </p>
 
             <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg mt-4 shadow-sm">
-                Start booking instantly →
+                Order Plugin Now
             </a>
         </div>
 
@@ -708,8 +708,8 @@ get_header();
                 </p>
 
                 <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start w-100" style="max-width: 420px;">
-                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Get FluentBooking now →</a>
-                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg">See implementation checklist →</a>
+                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Order Plugin Now</a>
+                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg">Start for free</a>
                 </div>
             </div>
 
@@ -750,7 +750,7 @@ get_header();
 
                 <div class="mt-4">
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">
-                        Start booking now →
+                        Order Plugin Now
                     </a>
                 </div>
             </div>
@@ -762,10 +762,10 @@ get_header();
     <div class="container-lg">
         <div class="d-flex gap-2">
             <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg w-100">
-                Order Now
+                Order Plugin Now
             </a>
             <a href="/contact-us" class="btn btn-light border btn-lg w-100 text-dark">
-                Contact Us
+                Start for free
             </a>
         </div>
     </div>
