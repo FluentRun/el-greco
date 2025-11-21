@@ -20,7 +20,7 @@ wp_enqueue_script(
 
 $theme_dir = get_template_directory_uri();
 $checkout_url = 'https://beta.webmakerr.com/?fluent-cart=instant_checkout&item_id=1&quantity=1';
-$lead_capture_webhook = get_post_meta( get_the_ID(), 'booking_lead_webhook_url', true );
+$lead_capture_webhook = get_post_meta( get_the_ID(), 'https://webmakerr.com/?fluentcrm=1&route=contact&hash=fb919fc9-b574-4847-8d03-014249a2767e', true );
 
 get_header();
 ?>
