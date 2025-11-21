@@ -209,6 +209,15 @@ get_header();
         fill: none;
     }
 
+    .testimonial-rotate-card {
+        transition: opacity 450ms ease, transform 450ms ease;
+    }
+
+    .testimonial-rotate-card.is-fading {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
     .more-feature-grid {
         --bs-gutter-x: 1.25rem;
         --bs-gutter-y: 1.25rem;
@@ -352,6 +361,112 @@ get_header();
     </div>
 </section>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var testimonials = [
+            {
+                quote: '“FluentBooking runs every consult slot for us—no email tag, no conflicts. Demo bookings jumped 38% in month one.”',
+                name: 'Noah Patel',
+                title: 'Marketing Ops Lead, Horizon Creative',
+                initial: 'N'
+            },
+            {
+                quote: '“The booking-to-payment flow replaced three tools and two contractors. It paid for itself in two weeks.”',
+                name: 'Melissa Grant',
+                title: 'VP Growth, Northwind Legal',
+                initial: 'M'
+            },
+            {
+                quote: '“Clients self-schedule coaching, get automatic reminders, and pay on the spot. Our team stopped chasing invoices.”',
+                name: 'Sofia Alvarez',
+                title: 'Head of Growth, Latitude Labs',
+                initial: 'S'
+            }
+        ];
+
+        var desktopCards = Array.prototype.slice.call(document.querySelectorAll('[data-testimonial-card="desktop"]'));
+        var mobileCard = document.querySelector('[data-testimonial-card="mobile"]');
+        var activeIndex = 1;
+        var rotationDelay = 5000;
+
+        function setCardContent(card, testimonial) {
+            if (!card || !testimonial) {
+                return;
+            }
+
+            var quoteEl = card.querySelector('[data-testimonial-quote]');
+            var nameEl = card.querySelector('[data-testimonial-name]');
+            var titleEl = card.querySelector('[data-testimonial-title]');
+            var initialEl = card.querySelector('[data-testimonial-initial]');
+
+            if (quoteEl) {
+                quoteEl.textContent = testimonial.quote;
+            }
+            if (nameEl) {
+                nameEl.textContent = testimonial.name;
+            }
+            if (titleEl) {
+                titleEl.textContent = testimonial.title;
+            }
+            if (initialEl) {
+                initialEl.textContent = testimonial.initial;
+            }
+        }
+
+        function renderDesktop() {
+            if (!desktopCards.length) {
+                return;
+            }
+
+            var total = testimonials.length;
+            var order = [
+                (activeIndex + total - 1) % total,
+                activeIndex % total,
+                (activeIndex + 1) % total
+            ];
+
+            desktopCards.forEach(function (card, index) {
+                setCardContent(card, testimonials[order[index]]);
+            });
+        }
+
+        function renderMobile() {
+            if (!mobileCard) {
+                return;
+            }
+
+            setCardContent(mobileCard, testimonials[activeIndex % testimonials.length]);
+        }
+
+        function fadeCards(cards, callback) {
+            cards.forEach(function (card) {
+                card.classList.add('is-fading');
+            });
+
+            setTimeout(function () {
+                callback();
+                requestAnimationFrame(function () {
+                    cards.forEach(function (card) {
+                        card.classList.remove('is-fading');
+                    });
+                });
+            }, 200);
+        }
+
+        function rotateTestimonials() {
+            activeIndex = (activeIndex + 1) % testimonials.length;
+
+            fadeCards(desktopCards, renderDesktop);
+            fadeCards(mobileCard ? [mobileCard] : [], renderMobile);
+        }
+
+        renderDesktop();
+        renderMobile();
+
+        setInterval(rotateTestimonials, rotationDelay);
+    });
+</script>
+
 <section class="py-5 bg-light border-top">
     <div class="container-lg">
         <div class="text-center mx-auto" style="max-width: 700px;">
@@ -484,73 +599,65 @@ get_header();
             See how FluentBooking eliminates manual scheduling, speeds up follow-up, and gives every team a polished, conversion-focused booking flow.
         </p>
 
-        <div class="d-none d-md-flex justify-content-center align-items-center gap-4 mt-5">
-            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
-                <p class="text-dark small fst-italic mb-4">
-                    “FluentBooking runs every consult slot for us—no email tag, no conflicts. Demo bookings jumped 38% in month one.”
-                </p>
+        <div class="d-none d-md-flex justify-content-center align-items-center gap-4 mt-5" data-testimonial-container="desktop">
+            <div class="bg-white border rounded-4 shadow-sm p-4 testimonial-rotate-card" data-testimonial-card="desktop" data-position="left" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
+                <p class="text-dark small fst-italic mb-4" data-testimonial-quote="desktop"></p>
 
                 <div class="d-flex align-items-center">
                     <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
-                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">N</text>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black" data-testimonial-initial="desktop"></text>
                     </svg>
                     <div class="ms-3 text-start">
-                        <p class="fw-semibold text-dark small mb-1">Noah Patel</p>
-                        <p class="text-muted small m-0">Marketing Ops Lead, Horizon Creative</p>
+                        <p class="fw-semibold text-dark small mb-1" data-testimonial-name="desktop"></p>
+                        <p class="text-muted small m-0" data-testimonial-title="desktop"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 420px; height: 230px;">
-                <p class="text-dark fw-semibold mb-4">
-                    “The booking-to-payment flow replaced three tools and two contractors. It paid for itself in two weeks.”
-                </p>
+            <div class="bg-white border rounded-4 shadow-sm p-4 testimonial-rotate-card" data-testimonial-card="desktop" data-position="center" style="width: 420px; height: 230px;">
+                <p class="text-dark fw-semibold mb-4" data-testimonial-quote="desktop"></p>
 
                 <div class="d-flex align-items-center">
                     <svg width="40" height="40" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <circle cx="22" cy="22" r="20" fill="white" stroke="black" stroke-width="2"></circle>
-                        <text x="22" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="black">M</text>
+                        <text x="22" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="black" data-testimonial-initial="desktop"></text>
                     </svg>
                     <div class="ms-3 text-start">
-                        <p class="fw-semibold text-dark small mb-1">Melissa Grant</p>
-                        <p class="text-muted small m-0">VP Growth, Northwind Legal</p>
+                        <p class="fw-semibold text-dark small mb-1" data-testimonial-name="desktop"></p>
+                        <p class="text-muted small m-0" data-testimonial-title="desktop"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
-                <p class="text-dark small fst-italic mb-4">
-                    “Clients self-schedule coaching, get automatic reminders, and pay on the spot. Our team stopped chasing invoices.”
-                </p>
+            <div class="bg-white border rounded-4 shadow-sm p-4 testimonial-rotate-card" data-testimonial-card="desktop" data-position="right" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
+                <p class="text-dark small fst-italic mb-4" data-testimonial-quote="desktop"></p>
 
                 <div class="d-flex align-items-center">
                     <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
-                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">S</text>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black" data-testimonial-initial="desktop"></text>
                     </svg>
                     <div class="ms-3 text-start">
-                        <p class="fw-semibold text-dark small mb-1">Sofia Alvarez</p>
-                        <p class="text-muted small m-0">Head of Growth, Latitude Labs</p>
+                        <p class="fw-semibold text-dark small mb-1" data-testimonial-name="desktop"></p>
+                        <p class="text-muted small m-0" data-testimonial-title="desktop"></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="d-md-none mx-auto mt-4" style="max-width: 380px;">
-            <div class="bg-white border rounded-4 shadow-sm p-4">
-                <p class="text-dark fw-semibold mb-4">
-                    “The booking-to-payment flow replaced three tools and two contractors. It paid for itself in two weeks.”
-                </p>
+        <div class="d-md-none mx-auto mt-4" style="max-width: 380px;" data-testimonial-container="mobile">
+            <div class="bg-white border rounded-4 shadow-sm p-4 testimonial-rotate-card" data-testimonial-card="mobile">
+                <p class="text-dark fw-semibold mb-4" data-testimonial-quote="mobile"></p>
 
                 <div class="d-flex align-items-center">
                     <svg width="36" height="36" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <circle cx="20" cy="20" r="18" fill="white" stroke="black" stroke-width="2"></circle>
-                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black">M</text>
+                        <text x="20" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="black" data-testimonial-initial="mobile"></text>
                     </svg>
                     <div class="ms-3 text-start">
-                        <p class="fw-semibold text-dark small mb-1">Melissa Grant</p>
-                        <p class="text-muted small m-0">VP Growth, Northwind Legal</p>
+                        <p class="fw-semibold text-dark small mb-1" data-testimonial-name="mobile"></p>
+                        <p class="text-muted small m-0" data-testimonial-title="mobile"></p>
                     </div>
                 </div>
             </div>
