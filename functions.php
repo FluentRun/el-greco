@@ -485,26 +485,13 @@ add_action( 'wp_ajax_load_webp_png', 'do_webp_to_png' );
 add_action( 'wp_ajax_nopriv_load_webp_png', 'do_webp_to_png' );
 
 // Disable the Gutenberg block editor and related features globally.
-add_filter( 'use_block_editor_for_post', '__return_false', 10 );
-add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
-add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
-add_filter( 'use_widgets_block_editor', '__return_false' );
-add_filter( 'allow_block_themes', '__return_false' );
-
-add_action( 'after_setup_theme', function () {
-    remove_theme_support( 'block-templates' );
-    remove_theme_support( 'core-block-patterns' );
-} );
-
-add_filter( 'should_load_block_editor_scripts_and_styles', '__return_false' );
-
-add_action( 'wp_enqueue_scripts', function () {
-    wp_dequeue_style( 'wp-block-library' );
-    wp_dequeue_style( 'wp-block-library-theme' );
-    wp_dequeue_style( 'wc-blocks-style' );
-    wp_deregister_style( 'wp-block-library' );
-    wp_deregister_style( 'wp-block-library-theme' );
-    wp_deregister_style( 'wc-blocks-style' );
-}, 20 );
-
+// Disable Gutenberg only for pages and posts
+function wm_disable_gutenberg_for_posts_pages( $use_block_editor, $post ) {
+    if ( $post->post_type === 'page' || $post->post_type === 'post' ) {
+        return false; // Force Classic Editor
+    }
+    return $use_block_editor; // Keep Gutenberg for everything else
+}
+add_filter( 'use_block_editor_for_post', 'wm_disable_gutenberg_for_posts_pages', 10, 2 );
+add_filter( 'use_block_editor_for_post_type', 'wm_disable_gutenberg_for_posts_pages', 10, 2 );
 
