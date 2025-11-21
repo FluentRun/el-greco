@@ -668,7 +668,7 @@ get_header();
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="bg-white border rounded-4 shadow-sm p-4 p-md-5 row g-4 align-items-center">
-            <div class="col-md-5 d-flex flex-column">
+            <div class="col-md-5 d-flex flex-column align-items-center align-items-md-start text-center text-md-start">
                     <span class="d-inline-flex align-items-center bg-white border px-3 py-1 rounded-pill text-secondary small shadow-sm mb-3">
                     Process
                     </span>
@@ -681,7 +681,7 @@ get_header();
                     We set up availability, routing, payments, and automations with weekly updates—so leadership knows exactly what’s live, what’s next, and when revenue hits.
                 </p>
 
-                <div class="d-flex flex-wrap gap-2">
+                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start w-100" style="max-width: 420px;">
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Get FluentBooking now →</a>
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg">See implementation checklist →</a>
                 </div>
