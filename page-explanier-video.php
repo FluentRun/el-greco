@@ -295,18 +295,6 @@ get_header();
             <div class="col-lg-6">
                 <div class="position-relative bg-white border rounded-4 shadow-sm overflow-hidden booking-ambient">
                     <div class="p-4 position-relative" style="z-index:2; min-height:350px;">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="d-flex gap-3">
-                                <img src="<?php echo esc_url( $theme_dir . '/images/home/user2.png' ); ?>" class="rounded-circle" width="48" height="48" alt="Profile">
-                                <div>
-                                    <p class="fw-medium mb-1 small text-dark">Lucas Weber</p>
-                                    <p class="fw-semibold text-dark mb-1">Explainer Video Strategy Session</p>
-                                    <p class="small text-muted">Map the script, storyboard, and motion style that gets prospects to “I get it” within seconds.</p>
-                                </div>
-                            </div>
-                            <span class="badge bg-dark small px-3 py-2">Premium production</span>
-                        </div>
-
                         <div class="d-flex flex-wrap gap-2 small text-muted mb-3">
                             <span class="border rounded-pill px-3 py-1">Concept engineered to convert</span>
                             <span class="border rounded-pill px-3 py-1">Script, storyboard, voiceover included</span>
