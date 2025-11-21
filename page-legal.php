@@ -78,480 +78,398 @@ get_header();
 
 <style>
     :root {
-        --bs-border-radius: 4px;
-        --bs-border-radius-sm: 4px;
-        --bs-border-radius-lg: 4px;
-        --bs-border-radius-xl: 4px;
-        --bs-border-radius-xxl: 4px;
-        --bs-border-radius-pill: 4px;
+        --legal-green: #00b22d;
+        --legal-dark: #222325;
+        --legal-muted: #6f767d;
+        --legal-border: #e3e7eb;
+        --bs-border-radius: 8px;
+        --bs-border-radius-sm: 8px;
+        --bs-border-radius-lg: 10px;
+        --bs-border-radius-xl: 12px;
+        --bs-border-radius-xxl: 16px;
+        --bs-border-radius-pill: 999px;
     }
 
-    .rounded-circle {
-        border-radius: 4px !important;
-    }
-
-    .legal-ambient {
-        background:
-            radial-gradient(circle at 15% 20%, rgba(46, 158, 255, 0.08), transparent 45%),
-            radial-gradient(circle at 80% 0%, rgba(67, 56, 202, 0.08), transparent 35%),
-            radial-gradient(circle at 60% 85%, rgba(16, 185, 129, 0.1), transparent 40%);
+    .legal-wrap {
+        background: linear-gradient(180deg, #f7f9fb 0%, #ffffff 100%);
     }
 
     .legal-hero {
-        background: linear-gradient(135deg, #1877f2 52%, #0b0b0f 48%);
-        border-radius: 4px;
-        overflow: hidden;
-        padding: 36px;
+        background: linear-gradient(90deg, #00a62a 0%, #00c656 60%, #00e07b 100%);
         color: #fff;
+        padding: 48px;
+        border-radius: 16px;
         position: relative;
-        box-shadow: 0 30px 45px rgba(15, 23, 42, 0.22);
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0, 178, 45, 0.25);
     }
 
-    .legal-hero:before,
     .legal-hero:after {
         content: '';
         position: absolute;
-        width: 220px;
-        height: 220px;
+        width: 360px;
+        height: 360px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        z-index: 0;
+        background: rgba(255, 255, 255, 0.08);
+        bottom: -120px;
+        right: -120px;
     }
 
-    .legal-hero:before {
-        top: -60px;
-        right: -40px;
+    .legal-hero h1 {
+        font-size: 2.75rem;
+        font-weight: 800;
     }
 
-    .legal-hero:after {
-        bottom: -80px;
-        left: -60px;
-    }
-
-    .legal-hero h1,
     .legal-hero p {
-        position: relative;
-        z-index: 1;
+        max-width: 760px;
+        font-size: 1.1rem;
     }
 
-    .legal-card {
-        background: #fff;
-        border: 1px solid #e5e7eb;
-        border-radius: 4px;
-        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
-    }
-
-    .legal-card:hover {
-        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
-        transform: translateY(-2px);
-        transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .legal-badge {
-        background: #e0f2fe;
-        color: #0b6bcf;
-        font-weight: 600;
-        padding: 6px 12px;
+    .legal-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        padding: 10px 14px;
         border-radius: 999px;
-        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
     }
 
     .legal-cta-btn {
         padding: 12px 18px;
-        font-weight: 600;
-        border-radius: 4px;
+        font-weight: 700;
+        border-radius: 999px;
+    }
+
+    .legal-card {
+        border: 1px solid var(--legal-border);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 16px 30px rgba(18, 38, 63, 0.07);
+    }
+
+    .legal-subhead {
+        color: var(--legal-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
     }
 
     .legal-link {
-        color: #1877f2;
+        color: var(--legal-dark);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .legal-link:hover {
-        color: #0a5ac0;
+        color: var(--legal-green);
     }
 
     .legal-pill {
-        border: 1px solid #e2e8f0;
-        background: #f8fafc;
-        color: #0f172a;
-        border-radius: 999px;
-        padding: 10px 12px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .legal-icon-box {
-        width: 56px;
-        height: 56px;
-        border-radius: 4px;
-        background: linear-gradient(135deg, #f9fafb, #eef2f7);
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .legal-icon-box svg {
-        width: 28px;
-        height: 28px;
-    }
-
-    .legal-placeholder {
-        width: 100%;
-        height: 120px;
-        border-radius: 4px;
-        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" preserveAspectRatio="none"%3E%3Cdefs%3E%3ClinearGradient id="g" x1="0" y1="0" x2="1" y2="1"%3E%3Cstop offset="0%25" stop-color="%23e5e7eb"/%3E%3Cstop offset="100%25" stop-color="%23cbd5e1"/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width="120" height="80" fill="url(%23g)" rx="8"/%3E%3Cpath d="M18 55l16-18 12 12 20-26 16 20" fill="none" stroke="%238f9bad" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
-        background-size: cover;
-        background-position: center;
-    }
-
-    .legal-list-check {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-weight: 600;
-        color: #0f172a;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: var(--legal-dark);
+        border: 1px solid var(--legal-border);
+        font-weight: 700;
     }
 
-    .legal-list-check svg {
-        width: 18px;
-        height: 18px;
-        color: #16a34a;
+    .legal-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 14px;
     }
 
-    .legal-side-card {
-        background: #0b0b0f;
-        color: #e2e8f0;
-        border-radius: 4px;
-        padding: 20px;
-        height: 100%;
+    .legal-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--legal-border);
+        transition: border 0.16s ease, transform 0.16s ease;
+    }
+
+    .legal-list li:hover {
+        border-color: #b6bec7;
+        transform: translateY(-2px);
+    }
+
+    .legal-bullet {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--legal-green);
+        box-shadow: 0 0 0 6px rgba(0, 178, 45, 0.12);
+    }
+
+    .legal-featured {
+        background: #0e0f10;
+        color: #fff;
+        border-radius: 14px;
+        padding: 24px;
         position: relative;
         overflow: hidden;
     }
 
-    .legal-side-card:after {
+    .legal-featured:after {
         content: '';
         position: absolute;
-        width: 180px;
-        height: 180px;
+        width: 240px;
+        height: 240px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.04);
-        bottom: -40px;
-        right: -40px;
+        background: radial-gradient(circle, rgba(0, 178, 45, 0.2), transparent 60%);
+        top: -80px;
+        right: -60px;
+    }
+
+    .legal-meta {
+        font-size: 0.9rem;
+        color: var(--legal-muted);
+    }
+
+    .legal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+    }
+
+    .legal-icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: #eef3f6;
+        display: grid;
+        place-items: center;
+        color: var(--legal-green);
     }
 
     @media (max-width: 767px) {
         .legal-hero {
             padding: 28px;
         }
+
+        .legal-hero h1 {
+            font-size: 2.1rem;
+        }
     }
 </style>
 
-<div class="legal-ambient py-5">
+<div class="legal-wrap py-5">
     <div class="container">
         <div class="legal-hero mb-4">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-7">
-                    <div class="d-inline-flex align-items-center gap-2 mb-3">
-                        <span class="legal-badge">Legal Portal</span>
-                        <span class="legal-pill"><span class="badge bg-success rounded-pill">New</span> Updated compliance center</span>
-                    </div>
-                    <h1 class="fw-bold display-5 mb-3">Webmakerr Legal &amp; Trust Center</h1>
-                    <p class="fs-5 mb-4">Navigate our policies, compliance resources, and trust commitments—all in one streamlined hub tailored for Webmakerr clients and partners.</p>
-                    <div class="d-flex flex-wrap align-items-center gap-3">
-                        <a class="btn btn-light text-dark legal-cta-btn" href="mailto:legal@webmakerr.com">Contact Legal</a>
-                        <a class="btn btn-outline-light legal-cta-btn" href="https://webmakerr.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
-                        <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-success rounded-pill">Available 24/7</span>
-                            <span class="badge bg-warning text-dark rounded-pill">Compliance First</span>
+            <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+                <span class="legal-chip">Legal Portal</span>
+                <span class="legal-chip" style="background: rgba(255,255,255,0.18);">Updated for 2024</span>
+            </div>
+            <h1 class="mb-3">Legal resources and trust documentation</h1>
+            <p class="mb-4">Access Fiverr-style clarity on policies, terms, and compliance materials you need to work with Webmakerr confidently.</p>
+            <div class="d-flex flex-wrap gap-3">
+                <a class="btn btn-light text-dark legal-cta-btn" href="mailto:legal@webmakerr.com">Contact Legal</a>
+                <a class="btn btn-outline-light legal-cta-btn" href="https://webmakerr.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+                <span class="badge bg-dark text-white d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill"><span class="badge bg-success rounded-pill">Live</span> Response in 1 business day</span>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+                <div class="legal-card p-4 h-100">
+                    <p class="legal-subhead">Main policies</p>
+                    <h3 class="fw-bold mb-3">Start with the essentials</h3>
+                    <div class="legal-grid">
+                        <div class="p-3 border rounded-3 d-flex flex-column gap-2">
+                            <div class="d-flex gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 4v16"/><path d="M16 10h4"/><path d="M16 14h4"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-1">Terms of Service</p>
+                                    <p class="legal-meta mb-2">How we operate, marketplace rules, and user commitments.</p>
+                                    <a class="legal-link" href="https://webmakerr.com/terms-of-service" target="_blank" rel="noopener">View terms</a>
+                                </div>
+                            </div>
                         </div>
+                        <div class="p-3 border rounded-3 d-flex flex-column gap-2">
+                            <div class="d-flex gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V6z"/><path d="M9 10l2 2 4-4"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-1">Privacy &amp; Data</p>
+                                    <p class="legal-meta mb-2">Privacy Policy, Cookie Policy, and data handling transparency.</p>
+                                    <a class="legal-link" href="https://webmakerr.com/privacy-policy" target="_blank" rel="noopener">Privacy overview</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 border rounded-3 d-flex flex-column gap-2">
+                            <div class="d-flex gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M8 17v4"/><path d="M16 17v4"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-1">Payments &amp; billing</p>
+                                    <p class="legal-meta mb-2">Billing terms, refunds, and payout expectations.</p>
+                                    <a class="legal-link" href="https://webmakerr.com/terms-of-service#payments" target="_blank" rel="noopener">See billing terms</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 border rounded-3 d-flex flex-column gap-2">
+                            <div class="d-flex gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v12l-7 4-7-4V6z"/><path d="M9 12l2 2 4-4"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-1">Data Processing Agreement</p>
+                                    <p class="legal-meta mb-2">Subprocessor list, SCCs, and GDPR commitments.</p>
+                                    <a class="legal-link" href="https://webmakerr.com/dpa" target="_blank" rel="noopener">Download DPA</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="legal-featured h-100">
+                    <p class="legal-subhead text-white mb-2">Need something signed?</p>
+                    <h4 class="fw-bold mb-2">Custom agreements &amp; support</h4>
+                    <p class="mb-3">Request MSAs, NDAs, or tailored compliance language. We answer within one business day.</p>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-success" href="mailto:legal@webmakerr.com">Contact legal team</a>
+                        <a class="btn btn-outline-light" href="https://cal.com/webmakerr/legal" target="_blank" rel="noopener">Book a call</a>
+                        <small class="legal-meta text-white">Regional coverage: EU, UK, US</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+                <div class="legal-card p-4 h-100">
+                    <p class="legal-subhead">Compliance library</p>
+                    <h4 class="fw-bold mb-3">Transparency in one place</h4>
+                    <ul class="legal-list">
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="legal-bullet"></span>
+                                <div>
+                                    <p class="fw-bold mb-0">Security overview</p>
+                                    <small class="legal-meta">Infrastructure, encryption, and SOC alignment</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/security" target="_blank" rel="noopener">View</a>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="legal-bullet"></span>
+                                <div>
+                                    <p class="fw-bold mb-0">Subprocessors</p>
+                                    <small class="legal-meta">Live vendor list and notification process</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/subprocessors" target="_blank" rel="noopener">See list</a>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="legal-bullet"></span>
+                                <div>
+                                    <p class="fw-bold mb-0">Responsible disclosure</p>
+                                    <small class="legal-meta">How to report vulnerabilities and get rapid triage</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/security#vdp" target="_blank" rel="noopener">Report</a>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="legal-bullet"></span>
+                                <div>
+                                    <p class="fw-bold mb-0">Data subject rights</p>
+                                    <small class="legal-meta">DSAR forms and deletion request workflow</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/privacy-policy#rights" target="_blank" rel="noopener">Submit</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="legal-card p-4 h-100">
+                    <p class="legal-subhead">Guides &amp; templates</p>
+                    <h4 class="fw-bold mb-3">Practical resources</h4>
+                    <div class="d-grid gap-3">
+                        <div class="d-flex justify-content-between align-items-center p-3 border rounded-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v16H6z"/><path d="M10 8h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">Compliance FAQ</p>
+                                    <small class="legal-meta">Most asked questions from procurement teams</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/legal#faq" target="_blank" rel="noopener">View</a>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-3 border rounded-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4z"/><path d="M10 10v10"/><path d="M14 10v10"/><path d="M4 16h16"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">Trademark &amp; IP</p>
+                                    <small class="legal-meta">Brand usage, DMCA, and IP protection requests</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/legal#ip" target="_blank" rel="noopener">Learn more</a>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center p-3 border rounded-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="legal-icon-box">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18H5z"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h3"/></svg>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">Platform integrity</p>
+                                    <small class="legal-meta">Content moderation and enforcement policies</small>
+                                </div>
+                            </div>
+                            <a class="legal-link" href="https://webmakerr.com/legal#integrity" target="_blank" rel="noopener">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legal-card p-4">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <p class="legal-subhead">Trust center</p>
+                    <h4 class="fw-bold mb-2">Stay informed</h4>
+                    <p class="mb-3">Subscribe for updates when we refresh policies or add new subprocessors. We keep the same responsive cadence you see on the Fiverr Pro legal portal.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="legal-pill">Change logs</span>
+                        <span class="legal-pill">Incident response</span>
+                        <span class="legal-pill">Status page</span>
+                        <span class="legal-pill">Data residency</span>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div class="legal-card p-3 bg-white text-dark position-relative">
-                        <div class="legal-placeholder mb-3"></div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="legal-icon-box">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M8 6h9" />
-                                        <path d="M8 10h9" />
-                                        <path d="M8 14h5" />
-                                        <path d="M4 6l0 12" />
-                                        <path d="M20 6l0 12" />
-                                        <path d="M4 18h16" />
-                                        <path d="M4 6h16" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="mb-1 fw-bold">Resource Spotlight</p>
-                                    <small class="text-muted">Updated weekly by Webmakerr legal team</small>
-                                </div>
+                    <div class="border p-3 rounded-3 bg-light h-100">
+                        <form action="https://webmakerr.com/newsletter" method="get" class="d-flex flex-column gap-2">
+                            <label class="fw-bold">Get email updates</label>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <input class="form-control" type="email" name="email" placeholder="you@company.com" required>
+                                <button class="btn btn-success" type="submit">Notify me</button>
                             </div>
-                            <span class="badge bg-light text-dark border">v3.2</span>
-                        </div>
-                        <p class="mb-3">Download our most recent Data Processing Agreement, security overview, and platform compliance summaries.</p>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a class="legal-pill" href="#policies"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2l6 3v4c0 3.14-2.69 5.88-6 7-3.31-1.12-6-3.86-6-7V5l6-3z"/></svg> Core Policies</a>
-                            <a class="legal-pill" href="#trust"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2l6 3-6 3-6-3 6-3zm0 6.5l6-3V11c0 3.08-2.69 5.82-6 7-3.31-1.18-6-3.92-6-7V5.5l6 3z"/></svg> Trust Center</a>
-                        </div>
+                            <small class="legal-meta">We only email for material legal changes.</small>
+                        </form>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-3 mb-4">
-            <div class="col-md-3">
-                <div class="legal-card p-3 h-100 d-flex align-items-center gap-3">
-                    <div class="legal-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3l7 4v10l-7 4-7-4V7z" />
-                            <path d="M12 3v18" />
-                            <path d="M5 7l14 8" />
-                            <path d="M19 7l-14 8" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="mb-1 fw-bold">Security</p>
-                        <small class="text-muted">Infrastructure, SOC &amp; encryption</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="legal-card p-3 h-100 d-flex align-items-center gap-3">
-                    <div class="legal-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2v20" />
-                            <path d="M5 7h14" />
-                            <path d="M5 12h14" />
-                            <path d="M5 17h14" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="mb-1 fw-bold">Privacy</p>
-                        <small class="text-muted">Data Processing Agreement, GDPR</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="legal-card p-3 h-100 d-flex align-items-center gap-3">
-                    <div class="legal-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 21V5l7-3 7 3v16l-7 3z" />
-                            <path d="M9 10l6 4" />
-                            <path d="M9 14l6-4" />
-                            <path d="M12 12l0 8" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="mb-1 fw-bold">Terms</p>
-                        <small class="text-muted">Platform use &amp; service commitments</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="legal-card p-3 h-100 d-flex align-items-center gap-3">
-                    <div class="legal-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 5h18" />
-                            <path d="M3 10h18" />
-                            <path d="M5 15h14" />
-                            <path d="M7 20h10" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="mb-1 fw-bold">Resources</p>
-                        <small class="text-muted">Guides, FAQs, and templates</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="policies" class="row g-4 mb-4">
-            <div class="col-lg-8">
-                <div class="legal-card p-4 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <p class="text-uppercase text-muted fw-bold mb-1">Policies</p>
-                            <h3 class="fw-bold mb-0">Core documents</h3>
-                        </div>
-                        <a class="legal-link" href="https://webmakerr.com/legal">View all</a>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="p-3 border rounded-3 h-100 d-flex flex-column gap-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fw-bold">Terms of Service</span>
-                                    <span class="badge bg-light text-dark border">Updated Jan 2024</span>
-                                </div>
-                                <p class="text-muted mb-2">Understand how Webmakerr protects users and ensures platform reliability.</p>
-                                <div class="d-flex gap-2 align-items-center mt-auto">
-                                    <span class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> Service guarantees</span>
-                                    <a class="legal-link" href="https://webmakerr.com/terms-of-service" target="_blank" rel="noopener">Read</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 border rounded-3 h-100 d-flex flex-column gap-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fw-bold">Privacy Policy</span>
-                                    <span class="badge bg-light text-dark border">Updated Feb 2024</span>
-                                </div>
-                                <p class="text-muted mb-2">Learn how we collect, process, and safeguard data with transparency.</p>
-                                <div class="d-flex gap-2 align-items-center mt-auto">
-                                    <span class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> GDPR-ready</span>
-                                    <a class="legal-link" href="https://webmakerr.com/privacy-policy" target="_blank" rel="noopener">Read</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 border rounded-3 h-100 d-flex flex-column gap-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fw-bold">Data Processing Agreement</span>
-                                    <span class="badge bg-light text-dark border">Updated Mar 2024</span>
-                                </div>
-                                <p class="text-muted mb-2">Review Webmakerr responsibilities as your data processor and partner.</p>
-                                <div class="d-flex gap-2 align-items-center mt-auto">
-                                    <span class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> SCC &amp; subprocessor clarity</span>
-                                    <a class="legal-link" href="https://webmakerr.com/dpa" target="_blank" rel="noopener">Download</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 border rounded-3 h-100 d-flex flex-column gap-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fw-bold">Cookie Policy</span>
-                                    <span class="badge bg-light text-dark border">Updated Jan 2024</span>
-                                </div>
-                                <p class="text-muted mb-2">See how Webmakerr uses cookies to improve experience and analytics.</p>
-                                <div class="d-flex gap-2 align-items-center mt-auto">
-                                    <span class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> Consent controls</span>
-                                    <a class="legal-link" href="https://webmakerr.com/cookie-policy" target="_blank" rel="noopener">View</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="legal-card p-4 h-100">
-                    <p class="text-uppercase text-muted fw-bold mb-2">Support</p>
-                    <h4 class="fw-bold mb-3">Need a signed agreement?</h4>
-                    <p class="text-muted">Reach out for MSAs, NDAs, or custom compliance requests. We respond within one business day.</p>
-                    <div class="d-flex flex-column gap-2 mt-3">
-                        <a class="btn btn-primary" href="mailto:legal@webmakerr.com">Contact legal team</a>
-                        <a class="btn btn-outline-primary" href="https://cal.com/webmakerr/legal" target="_blank" rel="noopener">Book a compliance call</a>
-                        <div class="d-flex align-items-center gap-2 text-muted">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2l6 3v4c0 3.14-2.69 5.88-6 7-3.31-1.12-6-3.86-6-7V5l6-3z"/></svg>
-                            <small>Regional support for EU/UK/US clients</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="trust" class="row g-4 mb-4">
-            <div class="col-lg-6">
-                <div class="legal-card p-4 h-100 d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold mb-0">Trust &amp; Security</h4>
-                        <span class="badge bg-success">Operational</span>
-                    </div>
-                    <div class="legal-placeholder mb-3"></div>
-                    <p class="text-muted">Review Webmakerr uptime commitments, incident response program, and security certifications.</p>
-                    <div class="d-flex gap-3 flex-wrap mt-auto">
-                        <span class="legal-pill">Status page</span>
-                        <span class="legal-pill">Security overview</span>
-                        <span class="legal-pill">Incident library</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="legal-card p-4 h-100">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold mb-0">Compliance</h4>
-                        <span class="badge bg-light text-dark border">Quarterly review</span>
-                    </div>
-                    <ul class="list-unstyled mb-0 d-grid gap-3">
-                        <li class="d-flex align-items-start gap-3">
-                            <div class="legal-icon-box flex-shrink-0">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 3l9 4-9 4-9-4 9-4z" />
-                                    <path d="M3 7v6l9 4 9-4V7" />
-                                    <path d="M3 13v6l9 4 9-4v-6" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="fw-bold mb-1">SOC 2 Type II aligned controls</p>
-                                <p class="mb-0 text-muted">Continuous monitoring and third-party assessments scheduled annually.</p>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-start gap-3">
-                            <div class="legal-icon-box flex-shrink-0">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 21c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" />
-                                    <path d="M12 9v4l2 2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="fw-bold mb-1">Data residency &amp; retention</p>
-                                <p class="mb-0 text-muted">Configurable retention schedules and EU/US region hosting options.</p>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-start gap-3">
-                            <div class="legal-icon-box flex-shrink-0">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M6 6h12v12H6z" />
-                                    <path d="M9 9h6v6H9z" />
-                                    <path d="M3 3h3v3H3z" />
-                                    <path d="M18 3h3v3h-3z" />
-                                    <path d="M3 18h3v3H3z" />
-                                    <path d="M18 18h3v3h-3z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="fw-bold mb-1">Access controls</p>
-                                <p class="mb-0 text-muted">SAML SSO, SCIM provisioning, and granular roles available for enterprise.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 mb-5">
-            <div class="col-lg-4">
-                <div class="legal-side-card">
-                    <p class="text-uppercase fw-bold small text-secondary mb-2">Featured</p>
-                    <h4 class="fw-bold mb-3">Subprocessor list</h4>
-                    <p class="mb-3">Current vendors and subprocessors supporting Webmakerr services. Notifications sent before changes.</p>
-                    <a class="btn btn-light w-100" href="https://webmakerr.com/subprocessors" target="_blank" rel="noopener">View list</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="legal-card p-4 h-100 d-flex flex-column">
-                    <p class="text-uppercase text-muted fw-bold mb-1">Guides</p>
-                    <h5 class="fw-bold">How Webmakerr protects your data</h5>
-                    <p class="text-muted mb-3">Best practices for keeping your account secure and complying with local regulations.</p>
-                    <div class="legal-placeholder mb-3"></div>
-                    <a class="legal-link mt-auto" href="https://webmakerr.com/security" target="_blank" rel="noopener">Explore the guide</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="legal-card p-4 h-100 d-flex flex-column">
-                    <p class="text-uppercase text-muted fw-bold mb-1">Templates</p>
-                    <h5 class="fw-bold">Request forms</h5>
-                    <ul class="list-unstyled d-grid gap-2 mb-3">
-                        <li class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> Data Subject Access Request</li>
-                        <li class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> Security questionnaire intake</li>
-                        <li class="legal-list-check"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 13l-3-3 1.5-1.5L8 10l5.5-5.5L15 6z"/></svg> Vulnerability disclosure</li>
-                    </ul>
-                    <a class="btn btn-primary" href="https://webmakerr.com/contact" target="_blank" rel="noopener">Submit a request</a>
                 </div>
             </div>
         </div>
