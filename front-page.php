@@ -380,7 +380,7 @@ get_header();
                         Book an appointment
                     </a>
 
-                    <a href="<?php echo esc_url( $booking_url ); ?>" class="btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
+                    <a href="/contact-us" class="btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
                         <span class="text-dark">Get sample website</span>
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
                             <path d="M4 2l6 5-6 5" />
