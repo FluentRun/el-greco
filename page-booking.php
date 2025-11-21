@@ -249,23 +249,23 @@ get_header();
         <div class="p-4 p-md-5 bg-white border rounded-4 shadow-sm row g-4 align-items-center">
             <div class="col-lg-6">
                 <span class="d-inline-flex align-items-center small bg-light text-secondary px-3 py-1 rounded-pill mb-3">
-                    Custom WordPress & Web Development Services
+                    WordPress booking & scheduling automation
                     <svg width="12" height="12" class="ms-2" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M4 2l4 4-4 4" />
                     </svg>
                 </span>
 
                 <h1 class="fw-semibold lh-sm text-dark hero-title">
-                    Launch the website your business actually needs to grow.<br>
+                    Turn every inquiry into a confirmed booking—automatically.<br>
                 </h1>
 
                 <p class="mt-3 text-secondary">
-                    We redesign sites, build custom features, and engineer WordPress plugins that convert more visitors, automate workflows, and keep your tech stack running flawlessly.
+                    FluentBooking keeps calendars synchronized, collects payments, sends reminders, and routes appointments without manual back-and-forth—so teams look polished and close more revenue.
                 </p>
 
                 <a href="<?php echo esc_url( $checkout_url ); ?>" class="mt-4 btn btn-dark btn-lg d-flex align-items-center gap-2 w-100" style="max-width:260px;">
                     <img src="<?php echo esc_url( $theme_dir . '/images/home/user3.png' ); ?>" width="18" alt="Google icon">
-                    Start with Google
+                    Connect Google Calendar
                 </a>
 
                 <a href="<?php echo esc_url( $checkout_url ); ?>" class="mt-2 btn btn-light border btn-lg d-flex align-items-center justify-content-between w-100" style="max-width:260px;">
@@ -275,7 +275,7 @@ get_header();
                     </svg>
                 </a>
 
-                <p class="small text-muted mt-2">Spots are limited—secure your project start date today</p>
+                <p class="small text-muted mt-2">Be live in minutes—claim your onboarding slot today</p>
 
                 <div class="d-flex gap-4 mt-4">
                     <img src="<?php echo esc_url( $theme_dir . '/images/trustf/sslupf.svg' ); ?>" height="20" alt="Trustpilot">
@@ -287,16 +287,16 @@ get_header();
                     <div class="p-4 position-relative" style="z-index:2; min-height:350px;">
                         <div class="d-flex justify-content-between align-items-start mb-3 hero-info-row">
                             <div>
-                                <p class="fw-semibold text-dark mb-1">Custom Development Strategy Call</p>
-                                <p class="small text-muted mb-0">Map the redesign, integrations, and bespoke builds that will remove bottlenecks and drive measurable revenue.</p>
+                                <p class="fw-semibold text-dark mb-1">Booking System Launch Call</p>
+                                <p class="small text-muted mb-0">Plan the calendars, payment steps, and automations that stop no-shows, cut admin time, and increase closed deals.</p>
                             </div>
                             <span class="badge bg-dark small px-3 py-2 hero-pill">Done-for-you delivery</span>
                         </div>
 
                         <div class="d-flex flex-wrap gap-2 small text-muted mb-3">
-                            <span class="border rounded-pill px-3 py-1">90-min build plan</span>
-                            <span class="border rounded-pill px-3 py-1">Architecture + UX</span>
-                            <span class="border rounded-pill px-3 py-1">Budget &amp; timeline clarity</span>
+                            <span class="border rounded-pill px-3 py-1">90-min rollout plan</span>
+                            <span class="border rounded-pill px-3 py-1">Calendar + funnel mapping</span>
+                            <span class="border rounded-pill px-3 py-1">Revenue impact forecast</span>
                         </div>
 
                         <div class="position-relative border rounded-3 p-3 shadow-sm hero-animation-shell">
@@ -315,19 +315,19 @@ get_header();
     <div class="container-lg">
         <div class="text-center mx-auto" style="max-width: 700px;">
             <span class="d-inline-flex align-items-center bg-white border px-3 py-1 rounded-pill text-secondary small shadow-sm mb-3">
-                Our capabilities
+                Why teams choose FluentBooking
             </span>
 
             <h2 class="fw-semibold display-6 text-dark lh-sm">
-                Everything you need for a high-converting, fully custom site
+                Everything you need to run bookings on autopilot
             </h2>
 
             <p class="mt-3 text-secondary">
-                Partner with senior developers and designers who plan, build, and launch every page and feature you need to convert traffic, streamline operations, and scale confidently.
+                Install once and let FluentBooking capture leads, qualify them, and schedule the right meeting with the right person—while your team focuses on closing deals and serving customers.
             </p>
 
             <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg mt-4 shadow-sm">
-                Book a build consult →
+                Start booking instantly →
             </a>
         </div>
 
@@ -338,10 +338,10 @@ get_header();
                         <span class="fw-bold text-secondary small">01</span>
                     </span>
 
-                    <h5 class="fw-semibold text-dark">Website redesigns that convert</h5>
+                    <h5 class="fw-semibold text-dark">Scheduling that books itself</h5>
 
                     <p class="text-muted small mt-2">
-                        Reimagine your site structure, UX, and messaging so every page guides visitors to demo, trial, or checkout.
+                        Replace back-and-forth emails with branded booking pages that qualify visitors and lock in the best time with no double-bookings.
                     </p>
 
                     <div class="mt-auto d-flex justify-content-center pt-3">
@@ -370,10 +370,10 @@ get_header();
                         <span class="fw-bold text-secondary small">02</span>
                     </span>
 
-                    <h5 class="fw-semibold text-dark">Custom features that earn revenue</h5>
+                    <h5 class="fw-semibold text-dark">Automated follow-up that converts</h5>
 
                     <p class="text-muted small mt-2">
-                        Build bespoke booking flows, pricing calculators, membership areas, and dashboards tailored to how you sell.
+                        Trigger confirmations, reminders, and post-meeting nurture sequences that keep prospects engaged and reduce no-shows.
                     </p>
 
                     <div class="mt-auto pt-3">
@@ -409,10 +409,10 @@ get_header();
                         <span class="fw-bold text-secondary small">03</span>
                     </span>
 
-                    <h5 class="fw-semibold text-dark">Plugins and integrations engineered</h5>
+                    <h5 class="fw-semibold text-dark">Integrations built for revenue teams</h5>
 
                     <p class="text-muted small mt-2">
-                        Get WordPress plugins, API connections, and automation built to your specs—fast, secure, and fully documented.
+                        Sync calendars, CRMs, payment gateways, and automation tools so every booking, payment, and pipeline update stays in one flow.
                     </p>
 
                     <div class="mt-auto d-flex justify-content-center pt-3">
@@ -458,7 +458,7 @@ get_header();
 <section class="py-5 bg-light">
     <div class="container-lg">
         <h2 class="text-center fw-semibold lh-sm text-dark mb-5" style="font-size: 2.5rem;">
-            ...plus everything needed for frictionless delivery
+            ...plus everything needed for a professional booking engine
         </h2>
 
         <div class="row g-4 justify-content-center">
@@ -475,14 +475,14 @@ get_header();
             ];
 
             $labels = [
-                'Growth-focused redesigns',
-                'Scalable site architecture',
-                'Conversion-optimized copy',
-                'Speed & performance tuning',
-                'Analytics, pixels & dashboards',
-                'Custom plugin development',
-                'API integrations & automation',
-                'Quality assurance & launch checklists'
+                'Branded booking pages',
+                'Round-robin & pooled calendars',
+                'Conversion-optimized intake',
+                'Instant confirmations & reminders',
+                'Payments, invoices & receipts',
+                'CRM & marketing automation sync',
+                'Availability rules & routing',
+                'Analytics, QA & launch checklists'
             ];
 
             foreach ($labels as $index => $label):
@@ -507,17 +507,17 @@ get_header();
         </span>
 
         <h2 class="fw-semibold lh-sm text-dark" style="font-size: 2.5rem;">
-            Teams launching custom experiences that drive revenue
+            Teams booking more revenue on autopilot
         </h2>
 
         <p class="mt-3 text-secondary small mx-auto" style="max-width: 620px;">
-            See how we redesign websites, ship bespoke features, and build plugins that increase conversions and simplify operations.
+            See how FluentBooking eliminates manual scheduling, speeds up follow-up, and gives every team a polished, conversion-focused booking flow.
         </p>
 
         <div class="d-none d-md-flex justify-content-center align-items-center gap-4 mt-5">
             <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
                 <p class="text-dark small fst-italic mb-4">
-                    “They rebuilt our entire WordPress site and consolidated three tools into one dashboard. Demo bookings went up 38% within the first month.”
+                    “FluentBooking runs every consult slot for us—no email tag, no conflicts. Demo bookings jumped 38% in month one.”
                 </p>
 
                 <div class="d-flex align-items-center">
@@ -534,7 +534,7 @@ get_header();
 
             <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 420px; height: 230px;">
                 <p class="text-dark fw-semibold mb-4">
-                    “Their custom plugin handles quoting, contracts, and payment in one flow. It replaced three vendors and paid for itself in two weeks.”
+                    “The booking-to-payment flow replaced three tools and two contractors. It paid for itself in two weeks.”
                 </p>
 
                 <div class="d-flex align-items-center">
@@ -551,7 +551,7 @@ get_header();
 
             <div class="bg-white border rounded-4 shadow-sm p-4" style="width: 350px; height: 210px; opacity: 0.35; transform: scale(0.94);">
                 <p class="text-dark small fst-italic mb-4">
-                    “Our membership portal now feels seamless—fast logins, tailored content, and automated billing. Support tickets dropped by half.”
+                    “Clients self-schedule coaching, get automatic reminders, and pay on the spot. Our team stopped chasing invoices.”
                 </p>
 
                 <div class="d-flex align-items-center">
@@ -570,7 +570,7 @@ get_header();
         <div class="d-md-none mx-auto mt-4" style="max-width: 380px;">
             <div class="bg-white border rounded-4 shadow-sm p-4">
                 <p class="text-dark fw-semibold mb-4">
-                    “Their custom plugin handles quoting, contracts, and payment in one flow. It replaced three vendors and paid for itself in two weeks.”
+                    “The booking-to-payment flow replaced three tools and two contractors. It paid for itself in two weeks.”
                 </p>
 
                 <div class="d-flex align-items-center">
@@ -597,16 +597,16 @@ get_header();
                     </span>
 
                 <h2 class="fw-semibold lh-sm text-dark mb-3" style="font-size: 2.25rem;">
-                    Plan, build, launch—without guesswork.
+                    Launch bookings without guesswork.
                 </h2>
 
                 <p class="text-muted small mb-4" style="max-width: 420px;">
-                    We handle discovery, UX, development, QA, and launch with weekly updates—so your team always knows what’s done, what’s next, and when it ships.
+                    We set up availability, routing, payments, and automations with weekly updates—so leadership knows exactly what’s live, what’s next, and when revenue hits.
                 </p>
 
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Book a build consult →</a>
-                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg">Download process overview →</a>
+                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">Get FluentBooking now →</a>
+                    <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-light border btn-lg">See implementation checklist →</a>
                 </div>
             </div>
 
@@ -654,13 +654,13 @@ get_header();
 
             <div class="position-relative" style="z-index:2;">
                 <h2 class="fw-semibold lh-sm text-dark mx-auto" style="font-size: 2.25rem; max-width: 700px;">
-                    Let’s build the custom WordPress experience your customers deserve.
-                    <br class="d-none d-sm-block">Secure your project slot before the calendar fills up.
+                    Give customers a fast, professional way to book you—every time.
+                    <br class="d-none d-sm-block">Secure your onboarding slot before the calendar fills up.
                 </h2>
 
                 <div class="mt-4">
                     <a href="<?php echo esc_url( $checkout_url ); ?>" class="btn btn-dark btn-lg shadow-sm">
-                        Start your project →
+                        Start booking now →
                     </a>
                 </div>
             </div>
