@@ -1220,6 +1220,87 @@ get_header();
     });
 </script>
 
+<section class="py-5 bg-white border-top">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-4">
+                    <span class="d-inline-flex align-items-center bg-light border px-3 py-1 rounded-pill text-secondary small mb-3">Frequently Asked Questions</span>
+                    <h2 class="fw-semibold text-dark">Clear answers so you can enroll with confidence</h2>
+                    <p class="text-secondary mt-2">If you're on the fence, these quick answers explain exactly what you get, how it works, and what to do if it isn't the right fit.</p>
+                </div>
+
+                <div class="accordion" id="faqsAccordion">
+                    <div class="accordion-item border rounded-3 mb-3">
+                        <h2 class="accordion-header" id="faqOneHeading">
+                            <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                                How quickly will I start seeing results?
+                            </button>
+                        </h2>
+                        <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqOneHeading" data-bs-parent="#faqsAccordion">
+                            <div class="accordion-body text-secondary">
+                                Most members launch their first optimized campaigns within the first week using our ready-to-use templates, checklists, and ad calculators. Your pace depends on implementation, but every module is designed for fast action.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 mb-3">
+                        <h2 class="accordion-header" id="faqTwoHeading">
+                            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                                What if I'm new to Facebook ads?
+                            </button>
+                        </h2>
+                        <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoHeading" data-bs-parent="#faqsAccordion">
+                            <div class="accordion-body text-secondary">
+                                The curriculum includes beginner-friendly walkthroughs plus advanced modules. We show you how to set up the pixel, structure campaigns, and scale without guesswork—no prior media buying experience required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 mb-3">
+                        <h2 class="accordion-header" id="faqThreeHeading">
+                            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                                Do I get support if I get stuck?
+                            </button>
+                        </h2>
+                        <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqThreeHeading" data-bs-parent="#faqsAccordion">
+                            <div class="accordion-body text-secondary">
+                                Yes. You’ll receive weekly live Q&A access with our instructors and can submit campaign screenshots for feedback. We also provide email support to help troubleshoot creative, targeting, and tracking questions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 mb-3">
+                        <h2 class="accordion-header" id="faqFourHeading">
+                            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                                Is there a guarantee?
+                            </button>
+                        </h2>
+                        <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqFourHeading" data-bs-parent="#faqsAccordion">
+                            <div class="accordion-body text-secondary">
+                                If you complete the core modules and templates within 30 days and don’t feel more confident running profitable ads, email us and we’ll work with you to make it right.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3">
+                        <h2 class="accordion-header" id="faqFiveHeading">
+                            <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                                Can I access updates in the future?
+                            </button>
+                        </h2>
+                        <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqFiveHeading" data-bs-parent="#faqsAccordion">
+                            <div class="accordion-body text-secondary">
+                                Absolutely. Enrollment includes ongoing updates whenever Meta releases major changes. We refresh the playbooks and templates so your campaigns stay compliant and competitive.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="wmk-disclaimer" style="padding:20px 0; font-size:11px; color:#777; line-height:1.5;">
     <div class="container">
         <p>Important Disclaimer: This training is for educational purposes only and does not guarantee results. This page is not endorsed by or affiliated with Meta Platforms, Inc. Advertisers are responsible for following all Meta Advertising Policies.</p>
